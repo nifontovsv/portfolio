@@ -4,10 +4,11 @@ body {
 		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-image: url(./images/galaxy-background.jpg);
+	/* background-image: url(./images/galaxy-background.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 100vh;
+	height: 100vh; */
+	/* background-color: black; */
 }
 
 code {

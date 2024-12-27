@@ -1,22 +1,17 @@
-import { Route, Routes } from 'react-router';
 import './App.css';
 import Container from './component/Container/Container';
+import Main from './component/Main/Main';
 import Projects from './component/Projects/Projects';
-import Navbar from './component/Navbar/Navbar';
-import Contacts from './component/Contacts/Contacts';
-import About from './component/About/About';
+import SnakeGame from './component/Projects/SnakeGame/SnakeGame';
 
 function App() {
 	return (
-		<div className='App'>
-			<Container>
-				<Navbar />
-				<Routes>
-					<Route path='/about' element={<About />} />
-					<Route path='/projects' element={<Projects />} />
-					<Route path='/contacts' element={<Contacts />} />
-				</Routes>
-			</Container>
+		<div className='app'>
+			{/* <Container> */}
+			{/* <Main /> */}
+			<SnakeGame />
+			{/* <Projects /> */}
+			{/* </Container> */}
 		</div>
 	);
 }

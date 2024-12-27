@@ -9,6 +9,7 @@
 	border-radius: 10px;
 	width: 20%;
 	min-height: 80vh;
+	padding: 20px;
 }
 
 .placeForProjects {
@@ -16,4 +17,13 @@
 	border-radius: 10px;
 	min-height: 80vh;
 	width: 100%;
+}
+
+.navProjectsLink {
+	color: white;
+	text-decoration: none;
+}
+
+.navProjectsLink:hover {
+	color: grey;
 }

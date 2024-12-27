@@ -1,0 +1,24 @@
+.checked {
+	text-decoration: line-through;
+}
+h2 {
+	color: #333;
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+button {
+	&.deleteButton {
+		color: red;
+		border: none;
+		background: none;
+		cursor: pointer;
+		font-size: 0.9rem;
+		transition: color 0.3s;
+
+		&:hover {
+			color: darkred;
+		}
+	}
+}

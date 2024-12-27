@@ -1,0 +1,21 @@
+section {
+	max-width: 100%;
+	height: 90vh;
+	margin: 5vh 3vw;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.svgCommon {
+	display: flex;
+	position: relative;
+
+	.svgOne {
+		position: absolute;
+	}
+
+	.svgTwo {
+		position: absolute;
+	}
+}
