@@ -1,9 +1,9 @@
-import './SnakeGame.css';
+import styles from './SnakeGame.module.scss';
 import React, { useState, useEffect, useRef, useReducer } from 'react';
 
 const SNAKE_SPEED = 10;
 const FRAME_RATE = 60; // Частота обновления игры в миллисекундах
-const TOTAL_LAMPS = 5; // Количество лампочек
+const TOTAL_LAMPS = 20; // Количество лампочек
 
 const initialState = {
 	snake: [
@@ -173,12 +173,12 @@ const GamePieces = ({ score, setScore, onGameOver }) => {
 
 	return (
 		<>
-			<div className='indicator'>
+			<div className={styles.indicator}>
 				{lamps.map((isOn, index) => (
-					<div key={index} className={`lamp ${isOn ? 'on' : 'off'}`} />
+					<div key={index} className={`${styles.lamp} ${isOn ? styles.on : styles.off}`}></div>
 				))}
 			</div>
-			<canvas className='gameCanvas' ref={canvasRef} width={400} height={400} />
+			<canvas ref={canvasRef} width={400} height={400} />
 		</>
 	);
 };

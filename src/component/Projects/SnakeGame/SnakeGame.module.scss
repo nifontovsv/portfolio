@@ -1,0 +1,155 @@
+// body {
+// 	font-family: 'Orbitron', sans-serif; /* Шрифт в стиле sci-fi */
+// 	background: radial-gradient(circle, #0f2027, #203a43, #2c5364);
+// 	margin: 0;
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	height: 100vh;
+// 	color: #00d9ff;
+// }
+
+.gameContainer {
+	width: 660px;
+	background: #062431;
+	padding: 20px;
+	border-radius: 20px;
+	text-align: center;
+	box-shadow: 0 0 20px #43d9ad;
+	border: 2px solid #00d9ff;
+	display: flex;
+	position: relative;
+}
+
+.gameOver {
+	width: 400px;
+	height: 400px;
+	font-size: 1.6em;
+	color: #ff073a;
+	text-shadow:
+		0 0 10px #ff073a,
+		0 0 20px #ff073a;
+	animation: blink 0.8s infinite;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	/* background-color: rgba(0, 0, 0, 0.8); */
+	text-align: center;
+	z-index: 1000;
+	padding: 20px;
+	border-radius: 10px;
+	/* box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); */
+}
+
+.game-over p {
+	width: 80%;
+	font-size: 1em;
+	margin: 5px 0;
+}
+
+.game-over h1 {
+	font-size: 2em;
+	margin-bottom: 10px;
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0.5;
+	}
+}
+
+.gameCanvas {
+	display: block;
+	margin: 15px;
+	border-radius: 10px;
+	background: linear-gradient(154deg, rgba(23, 85, 83, 0.7) 0%, rgba(0, 255, 179, 0.3) 100%);
+	box-shadow: inset 1px 5px 11px 0 rgba(2, 18, 27, 0.71);
+}
+
+// button {
+// 	margin-top: 15px;
+// 	padding: 12px 25px;
+// 	background: linear-gradient(90deg, #0078ff, #00d9ff);
+// 	border: none;
+// 	border-radius: 8px;
+// 	color: #fff;
+// 	font-size: 1em;
+// 	cursor: pointer;
+// 	text-transform: uppercase;
+// 	transition:
+// 		transform 0.3s,
+// 		box-shadow 0.3s;
+// }
+
+// button:hover {
+// 	transform: translateY(-3px);
+// 	box-shadow: 0 0 20px #00d9ff;
+// }
+
+.indicator {
+	position: absolute;
+	top: 280px;
+	right: 60px;
+	display: flex;
+	gap: 10px;
+	width: 120px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 15px;
+}
+
+@keyframes glow {
+	0%,
+	100% {
+		box-shadow:
+			0 0 10px #43d9ad,
+			0 0 20px #43d9ad,
+			0 0 30px #43d9ad;
+	}
+	50% {
+		box-shadow:
+			0 0 15px #43d9ad,
+			0 0 30px #43d9ad,
+			0 0 60px #43d9ad;
+	}
+}
+
+.lamp {
+	width: 15px;
+	height: 15px;
+	background: radial-gradient(
+		circle,
+		rgba(67, 217, 173, 0.8),
+		rgba(67, 217, 173, 0.2),
+		transparent
+	);
+	border-radius: 50%;
+}
+
+.lamp.on {
+	animation: glow 1.5s infinite alternate;
+}
+
+.instructions {
+	border-radius: 8px;
+	width: 181px;
+	height: 142px;
+	background-color: rgba(0, 0, 0, 0.4);
+	margin: 15px;
+	padding: 10px;
+}
+
+.hiddenInstruction {
+	display: none;
+}
+
+.instructions p {
+	font-weight: 450;
+	font-size: 14px;
+	color: #fff;
+	text-shadow:
+		0 0 5px #00ff00,
+		0 0 10px #00ff00,
+		0 0 15px #00ff00;
+}
