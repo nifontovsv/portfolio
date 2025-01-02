@@ -1,56 +1,25 @@
 import React from 'react';
 import styles from './Main.module.scss';
-import mainImage from '../../images/mainImage.png';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid2';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import SnakeGame from '../Projects/SnakeGame/SnakeGame';
-
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
-
+import TypingAnimation from '../TypingAnimation/TypingAnimation';
 
 function Main() {
-	const [value, setValue] = React.useState(0);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
 	return (
-		<section className={styles.main} style={{ backgroundImage: `url(${mainImage})` }}>
-			
+		<section className={styles.main}>
+			<div class={styles.mainInfo}>
+				<div class={styles.mainLeft}></div>
+				<div class={styles.mainRight}>
+					<TypingAnimation />
+					<div>
+						<SnakeGame />
+					</div>
+				</div>
+			</div>
+
 			<div className={styles.svgOne}>
 				<svg
-					width='454'
-					height='492'
+					width='700'
+					height='700'
 					viewBox='0 0 864 784'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'>
@@ -79,8 +48,8 @@ function Main() {
 			<div className={styles.svgTwo}>
 				{' '}
 				<svg
-					width='454'
-					height='492'
+					width='450'
+					height='500'
 					viewBox='0 0 868 831'
 					fill='none'
 					xmlns='http://www.w3.org/2000/svg'>
@@ -106,40 +75,6 @@ function Main() {
 					</defs>
 				</svg>
 			</div>
-
-			<Box sx={{ flexGrow: 1 }}>
-				<Grid container spacing={2}>
-					<Grid size={2}>
-					</Grid>
-					<Grid size={10}>
-						<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-							<Tabs className={styles.tabs} value={value} onChange={handleChange} aria-label="basic tabs example">
-								<Tab className={`${styles.tab} ${styles.firstTab}`} label="_hello" {...a11yProps(0)} />
-								<Tab className={`${styles.tab} ${styles.twoTab}`} label="_about-me" {...a11yProps(1)} />
-								<Tab className={`${styles.tab} ${styles.threeTab}`} label="_projects" {...a11yProps(2)} />
-								<Tab className={`${styles.tab} ${styles.lastTab}`} label="_contact-me" {...a11yProps(3)} />
-							</Tabs>
-						</Box>
-					</Grid>
-					<Grid size={2}>
-					</Grid>
-					<Grid size={10}>
-						 <CustomTabPanel value={value} index={0}>
-								_hello
-							</CustomTabPanel>
-							<CustomTabPanel value={value} index={1}>
-								_about-me
-							</CustomTabPanel>
-							<CustomTabPanel value={value} index={2}>
-								_projects
-								<SnakeGame/>
-							</CustomTabPanel>
-							<CustomTabPanel value={value} index={2}>
-								_contact-me
-							</CustomTabPanel>
-					</Grid>
-				</Grid>
-			</Box>
 		</section>
 	);
 }

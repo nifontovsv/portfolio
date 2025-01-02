@@ -1,21 +1,76 @@
 .main {
-	max-width: 100%;
-	height: 90vh;
-	margin: 5vh 3vw;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	position: relative;
-	border: 1px solid #1e2d3d;
-	border-radius: 8px;
+	display: flex;
+	align-items: center;
+}
+
+.mainInfo {
+	display: grid;
+	grid-template-columns: 300px auto;
+	gap: 2px;
+}
+.mainInfo_1 {
+	margin-right: 100px;
+}
+.mainLeft,
+.mainRight {
+	// background-color: rgb(0, 110, 255);
+	display: grid;
+}
+.mainRight {
+	display: flex;
+	align-items: center;
+}
+.mainInfoTextOne p {
+	margin: 0;
+	font-weight: 450;
+	font-size: 18px;
+	color: #e5e9f0;
+}
+.mainInfoTextOne h1 {
+	margin: 0;
+	font-weight: 400;
+	font-size: 48px;
+	color: #e5e9f0;
+}
+.mainInfoTextOne h3 {
+	margin: 0;
+	font-weight: 450;
+	font-size: 32px;
+	color: #4d5bce;
+	margin-bottom: 80px;
+}
+
+.mainInfoTextTwo p {
+	font-weight: 450;
+	font-size: 16px;
+	color: #607b96;
+}
+.mainInfoTextTwo .textConst {
+	font-weight: 500;
+	font-size: 16px;
+	color: #4d5bce;
+}
+.mainInfoTextTwo .textGithubLink {
+	font-weight: 500;
+	font-size: 16px;
+	color: #43d9ad;
+}
+.mainInfoTextTwo a {
+	text-decoration: underline;
+	text-decoration-skip-ink: none;
+	color: #e99287;
 }
 
 .svgOne {
 	position: absolute;
+	right: 15%;
 }
 
 .svgTwo {
 	position: absolute;
+	top: 50%;
+	right: 0;
+	z-index: 2;
 }
 
 .tabs {

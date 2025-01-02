@@ -1,26 +1,24 @@
 import { Route, Routes } from 'react-router';
 import './App.css';
-import Container from './component/Container/Container';
 import Main from './component/Main/Main';
 import Projects from './component/Projects/Projects';
-import SnakeGame from './component/Projects/SnakeGame/SnakeGame';
-import ToDoList from './component/Projects/ToDoList/ToDoList';
+import About from './component/About/About';
+import Contacts from './component/Contacts/Contacts';
+import Navbar from './component/Navbar/Navbar';
+import mainImage from '../src/images/mainImage.png';
+import Footer from './component/Footer/Footer';
 
 function App() {
 	return (
-		<div className='app'>
-			{/* <Routes>
-				<Route path='/about' element={<About/>} />
-				<Route path='/main' element={<Main/>} />
-				<Route path='/contacts' element={<Contacts/>} />
-			</Routes> */}
-
-			{/* <ToDoList /> */}
-			{/* <Container> */}
-			{/* <Main /> */}
-			{/* <SnakeGame /> */}
-			{/* <Projects /> */}
-			{/* </Container> */}
+		<div className='app' style={{ backgroundImage: `url(${mainImage})` }}>
+			<Navbar />
+			<Routes>
+				<Route path='/' element={<Main />} />
+				<Route path='/about' element={<About />} />
+				<Route path='/projects' element={<Projects />} />
+				<Route path='/contacts' element={<Contacts />} />
+			</Routes>
+			<Footer />
 		</div>
 	);
 }

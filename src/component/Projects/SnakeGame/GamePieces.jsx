@@ -147,18 +147,22 @@ const GamePieces = ({ score, setScore, onGameOver }) => {
 		const handleKeyPress = (e) => {
 			switch (e.key) {
 				case 'ArrowRight':
+				case 'd':
 					if (direction !== 'left')
 						dispatch({ type: 'SET_DIRECTION', payload: { direction: 'right' } });
 					break;
 				case 'ArrowLeft':
+				case 'a':
 					if (direction !== 'right')
 						dispatch({ type: 'SET_DIRECTION', payload: { direction: 'left' } });
 					break;
 				case 'ArrowUp':
+				case 'w':
 					if (direction !== 'down')
 						dispatch({ type: 'SET_DIRECTION', payload: { direction: 'up' } });
 					break;
 				case 'ArrowDown':
+				case 's':
 					if (direction !== 'up')
 						dispatch({ type: 'SET_DIRECTION', payload: { direction: 'down' } });
 					break;
@@ -178,7 +182,7 @@ const GamePieces = ({ score, setScore, onGameOver }) => {
 					<div key={index} className={`${styles.lamp} ${isOn ? styles.on : styles.off}`}></div>
 				))}
 			</div>
-			<canvas ref={canvasRef} width={400} height={400} />
+			<canvas ref={canvasRef} width={300} height={400} />
 		</>
 	);
 };

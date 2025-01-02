@@ -1,21 +1,15 @@
-.header {
-	display: grid;
-	grid-template-columns: 300px auto;
-	border-bottom: 1px solid #1e2d3d;
-	color: #607b96;
-}
-.logo,
-.nav {
-	display: grid;
+.footer {
 	display: flex;
 	align-items: center;
+	border-top: 1px solid #1e2d3d;
 }
-.logo {
-	padding-left: 22px;
-	border-right: 1px solid #1e2d3d;
-}
-.navItem {
-	padding: 19px 31px;
+.footerItem {
+	padding: 9px 31px;
+	&:first-child {
+		font-weight: 450;
+		font-size: 16px;
+		color: #607b96;
+	}
 	&:nth-child(2) {
 		border-left: 1px solid #1e2d3d;
 		border-right: 1px solid #1e2d3d;
@@ -25,17 +19,19 @@
 	}
 	&:last-child {
 		margin-left: auto;
+		z-index: 3;
 		border-left: 1px solid #1e2d3d;
 	}
 	a {
 		text-decoration: none;
 		color: #607b96;
 		transition: all 0.1s ease;
-	}
-	a:hover {
-		font-weight: 450;
-		font-size: 16px;
-		color: #fff;
-		transition: all 0.1s ease;
+		cursor: pointer;
+		&:hover {
+			font-weight: 450;
+			font-size: 16px;
+			color: #fff;
+			transition: all 0.1s ease;
+		}
 	}
 }

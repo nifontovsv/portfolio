@@ -1,3 +1,95 @@
 .about {
 	color: white;
+	display: grid;
+	grid-template-columns: 60px auto;
+	.navIcon {
+		border-right: 1px solid #1e2d3d;
+	}
+	.tabsAbout {
+		display: grid;
+		grid-template-rows: 40px auto;
+		.navTabs {
+			border-bottom: 1px solid #1e2d3d;
+			display: grid;
+			grid-template-columns: 240px 1fr 1fr;
+			.navTabName {
+				display: flex;
+				align-items: center;
+				border-right: 1px solid #1e2d3d;
+				.dropdownToggle {
+					background: none;
+					border: none;
+					cursor: pointer;
+					font-size: 16px;
+				}
+				.personalInfo {
+					cursor: pointer;
+				}
+			}
+			.navTabsLeft {
+				border-right: 1px solid #1e2d3d;
+			}
+		}
+		.aboutPart {
+			display: grid;
+			grid-template-columns: 240px 1fr 1fr;
+			.aboutLeft {
+				display: grid;
+				grid-template-columns: 40px auto;
+				position: relative;
+				border-right: 1px solid #1e2d3d;
+				.menuList {
+					list-style: none;
+					padding: 0;
+					margin-left: 20px;
+					position: absolute;
+					z-index: 1;
+					li {
+						margin-bottom: 8px;
+						font-weight: 400;
+						font-size: 16px;
+						color: #607b96;
+						&:hover {
+							color: #fff;
+							cursor: pointer;
+						}
+					}
+				}
+			}
+		}
+		.aboutMiddle {
+			display: grid;
+			grid-template-columns: auto 30px;
+			.aboutInfo {
+				font-weight: 450;
+				font-size: 18px;
+				line-height: 150%;
+				color: #607b96;
+				margin-left: 20px;
+			}
+		}
+		.aboutRight {
+			display: grid;
+			grid-template-columns: auto 30px;
+			border-left: 1px solid #1e2d3d;
+			.aboutRightPosts {
+				padding: 0 40px;
+				p {
+					margin-top: 18px;
+					font-weight: 450;
+					font-size: 18px;
+					color: #607b96;
+				}
+			}
+		}
+		.blockScroll {
+			border-left: 1px solid #1e2d3d;
+		}
+		.scroll {
+			margin: 5px auto;
+			width: 18px;
+			height: 7px;
+			background: #607b96;
+		}
+	}
 }
