@@ -16,6 +16,7 @@
 				display: flex;
 				align-items: center;
 				border-right: 1px solid #1e2d3d;
+
 				.dropdownToggle {
 					background: none;
 					border: none;
@@ -26,8 +27,8 @@
 					cursor: pointer;
 				}
 			}
-			.navTabsLeft {
-				border-right: 1px solid #1e2d3d;
+			.navTabsRight {
+				border-left: 1px solid #1e2d3d;
 			}
 		}
 		.aboutPart {
@@ -38,36 +39,13 @@
 				grid-template-columns: 40px auto;
 				position: relative;
 				border-right: 1px solid #1e2d3d;
-				.menuList {
-					list-style: none;
-					padding: 0;
-					margin-left: 20px;
-					position: absolute;
-					z-index: 1;
-					li {
-						margin-bottom: 8px;
-						font-weight: 400;
-						font-size: 16px;
-						color: #607b96;
-						&:hover {
-							color: #fff;
-							cursor: pointer;
-						}
-					}
-				}
 			}
 		}
 		.aboutMiddle {
 			display: grid;
 			grid-template-columns: auto 30px;
-			.aboutInfo {
-				font-weight: 450;
-				font-size: 18px;
-				line-height: 150%;
-				color: #607b96;
-				margin-left: 20px;
-			}
 		}
+
 		.aboutRight {
 			display: grid;
 			grid-template-columns: auto 30px;
@@ -84,6 +62,7 @@
 		}
 		.blockScroll {
 			border-left: 1px solid #1e2d3d;
+			width: 30px;
 		}
 		.scroll {
 			margin: 5px auto;

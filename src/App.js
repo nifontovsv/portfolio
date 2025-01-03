@@ -11,6 +11,7 @@ import Footer from './component/Footer/Footer';
 function App() {
 	return (
 		<div className='app' style={{ backgroundImage: `url(${mainImage})` }}>
+			{' '}
 			<Navbar />
 			<Routes>
 				<Route path='/' element={<Main />} />

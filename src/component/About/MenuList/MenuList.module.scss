@@ -1,0 +1,17 @@
+.menuList {
+	list-style: none;
+	padding: 0;
+	margin-left: 20px;
+	position: absolute;
+	z-index: 1;
+	li {
+		font-weight: 400;
+		font-size: 16px;
+		color: #607b96;
+		margin-bottom: 8px;
+		&:hover {
+			color: #fff;
+			cursor: pointer;
+		}
+	}
+}

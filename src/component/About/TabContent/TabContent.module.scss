@@ -1,0 +1,19 @@
+.aboutInfo {
+	font-weight: 450;
+	font-size: 18px;
+	line-height: 150%;
+	color: #607b96;
+	margin-left: 20px;
+}
+.tabContent {
+	opacity: 0;
+	transform: translateY(10px);
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+}
+
+.tabContent.visible {
+	opacity: 1;
+	transform: translateY(0);
+}

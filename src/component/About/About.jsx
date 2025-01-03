@@ -1,31 +1,253 @@
+// import React, { useState } from 'react';
+// import styles from './About.module.scss';
+// import Arrowdown from './Arrowdown';
+
+// function About() {
+// 	const [isOpen, setIsOpen] = useState(true);
+// 	const [openTabs, setOpenTabs] = useState([]);
+// 	const [activeTab, setActiveTab] = useState(''); // Активная вкладка
+// 	const aboutArr = [
+// 		'/**',
+// 		'* About me',
+// 		' * I have 5 years of experience in web',
+// 		' * development lorem ipsum dolor sit amet,',
+// 		'* consectetur adipiscing elit, sed do eiusmod',
+// 		'* tempor incididunt ut labore et dolore',
+// 		' * magna aliqua. Ut enim ad minim veniam,',
+// 		'* quis nostrud exercitation ullamco laboris',
+// 		'* nisi ut aliquip ex ea commodo consequat.',
+// 		' * Duis aute irure dolor in reprehenderit in',
+// 		'* voluptate velit esse cillum dolore eu fugiat',
+// 		' * nulla pariatur. Excepteur sint occaecat',
+// 		'* officia deserunt mollit anim id est laborum.',
+// 		' */',
+// 	];
+
+// 	const menuList = [
+// 		{ id: 'bio', label: 'Bio', title: 'orange' },
+// 		{ id: 'interests', label: 'Interests', title: 'green' },
+// 		{ id: 'education', label: 'Education', title: 'violet' },
+// 	];
+
+// 	// Функция для переключения вкладок
+// 	const handleTabChange = (tab) => {
+// 		setOpenTabs((prev) => (prev.includes(tab) ? prev : [...prev, tab]));
+// 		setActiveTab(tab); // Устанавливаем активную вкладку
+// 	};
+
+// 	// Закрытие вкладки
+// 	const handleTabClose = (tab) => {
+// 		setOpenTabs((prev) => {
+// 			const updatedTabs = prev.filter((openTab) => openTab !== tab);
+// 			if (activeTab === tab) {
+// 				// Если активная вкладка закрыта, переключаемся на последнюю из оставшихся
+// 				setActiveTab(updatedTabs.length > 0 ? updatedTabs[updatedTabs.length - 1] : '');
+// 			}
+// 			return updatedTabs;
+// 		});
+// 	};
+
+// 	// Функция для рендера контента вкладки
+// 	const renderTabContent = (tab) => {
+// 		switch (tab) {
+// 			case 'bio':
+// 				return (
+// 					<ul className={styles.aboutInfo} style={{ listStyleType: 'none', padding: 0 }}>
+// 						{aboutArr.map((item, index) => (
+// 							<li key={index} style={{ display: 'flex', alignItems: 'center' }}>
+// 								<span style={{ width: '30px', textAlign: 'right', marginRight: '5px' }}>
+// 									{index + 1}
+// 								</span>
+// 								<span style={{ marginRight: '30px', marginLeft: '30px' }}>{item}</span>
+// 							</li>
+// 						))}
+// 					</ul>
+// 				);
+// 			case 'interests':
+// 				return <p>I love gaming, programming, and exploring new technologies.</p>;
+// 			case 'education':
+// 				return <p>Bachelor's degree in Computer Science.</p>;
+// 			default:
+// 				return null;
+// 		}
+// 	};
+
+// 	return (
+// 		<div className={styles.about}>
+// 			<div className={styles.navIcon}>
+// 				<div>i</div>
+// 			</div>
+// 			<div className={styles.tabsAbout}>
+// 				<div className={styles.navTabs}>
+// 					<div className={styles.navTabName}>
+// 						<button onClick={() => setIsOpen(!isOpen)} className={styles.dropdownToggle}>
+// 							{isOpen ?
+// 								<svg
+// 									width='9'
+// 									height='7'
+// 									viewBox='0 0 9 7'
+// 									fill='none'
+// 									xmlns='http://www.w3.org/2000/svg'>
+// 									<path
+// 										d='M4.74998 6.65186L0.499969 0.651856L9 0.651855L4.74998 6.65186Z'
+// 										fill='white'
+// 									/>
+// 								</svg>
+// 							:	<svg
+// 									width='7'
+// 									height='10'
+// 									viewBox='0 0 7 10'
+// 									fill='none'
+// 									xmlns='http://www.w3.org/2000/svg'>
+// 									<path
+// 										d='M6.96045 4.80914L0.960449 9.05916L0.960449 0.559128L6.96045 4.80914Z'
+// 										fill='white'
+// 									/>
+// 								</svg>
+// 							}
+// 						</button>
+// 						<span className={styles.personalInfo} onClick={() => setIsOpen(!isOpen)}>
+// 							personal-info
+// 						</span>
+// 					</div>
+// 					<div className={styles.navTabsLeft}>
+// 						{openTabs.map((tab) => {
+// 							const isActive = activeTab === tab;
+// 							return (
+// 								<div
+// 									key={tab}
+// 									className={`${isActive ? styles.activeTab : styles.tabItem}`}
+// 									onClick={() => setActiveTab(tab)} // Устанавливаем активную вкладку
+// 								>
+// 									<p>{tab}</p>
+// 									&nbsp;&nbsp;
+// 									<div
+// 										className={styles.activeTabSvg}
+// 										onClick={(e) => {
+// 											e.stopPropagation(); // Предотвращаем переключение вкладки при закрытии
+// 											handleTabClose(tab);
+// 										}}>
+// 										<svg
+// 											className={styles.hoverSvg}
+// 											width='20'
+// 											height='20'
+// 											viewBox='0 0 19 19'
+// 											fill='none'
+// 											xmlns='http://www.w3.org/2000/svg'>
+// 											<g clipPath='url(#clip0_64_1646)'>
+// 												<path
+// 													d='M9.34771 8.71879L13.0602 5.00629L14.1207 6.06679L10.4082 9.77929L14.1207 13.4918L13.0602 14.5523L9.34771 10.8398L5.63521 14.5523L4.57471 13.4918L8.28721 9.77929L4.57471 6.06679L5.63521 5.00629L9.34771 8.71879Z'
+// 													fill='#607B96'
+// 												/>
+// 											</g>
+// 											<defs>
+// 												<clipPath id='clip0_64_1646'>
+// 													<rect
+// 														width='18'
+// 														height='18'
+// 														fill='white'
+// 														transform='translate(0.347656 0.779297)'
+// 													/>
+// 												</clipPath>
+// 											</defs>
+// 										</svg>
+// 									</div>
+// 								</div>
+// 							);
+// 						})}
+// 					</div>
+// 				</div>
+// 				<div className={styles.aboutPart}>
+// 					<div className={styles.aboutLeft}>
+// 						{isOpen && (
+// 							<ul className={styles.menuList}>
+// 								{menuList.map((item) => (
+// 									<div
+// 										key={item.id}
+// 										style={{
+// 											display: 'flex',
+// 											alignItems: 'center',
+// 											cursor: 'pointer',
+// 											marginBottom: '8px',
+// 										}}>
+// 										<Arrowdown title={item.title} />
+// 										&nbsp;
+// 										<li onClick={() => handleTabChange(item.id)}>{item.label}</li>
+// 									</div>
+// 								))}
+// 							</ul>
+// 						)}
+// 					</div>
+// 					<div className={styles.aboutMiddle}>
+// 						{/* {openTabs.map((tab) => ( */}
+// 						<div className={styles.tabContent}>
+// 							{activeTab && <div className={styles.tabContent}>{renderTabContent(activeTab)}</div>}
+// 						</div>
+// 						{/* ))} */}
+// 					</div>
+// 					<div className={styles.aboutRight}>
+// 						<div className={styles.aboutRightPosts}>
+// 							<p>// Code snippet showcase:</p>
+// 						</div>
+// 						<div className={styles.blockScroll}>
+// 							<div className={styles.scroll}></div>
+// 						</div>
+// 					</div>
+// 				</div>
+// 			</div>
+// 		</div>
+// 	);
+// }
+
+// export default About;
+
 import React, { useState } from 'react';
+import TabList from './TabList/TabList';
+import TabContent from './TabContent/TabContent';
+import MenuList from './MenuList/MenuList';
 import styles from './About.module.scss';
-import Dropdown from '../Dropdown/Dropdown';
-import Arrowdown from '../Dropdown/Arrowdown';
 
 function About() {
-	const [isOpen, setIsOpen] = useState(false);
-	const toggleMenu = () => {
-		setIsOpen(!isOpen);
-	};
+	const [isOpen, setIsOpen] = useState(true);
+	const [openTabs, setOpenTabs] = useState([]);
+	const [activeTab, setActiveTab] = useState('');
+
 	const aboutArr = [
 		'/**',
 		'* About me',
-		' * I have 5 years of еxperience in web',
-		' * development lorem ipsum dolor sit amet,',
+		'* I have 5 years of experience in web',
+		'* development lorem ipsum dolor sit amet,',
 		'* consectetur adipiscing elit, sed do eiusmod',
 		'* tempor incididunt ut labore et dolore',
-		' * magna aliqua. Ut enim ad minim veniam,',
+		'* magna aliqua. Ut enim ad minim veniam,',
 		'* quis nostrud exercitation ullamco laboris',
 		'* nisi ut aliquip ex ea commodo consequat.',
-		' * Duis aute irure dolor in reprehenderit in',
-		'*',
-		' * Duis aute irure dolor in reprehenderit in',
-		' * voluptate velit esse cillum dolore eu fugiat',
-		' * nulla pariatur. Excepteur sint occaecat',
+		'* Duis aute irure dolor in reprehenderit in',
+		'* voluptate velit esse cillum dolore eu fugiat',
+		'* nulla pariatur. Excepteur sint occaecat',
 		'* officia deserunt mollit anim id est laborum.',
-		' */',
+		'*/',
 	];
+
+	const menuList = [
+		{ id: 'bio', label: 'Bio', title: 'orange' },
+		{ id: 'interests', label: 'Interests', title: 'green' },
+		{ id: 'education', label: 'Education', title: 'violet' },
+	];
+
+	const handleTabChange = (tab) => {
+		setOpenTabs((prev) => (prev.includes(tab) ? prev : [...prev, tab]));
+		setActiveTab(tab);
+	};
+
+	const handleTabClose = (tab) => {
+		setOpenTabs((prev) => {
+			const updatedTabs = prev.filter((openTab) => openTab !== tab);
+			setActiveTab(updatedTabs.length ? updatedTabs[updatedTabs.length - 1] : '');
+			return updatedTabs;
+		});
+	};
+
 	return (
 		<div className={styles.about}>
 			<div className={styles.navIcon}>
@@ -34,7 +256,7 @@ function About() {
 			<div className={styles.tabsAbout}>
 				<div className={styles.navTabs}>
 					<div className={styles.navTabName}>
-						<button onClick={toggleMenu} className={styles.dropdownToggle}>
+						<button onClick={() => setIsOpen(!isOpen)} className={styles.dropdownToggle}>
 							{isOpen ?
 								<svg
 									width='9'
@@ -60,74 +282,23 @@ function About() {
 								</svg>
 							}
 						</button>
-						<span className={styles.personalInfo} onClick={toggleMenu}>
+						<span className={styles.personalInfo} onClick={() => setIsOpen(!isOpen)}>
 							personal-info
 						</span>
 					</div>
-					<div className={styles.navTabsLeft}>1 tab</div>
-					<div>2 tab</div>
+					<TabList
+						openTabs={openTabs}
+						activeTab={activeTab}
+						setActiveTab={setActiveTab}
+						handleTabClose={handleTabClose}
+					/>
 				</div>
 				<div className={styles.aboutPart}>
-					<div class={styles.aboutLeft}>
-						<div>
-							{isOpen && (
-								<ul className={styles.menuList}>
-									<li>
-										<Dropdown
-											icon={<Arrowdown title='violet' />}
-											title={'bio'}
-											items={['was born', 'hi', 'buy']}
-										/>
-									</li>
-									<li>
-										<svg
-											width='16'
-											height='14'
-											viewBox='0 0 16 14'
-											fill='none'
-											xmlns='http://www.w3.org/2000/svg'>
-											<path
-												d='M15.0802 3.98074V12.6474C15.0802 12.839 15.0041 13.0227 14.8687 13.1581C14.7332 13.2935 14.5495 13.3696 14.358 13.3696H1.35796C1.16642 13.3696 0.982719 13.2935 0.847276 13.1581C0.711833 13.0227 0.635742 12.839 0.635742 12.6474V3.25852H14.358C14.5495 3.25852 14.7332 3.33461 14.8687 3.47005C15.0041 3.60549 15.0802 3.78919 15.0802 3.98074ZM8.15696 1.81407H0.635742V1.09185C0.635742 0.900306 0.711833 0.716606 0.847276 0.581163C0.982719 0.44572 1.16642 0.369629 1.35796 0.369629H6.71252L8.15696 1.81407Z'
-												fill='#43D9AD'
-											/>
-										</svg>
-										&nbsp;interests
-									</li>
-									<li>
-										<svg
-											width='16'
-											height='14'
-											viewBox='0 0 16 14'
-											fill='none'
-											xmlns='http://www.w3.org/2000/svg'>
-											<path
-												d='M15.0802 4.49392V13.1606C15.0802 13.3521 15.0041 13.5358 14.8687 13.6713C14.7332 13.8067 14.5495 13.8828 14.358 13.8828H1.35796C1.16642 13.8828 0.982719 13.8067 0.847276 13.6713C0.711833 13.5358 0.635742 13.3521 0.635742 13.1606V3.7717H14.358C14.5495 3.7717 14.7332 3.84779 14.8687 3.98324C15.0041 4.11868 15.0802 4.30238 15.0802 4.49392ZM8.15696 2.32726H0.635742V1.60503C0.635742 1.41349 0.711833 1.22979 0.847276 1.09435C0.982719 0.958904 1.16642 0.882813 1.35796 0.882812H6.71252L8.15696 2.32726Z'
-												fill='#3A49A4'
-											/>
-										</svg>
-										&nbsp;education
-									</li>
-								</ul>
-							)}
-						</div>
+					<div className={`${styles.aboutLeft} ${isOpen ? styles.open : ''}`}>
+						{isOpen && <MenuList menuList={menuList} handleTabChange={handleTabChange} />}
 					</div>
-					<div class={styles.aboutMiddle}>
-						<ul className={styles.aboutInfo} style={{ listStyleType: 'none', padding: 0 }}>
-							{aboutArr.map((item, index) => {
-								const number = index + 1; // Получаем номер без ведущего нуля
-								return (
-									<li key={index} style={{ display: 'flex', alignItems: 'center' }}>
-										<span style={{ width: '30px', textAlign: 'right', marginRight: '5px' }}>
-											{number < 10 ? ` ${number}` : number}
-										</span>
-										<span style={{ marginRight: '30px', marginLeft: '30px' }}>{item}</span>
-									</li>
-								);
-							})}
-						</ul>
-						<div className={styles.blockScroll}>
-							<div className={styles.scroll}></div>
-						</div>
+					<div className={styles.aboutMiddle}>
+						<TabContent activeTab={activeTab} aboutArr={aboutArr} />
 					</div>
 					<div className={styles.aboutRight}>
 						<div className={styles.aboutRightPosts}>

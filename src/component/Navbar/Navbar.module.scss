@@ -15,7 +15,12 @@
 	border-right: 1px solid #1e2d3d;
 }
 .navItem {
-	padding: 19px 31px;
+	// padding: 19px 31px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 150px;
+	height: 55px;
 	&:nth-child(2) {
 		border-left: 1px solid #1e2d3d;
 		border-right: 1px solid #1e2d3d;
@@ -28,14 +33,24 @@
 		border-left: 1px solid #1e2d3d;
 	}
 	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		text-decoration: none;
 		color: #607b96;
-		transition: all 0.1s ease;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		&:hover {
+			font-weight: 450;
+			font-size: 16px;
+			color: #fff;
+		}
 	}
-	a:hover {
-		font-weight: 450;
-		font-size: 16px;
-		color: #fff;
-		transition: all 0.1s ease;
+	&.active {
+		border-bottom: 2px solid #fea55f;
+	}
+	&:hover {
+		background-color: #1c2b3a;
 	}
 }
