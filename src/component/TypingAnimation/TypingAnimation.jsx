@@ -30,8 +30,8 @@ const TypingAnimation = () => {
 				<span className='line' style={{ color: '#43d9ad' }}>
 					githubLink ={' '}
 				</span>
-				<a className='line' href='https://github.com/example/url'>
-					“https://github.com/example/url”
+				<a className='line' href='https://github.com/nifontovsv'>
+					“https://github.com/nifontovsv”
 				</a>
 			</div>
 		</div>

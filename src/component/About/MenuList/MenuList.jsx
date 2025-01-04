@@ -7,8 +7,7 @@ function MenuList({ menuList, handleTabChange }) {
 		<ul className={styles.menuList}>
 			{menuList.map((item) => (
 				<li key={item.id} onClick={() => handleTabChange(item.id)}>
-					<Arrowdown title={item.title} />
-					{item.label}
+					<Arrowdown title={item.title} /> {item.label}
 				</li>
 			))}
 		</ul>

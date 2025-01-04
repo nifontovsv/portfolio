@@ -1,4 +1,142 @@
-.projects {
+.about {
+	color: white;
 	display: grid;
-	grid-template-columns: 300px auto;
+	grid-template-columns: 60px auto;
+	.navIcon {
+		border-right: 1px solid #1e2d3d;
+	}
+	.tabsAbout {
+		display: grid;
+		grid-template-rows: 40px auto;
+		.navTabs {
+			border-bottom: 1px solid #1e2d3d;
+			display: grid;
+			grid-template-columns: 240px 1fr 1fr;
+			.navTabName {
+				display: flex;
+				align-items: center;
+				border-right: 1px solid #1e2d3d;
+
+				.dropdownToggle {
+					background: none;
+					border: none;
+					cursor: pointer;
+					font-size: 16px;
+				}
+				.personalInfo {
+					cursor: pointer;
+				}
+			}
+			.navTabsRight {
+				border-left: 1px solid #1e2d3d;
+			}
+		}
+		.aboutPart {
+			display: grid;
+			grid-template-columns: 240px auto 30px;
+			.aboutLeft {
+				display: grid;
+				grid-template-columns: 40px auto;
+				position: relative;
+				border-right: 1px solid #1e2d3d;
+			}
+		}
+		.aboutMiddle {
+			display: grid;
+			grid-template-columns: auto 30px;
+			display: flex;
+			.projects {
+				display: flex;
+				justify-content: center;
+				align-items: start;
+				width: 100%;
+				gap: 40px;
+				flex-wrap: wrap;
+				margin: 5%;
+				.projectsItems {
+					height: 50%;
+					.heading {
+						display: inline;
+						font-weight: 700;
+						font-size: 16px;
+						color: #5565e8;
+						margin-right: 20px;
+					}
+					.subHeading {
+						font-weight: 450;
+						color: #607b96;
+					}
+					.projectItem {
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						border: 1px solid #1e2d3d;
+						border-radius: 15px;
+						width: 350px;
+						background: #011221;
+						height: 100%;
+						margin-top: 10px;
+						.projectLink {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							margin: 1em;
+							border-radius: 8px;
+							// padding: 10px 14px;
+							width: 129px;
+							height: 38px;
+							background: #1c2b3a;
+							&:hover {
+								background-color: #2b4b66;
+							}
+							.link {
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								text-decoration: none;
+								font-weight: 450;
+								font-size: 14px;
+								color: #fff;
+								width: 100%;
+								height: 100%;
+							}
+						}
+						.description {
+							overflow-y: auto;
+							margin: 0 1.5em;
+						}
+						img {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+
+		.aboutRight {
+			display: grid;
+			grid-template-columns: auto 30px;
+			border-left: 1px solid #1e2d3d;
+			.aboutRightPosts {
+				padding: 0 40px;
+				p {
+					margin-top: 18px;
+					font-weight: 450;
+					font-size: 18px;
+					color: #607b96;
+				}
+			}
+		}
+		.blockScroll {
+			display: grid;
+			border-left: 1px solid #1e2d3d;
+			width: 30px;
+		}
+		.scroll {
+			margin: 5px auto;
+			width: 18px;
+			height: 7px;
+			background: #607b96;
+		}
+	}
 }
