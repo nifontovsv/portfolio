@@ -2,6 +2,9 @@
 	display: flex;
 	align-items: center;
 	border-top: 1px solid #1e2d3d;
+	@media screen and (max-width: 1024px) {
+		justify-content: flex-end;
+	}
 }
 .footerItem {
 	padding: 9px 31px;
@@ -21,6 +24,9 @@
 		margin-left: auto;
 		z-index: 3;
 		border-left: 1px solid #1e2d3d;
+		@media screen and (max-width: 1024px) {
+			margin: 0;
+		}
 	}
 	a {
 		text-decoration: none;

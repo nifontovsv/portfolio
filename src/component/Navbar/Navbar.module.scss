@@ -3,19 +3,25 @@
 	grid-template-columns: 300px auto;
 	border-bottom: 1px solid #1e2d3d;
 	color: #607b96;
+	@media screen and (max-width: 1024px) {
+		display: flex;
+		justify-content: flex-end;
+	}
 }
 .logo,
 .nav {
 	display: grid;
 	display: flex;
 	align-items: center;
+	@media screen and (max-width: 1024px) {
+		display: none;
+	}
 }
 .logo {
 	padding-left: 22px;
 	border-right: 1px solid #1e2d3d;
 }
 .navItem {
-	// padding: 19px 31px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -60,4 +66,68 @@
 .tab-panel {
 	opacity: 0;
 	animation: fadeIn 0.5s forwards;
+}
+
+.burgerMenuHidden {
+	display: none;
+}
+
+.burgerMenu {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	height: 90vh;
+	width: 250px;
+	list-style: none;
+	background-color: #1c2b3a;
+	opacity: 0.3;
+}
+
+.burger {
+	display: none;
+	@media screen and (max-width: 1024px) {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		width: 40px;
+		justify-content: flex-end;
+	}
+}
+
+.ham {
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	transition: transform 400ms;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.hamRotate.active {
+	transform: rotate(45deg);
+}
+
+.line {
+	fill: none;
+	transition:
+		stroke-dasharray 400ms,
+		stroke-dashoffset 400ms;
+	stroke: #fff;
+	stroke-width: 5.5;
+	stroke-linecap: round;
+}
+.ham4 .top {
+	stroke-dasharray: 40 121;
+}
+.ham4 .bottom {
+	stroke-dasharray: 40 121;
+}
+.ham4.active .top {
+	stroke-dashoffset: -68px;
+}
+.ham4.active .bottom {
+	stroke-dashoffset: -68px;
 }

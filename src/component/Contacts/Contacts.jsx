@@ -3,7 +3,7 @@ import styles from './Contacts.module.scss';
 import TabList from '../About/TabList/TabList';
 import TabContent from '../About/TabContent/TabContent';
 import MenuList from '../About/MenuList/MenuList';
-import CodeBlock from './CodeBlock';
+import CodeBlock from '../CodeBlock/CodeBlock';
 
 function Contacts() {
 	const [isOpen, setIsOpen] = useState(true);
@@ -137,7 +137,10 @@ function Contacts() {
 							<div className={styles.formMessage}>
 								<ol className={styles.formMessageList}>
 									{code.map((item, index) => (
-										<CodeBlock index={index} key={index} code={item} />
+										<li key={index} className={styles.formMessageListItem}>
+											<span className={styles.number}>{index + 1}</span>
+											<CodeBlock index={index} key={index} code={item} />
+										</li>
 									))}
 								</ol>
 							</div>

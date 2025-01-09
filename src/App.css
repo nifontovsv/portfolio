@@ -11,8 +11,6 @@
 	border-radius: 8px;
 	color: white;
 	box-sizing: border-box;
-	/* background-color: #2b2b2b; */
-
 	display: grid;
 	grid-template-rows: 60px auto 50px;
 }

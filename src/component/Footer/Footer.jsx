@@ -3,7 +3,7 @@ import styles from './Footer.module.scss';
 
 function Footer() {
 	return (
-		<div class={styles.footer}>
+		<footer class={styles.footer}>
 			<div className={styles.footerItem}>
 				<p>find me in:</p>
 			</div>
@@ -38,7 +38,7 @@ function Footer() {
 			<div className={styles.footerItem}>
 				<a href=''>@sneeffy</a>
 			</div>
-		</div>
+		</footer>
 	);
 }
 

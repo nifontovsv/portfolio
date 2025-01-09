@@ -135,27 +135,11 @@
 							display: flex;
 							align-items: center; /* Выравниваем текст и числа по центру */
 							margin: 0;
-							pre {
-								margin: 0; /* Убираем отступы */
-								padding: 0; /* Убираем внутренние отступы */
-								line-height: 1.5; /* Поддерживаем нормальное расстояние между строками */
+							.number {
+								min-width: 20px; /* Резервируем место для числа */
+								text-align: right; /* Выравниваем вправо */
+								margin-right: 30px; /* Отступ от текста */
 							}
-
-							code {
-								word-break: break-word;
-								white-space: pre-wrap;
-								padding: 0;
-								margin: 0;
-								font-size: inherit; /* Использует размер шрифта родителя */
-								font-family: monospace; /* Шрифт для кода */
-								background: none; /* Убираем фон */
-								color: inherit; /* Наследуем цвет текста */
-							}
-						}
-						.number {
-							min-width: 20px; /* Резервируем место для числа */
-							text-align: right; /* Выравниваем вправо */
-							margin-right: 30px; /* Отступ от текста */
 						}
 					}
 				}

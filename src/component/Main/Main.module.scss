@@ -4,33 +4,115 @@
 }
 
 .mainInfo {
+	height: 100%;
+	width: 100%;
 	display: grid;
-	grid-template-columns: 300px auto;
+	grid-template-columns: repeat(2, 1fr);
 	gap: 2px;
 }
 .mainInfo_1 {
+	max-width: 100%;
 	margin-right: 100px;
+	@media screen and (max-width: 1600px) {
+		margin: 0 auto;
+	}
 }
 .mainLeft,
 .mainRight {
-	// background-color: rgb(0, 110, 255);
 	display: grid;
+}
+.mainLeft {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 30px;
 }
 .mainRight {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
+	.snakeGame {
+		margin: 0 auto;
+		@media screen and (max-width: 1600px) {
+			margin-right: 30px;
+		}
+		@media (320px <= width < 1200px) {
+			display: none;
+		}
+	}
+	.mySwiper {
+		max-width: 100%;
+		height: 70vh;
+		margin-right: 60px;
+		overflow: visible;
+		@media (min-width: 1201px) {
+			display: none;
+		}
+
+		/* Глобальные стили Swiper */
+		:global {
+			.swiper-wrapper {
+				transform: none;
+			}
+			/* Едва видимые остальные слайды */
+			.swiper-slide {
+				opacity: 0.1;
+				background-color: #011627;
+				transition:
+					transform 0.3s ease,
+					opacity 0.3s ease;
+				border-radius: 10px;
+				transition: border-radius 0.3s ease;
+				width: 100%;
+				height: 150px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-weight: bold;
+				font-size: 10px;
+				transition:
+					transform 0.3s ease,
+					opacity 0.3s ease;
+			}
+			/* Увеличение центрального слайда */
+			.swiper-slide.swiper-slide-active {
+				transform: scale(1.1);
+				opacity: 1;
+				border-radius: 10px;
+			}
+			/* Затемнение соседних слайдов */
+			.swiper-slide-prev,
+			.swiper-slide-next {
+				opacity: 0.3;
+				transform: scale(0.9);
+			}
+		}
+	}
 }
+
+.mainInfoTextOne {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
 .mainInfoTextOne p {
 	margin: 0;
 	font-weight: 450;
 	font-size: 18px;
 	color: #e5e9f0;
+	@media screen and (max-width: 1600px) {
+		font-size: 14px;
+	}
 }
 .mainInfoTextOne h1 {
 	margin: 0;
 	font-weight: 400;
 	font-size: 48px;
 	color: #e5e9f0;
+	@media (320px <= width < 1600px) {
+		font-size: 36px;
+	}
 }
 .mainInfoTextOne h3 {
 	margin: 0;
@@ -38,22 +120,35 @@
 	font-size: 32px;
 	color: #4d5bce;
 	margin-bottom: 80px;
+	@media screen and (max-width: 1600px) {
+		font-size: 18px;
+		margin-bottom: 40px;
+	}
 }
 
 .mainInfoTextTwo p {
 	font-weight: 450;
 	font-size: 16px;
 	color: #607b96;
+	@media screen and (max-width: 1600px) {
+		font-size: 14px;
+	}
 }
 .mainInfoTextTwo .textConst {
 	font-weight: 500;
 	font-size: 16px;
 	color: #4d5bce;
+	@media screen and (max-width: 1600px) {
+		font-size: 14px;
+	}
 }
 .mainInfoTextTwo .textGithubLink {
 	font-weight: 500;
 	font-size: 16px;
 	color: #43d9ad;
+	@media screen and (max-width: 1600px) {
+		font-size: 14px;
+	}
 }
 .mainInfoTextTwo a {
 	text-decoration: underline;

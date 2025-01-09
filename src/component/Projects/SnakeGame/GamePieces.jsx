@@ -182,7 +182,7 @@ const GamePieces = ({ score, setScore, onGameOver }) => {
 					<div key={index} className={`${styles.lamp} ${isOn ? styles.on : styles.off}`}></div>
 				))}
 			</div>
-			<canvas ref={canvasRef} width={300} height={400} />
+			<canvas width={300} height={400} ref={canvasRef} />
 		</>
 	);
 };

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import styles from './Contacts.module.scss';
+import styles from './CodeBlock.module.scss';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-okaidia.css';
 
-const CodeBlock = ({ code, item, index }) => {
+const CodeBlock = ({ code, item }) => {
 	const codeRef = useRef(null);
 
 	useEffect(() => {
@@ -14,14 +14,14 @@ const CodeBlock = ({ code, item, index }) => {
 	}, [code]);
 
 	return (
-		<li key={index} className={styles.formMessageListItem}>
-			<span class={styles.number}>{index + 1}</span>
-			<pre>
-				<code ref={codeRef} className='language-javascript'>
-					{item}
-				</code>
-			</pre>
-		</li>
+		<pre className={styles.pre}>
+			<code
+				style={{ wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}
+				ref={codeRef}
+				className='language-javascript'>
+				{item}
+			</code>
+		</pre>
 	);
 };
 

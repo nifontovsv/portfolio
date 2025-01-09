@@ -1,18 +1,97 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Main.module.scss';
 import SnakeGame from '../Projects/SnakeGame/SnakeGame';
 import TypingAnimation from '../TypingAnimation/TypingAnimation';
+import CodeBlock from '../CodeBlock/CodeBlock';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation, Mousewheel } from 'swiper/modules';
+
+// Подключаем стили Swiper
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 function Main() {
+	const slides = [
+		[
+			'1function initializeModelChunk<T>(chunk: ResolvedModelChunk): T {',
+			'const value: T = parseModel(chunk._response, chunk._value);',
+			'const initializedChunk: InitializedChunk<T> = (chunk: any);',
+			'initializedChunk._status = INITIALIZED;',
+			'initializedChunk._value = value;',
+			'return value;',
+			'}',
+		],
+		[
+			'2function initializeModelChunk<T>(chunk: ResolvedModelChunk): T {',
+			'const value: T = parseModel(chunk._response, chunk._value);',
+			'const initializedChunk: InitializedChunk<T> = (chunk: any);',
+			'initializedChunk._status = INITIALIZED;',
+			'initializedChunk._value = value;',
+			'return value;',
+			'}',
+		],
+		[
+			'3function initializeModelChunk<T>(chunk241: ResolvedModelChunk): T {',
+			'const value: T = parseModel(chunk._response, chunk._value);',
+			'const initializedChunk: InitializedChunk<T> = (chunk: any);',
+			'initializedChunk._status = INITIALIZED;',
+			'initializedChunk._value = value;',
+			'return value;',
+			'}',
+		],
+		[
+			'4function initializeModelChunk<T>(chunk241: ResolvedModelChunk): T {',
+			'const value: T = parseModel(chunk._response, chunk._value);',
+			'const initializedChunk: InitializedChunk<T> = (chunk: any);',
+			'initializedChunk._status = INITIALIZED;',
+			'initializedChunk._value = value;',
+			'return value;',
+			'}',
+		],
+		[
+			'5function initializeModelChunk<T>(chunk241: ResolvedModelChunk): T {',
+			'const value: T = parseModel(chunk._response, chunk._value);',
+			'const initializedChunk: InitializedChunk<T> = (chunk: any);',
+			'initializedChunk._status = INITIALIZED;',
+			'initializedChunk._value = value;',
+			'return value;',
+			'}',
+		],
+	];
 	return (
 		<section className={styles.main}>
-			<div class={styles.mainInfo}>
-				<div class={styles.mainLeft}></div>
-				<div class={styles.mainRight}>
+			<div className={styles.mainInfo}>
+				<div className={styles.mainLeft}>
 					<TypingAnimation />
-					<div>
+				</div>
+				<div className={styles.mainRight}>
+					<div className={styles.snakeGame}>
 						<SnakeGame />
 					</div>
+					<Swiper
+						direction='vertical' // Вертикальная прокрутка
+						loop={true}
+						spaceBetween={10} // Расстояние между слайдами
+						slidesPerView={'auto'}
+						centeredSlides={true} // Центрировать текущий слайд
+						effect='fade'
+						fadeEffect={{ crossFade: true }}
+						mousewheel={true} // Прокрутка мышью
+						navigation={false} // Кнопки "Next" и "Prev"
+						modules={[Pagination, Navigation, Mousewheel]} // Подключаем модули
+						className={styles.mySwiper}>
+						{slides.map((slide, index) => (
+							<SwiperSlide key={index}>
+								<ul className={styles.sliderList}>
+									{slide.map((item, index) => (
+										<CodeBlock index={index} key={index} code={item} />
+									))}
+								</ul>
+							</SwiperSlide>
+						))}
+					</Swiper>
 				</div>
 			</div>
 
