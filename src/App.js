@@ -7,12 +7,15 @@ import Contacts from './component/Contacts/Contacts';
 import Navbar from './component/Navbar/Navbar';
 import mainImage from '../src/images/mainImage.png';
 import Footer from './component/Footer/Footer';
+import NeuralNoise from './component/NeuralNoise/NeuralNoise';
 
 function App() {
 	return (
-		<div className='app' style={{ backgroundImage: `url(${mainImage})` }}>
-			{' '}
-			<Navbar />
+		<div
+			className='app'
+			// style={{ backgroundImage: `url(${mainImage})` }}
+		>
+			<NeuralNoise /> <Navbar />
 			<Routes>
 				<Route path='/' element={<Main />} />
 				<Route path='/about' element={<About />} />

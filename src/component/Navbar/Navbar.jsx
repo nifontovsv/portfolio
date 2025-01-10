@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Navbar.module.scss';
 import { Link } from 'react-router';
+import GlowOverlay from '../GlowOverlay/GlowOverlay';
 
 function Navbar() {
 	const [isActive, setIsActive] = useState('/');
@@ -50,12 +51,14 @@ function Navbar() {
 			<div className={styles.nav}>
 				{links.map((item) => {
 					return (
-						<div
-							key={item.path}
-							className={`${styles.navItem} ${isActive === item.path ? styles.active : ''}`}
-							onClick={() => setIsActive(item.path)}>
-							<Link to={item.path}>{item.text}</Link>
-						</div>
+						<GlowOverlay>
+							<div
+								key={item.path}
+								className={`${styles.navItem} ${isActive === item.path ? styles.active : ''}`}
+								onClick={() => setIsActive(item.path)}>
+								<Link to={item.path}>{item.text}</Link>
+							</div>
+						</GlowOverlay>
 					);
 				})}
 			</div>

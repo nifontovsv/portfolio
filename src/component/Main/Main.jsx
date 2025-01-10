@@ -5,7 +5,7 @@ import TypingAnimation from '../TypingAnimation/TypingAnimation';
 import CodeBlock from '../CodeBlock/CodeBlock';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, Mousewheel } from 'swiper/modules';
+import { Pagination, Navigation, Mousewheel, Autoplay } from 'swiper/modules';
 
 // Подключаем стили Swiper
 import 'swiper/css';
@@ -17,7 +17,6 @@ function Main() {
 		[
 			'1function initializeModelChunk<T>(chunk: ResolvedModelChunk): T {',
 			'const value: T = parseModel(chunk._response, chunk._value);',
-			'const initializedChunk: InitializedChunk<T> = (chunk: any);',
 			'initializedChunk._status = INITIALIZED;',
 			'initializedChunk._value = value;',
 			'return value;',
@@ -26,7 +25,6 @@ function Main() {
 		[
 			'2function initializeModelChunk<T>(chunk: ResolvedModelChunk): T {',
 			'const value: T = parseModel(chunk._response, chunk._value);',
-			'const initializedChunk: InitializedChunk<T> = (chunk: any);',
 			'initializedChunk._status = INITIALIZED;',
 			'initializedChunk._value = value;',
 			'return value;',
@@ -35,7 +33,6 @@ function Main() {
 		[
 			'3function initializeModelChunk<T>(chunk241: ResolvedModelChunk): T {',
 			'const value: T = parseModel(chunk._response, chunk._value);',
-			'const initializedChunk: InitializedChunk<T> = (chunk: any);',
 			'initializedChunk._status = INITIALIZED;',
 			'initializedChunk._value = value;',
 			'return value;',
@@ -44,7 +41,6 @@ function Main() {
 		[
 			'4function initializeModelChunk<T>(chunk241: ResolvedModelChunk): T {',
 			'const value: T = parseModel(chunk._response, chunk._value);',
-			'const initializedChunk: InitializedChunk<T> = (chunk: any);',
 			'initializedChunk._status = INITIALIZED;',
 			'initializedChunk._value = value;',
 			'return value;',
@@ -53,7 +49,6 @@ function Main() {
 		[
 			'5function initializeModelChunk<T>(chunk241: ResolvedModelChunk): T {',
 			'const value: T = parseModel(chunk._response, chunk._value);',
-			'const initializedChunk: InitializedChunk<T> = (chunk: any);',
 			'initializedChunk._status = INITIALIZED;',
 			'initializedChunk._value = value;',
 			'return value;',
@@ -73,14 +68,15 @@ function Main() {
 					<Swiper
 						direction='vertical' // Вертикальная прокрутка
 						loop={true}
-						spaceBetween={10} // Расстояние между слайдами
+						spaceBetween={0} // Расстояние между слайдами
 						slidesPerView={'auto'}
+						autoplay={{ delay: 5000 }}
 						centeredSlides={true} // Центрировать текущий слайд
 						effect='fade'
 						fadeEffect={{ crossFade: true }}
 						mousewheel={true} // Прокрутка мышью
 						navigation={false} // Кнопки "Next" и "Prev"
-						modules={[Pagination, Navigation, Mousewheel]} // Подключаем модули
+						modules={[Pagination, Navigation, Mousewheel, Autoplay]} // Подключаем модули
 						className={styles.mySwiper}>
 						{slides.map((slide, index) => (
 							<SwiperSlide key={index}>

@@ -1,43 +1,59 @@
 .footer {
 	display: flex;
 	align-items: center;
-	border-top: 1px solid #1e2d3d;
+
+	border-top: 1px solid rgba(255, 255, 255, 0.3);
 	@media screen and (max-width: 1024px) {
 		justify-content: flex-end;
 	}
 }
 .footerItem {
-	padding: 9px 31px;
+	padding: 13px 31px;
+	transition: all 0.3s ease;
 	&:first-child {
 		font-weight: 450;
 		font-size: 16px;
-		color: #607b96;
+		color: #cccccc;
+		padding: 15px;
+		p {
+			margin: 0;
+		}
+		&:hover {
+			background: none;
+			backdrop-filter: none;
+		}
 	}
 	&:nth-child(2) {
-		border-left: 1px solid #1e2d3d;
-		border-right: 1px solid #1e2d3d;
+		border-left: 1px solid rgba(255, 255, 255, 0.3);
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
 	}
 	&:nth-child(3) {
-		border-right: 1px solid #1e2d3d;
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
 	}
 	&:last-child {
 		margin-left: auto;
 		z-index: 3;
-		border-left: 1px solid #1e2d3d;
+		border-left: 1px solid rgba(255, 255, 255, 0.3);
 		@media screen and (max-width: 1024px) {
 			margin: 0;
 		}
 	}
 	a {
 		text-decoration: none;
-		color: #607b96;
-		transition: all 0.1s ease;
+		color: #cccccc;
+		transition: all 0.3s ease;
 		cursor: pointer;
 		&:hover {
 			font-weight: 450;
 			font-size: 16px;
 			color: #fff;
-			transition: all 0.1s ease;
+			transition: all 0.3s ease;
 		}
+	}
+	&:hover {
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(5px); /* Размытие заднего фона */
+		-webkit-backdrop-filter: blur(5px); /* Поддержка для Safari */
+		transition: all 0.3s ease;
 	}
 }

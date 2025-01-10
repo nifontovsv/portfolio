@@ -1,8 +1,9 @@
 .header {
 	display: grid;
 	grid-template-columns: 300px auto;
-	border-bottom: 1px solid #1e2d3d;
-	color: #607b96;
+	// border-bottom: 1px solid #1e2d3d;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+	color: #cccccc;
 	@media screen and (max-width: 1024px) {
 		display: flex;
 		justify-content: flex-end;
@@ -10,7 +11,7 @@
 }
 .logo,
 .nav {
-	display: grid;
+	position: relative;
 	display: flex;
 	align-items: center;
 	@media screen and (max-width: 1024px) {
@@ -19,35 +20,42 @@
 }
 .logo {
 	padding-left: 22px;
-	border-right: 1px solid #1e2d3d;
+	border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 .navItem {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	background: rgba(36, 36, 36, 0.5);
+	position: relative; /* Убедитесь, что здесь есть position: relative */
+	text-decoration: none;
+	overflow: hidden;
+	border: 1px solid transparent;
+	transition: all 0.3s ease;
 	width: 150px;
 	height: 55px;
+	z-index: 1;
+
 	&:nth-child(2) {
-		border-left: 1px solid #1e2d3d;
-		border-right: 1px solid #1e2d3d;
+		border-left: 1px solid rgba(255, 255, 255, 0.3);
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
 	}
 	&:nth-child(3) {
-		border-right: 1px solid #1e2d3d;
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
 	}
 	&:last-child {
 		margin-left: auto;
-		border-left: 1px solid #1e2d3d;
+		border-left: 1px solid rgba(255, 255, 255, 0.3);
 	}
 	a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-decoration: none;
-		color: #607b96;
+		color: #cccccc;
 		width: 100%;
 		height: 100%;
 		text-align: center;
-		transition: background-color 1s ease;
+		transition: all 0.3s ease;
 		&:hover {
 			font-weight: 450;
 			font-size: 16px;
@@ -58,9 +66,25 @@
 		border-bottom: 2px solid #fea55f;
 	}
 	&:hover {
-		background-color: #1c2b3a;
-		transition: background-color 0.7s ease;
+		border-color: rgba(255, 255, 255, 0.3); /* Можно добавить подсветку границы */
 	}
+}
+.glow {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+	opacity: 1;
+	transition: all 0.3s ease; /* Плавное изменение прозрачности */
+	transform: translate(-50%, -50%) scale(0); /* Начальный масштаб 0 */
+	border-radius: 50%;
+	z-index: 10; /* Обеспечиваем, что .glow будет поверх других элементов */
+}
+.navItem:hover .glow {
+	opacity: 1; /* Делаем glow видимым при наведении */
+	transform: translate(-50%, -50%) scale(1); /* Увеличиваем scale до нормального */
 }
 
 .tab-panel {

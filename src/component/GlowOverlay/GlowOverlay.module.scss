@@ -1,0 +1,24 @@
+.glowOverlay {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	user-select: none;
+	opacity: var(--opacity, 0);
+	-webkit-mask: radial-gradient(25rem 25rem at var(--x) var(--y), #000 1%, transparent 50%);
+	mask: radial-gradient(25rem 25rem at var(--x) var(--y), #000 1%, transparent 50%);
+	transition: 400ms mask ease;
+	will-change: mask;
+	outline: 1px solid red; /* Для проверки видимости */
+	background: rgba(255, 0, 0, 0.2); /* Временный фон */
+}
+
+.glowOverlay > * {
+	background-color: hsla(var(--hsl), 0.15);
+	border-color: hsla(var(--hsl), 1);
+	box-shadow: 0 0 0 1px inset hsl(var(--hsl));
+}
+
+.glowOverlay > .cta {
+	background-color: hsl(var(--hsl));
+	box-shadow: 0 0 0 1px hsl(var(--hsl));
+}
