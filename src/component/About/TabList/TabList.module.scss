@@ -48,7 +48,7 @@
 		transform: scale(0.95);
 	}
 	&:hover {
-		background-color: #1c2b3a;
+		background: rgba(36, 36, 36, 0.5);
 	}
 
 	.activeTabSvg {
@@ -61,7 +61,7 @@
 			transform 0.2s ease,
 			fill 0.3s ease;
 		&:hover {
-			background: #162531;
+			background: rgba(36, 36, 36, 0.5);
 			border-radius: 5px;
 		}
 	}

@@ -3,19 +3,19 @@
 	display: grid;
 	grid-template-columns: 60px auto;
 	.navIcon {
-		border-right: 1px solid #1e2d3d;
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
 	}
 	.tabsAbout {
 		display: grid;
 		grid-template-rows: 40px auto;
 		.navTabs {
-			border-bottom: 1px solid #1e2d3d;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 			display: grid;
 			grid-template-columns: 240px 1fr 1fr;
 			.navTabName {
 				display: flex;
 				align-items: center;
-				border-right: 1px solid #1e2d3d;
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
 
 				.dropdownToggle {
 					background: none;
@@ -28,17 +28,20 @@
 				}
 			}
 			.navTabsRight {
-				border-left: 1px solid #1e2d3d;
+				border-left: 1px solid rgba(255, 255, 255, 0.3);
 			}
 		}
 		.aboutPart {
 			display: grid;
 			grid-template-columns: 240px 1fr 1fr;
+			@media (max-width: 1024px) {
+				grid-template-columns: 240px 1fr;
+			}
 			.aboutLeft {
 				display: grid;
 				grid-template-columns: 40px auto;
 				position: relative;
-				border-right: 1px solid #1e2d3d;
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
 			}
 		}
 		.aboutMiddle {
@@ -49,7 +52,10 @@
 		.aboutRight {
 			display: grid;
 			grid-template-columns: auto 30px;
-			border-left: 1px solid #1e2d3d;
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
+			@media (max-width: 1024px) {
+				display: none;
+			}
 			.aboutRightPosts {
 				padding: 0 40px;
 				p {
@@ -61,14 +67,17 @@
 			}
 		}
 		.blockScroll {
-			border-left: 1px solid #1e2d3d;
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
 			width: 30px;
+			@media (max-width: 1024px) {
+				display: none;
+			}
 		}
 		.scroll {
 			margin: 5px auto;
 			width: 18px;
 			height: 7px;
-			background: #607b96;
+			background: rgba(255, 255, 255, 0.5);
 		}
 	}
 }

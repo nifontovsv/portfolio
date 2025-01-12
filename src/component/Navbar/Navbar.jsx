@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Navbar.module.scss';
 import { Link } from 'react-router';
-import GlowOverlay from '../GlowOverlay/GlowOverlay';
 
 function Navbar() {
 	const [isActive, setIsActive] = useState('/');
@@ -19,17 +18,26 @@ function Navbar() {
 			<div className={styles.logo}>
 				<p>Sergey-Nifontov</p>
 			</div>
-			{/* {openMenu && ( */}
-			<ul className={active ? styles.burgerMenu : styles.burgerMenuHidden}>
-				{links.map((item) => {
-					return (
-						<li key={item.path} onClick={() => setIsActive(item.path)}>
-							<Link to={item.path}>{item.text}</Link>
-						</li>
-					);
-				})}
-			</ul>
-			{/* )} */}
+			<div className={active ? styles.burgerMenu : styles.burgerMenuHidden}>
+				<ul className={styles.burgerList}>
+					{links.map((item) => {
+						return (
+							<li
+								className={styles.burgerItem}
+								key={item.path}
+								onClick={() => setIsActive(item.path)}>
+								<Link
+									className={styles.burgerLink}
+									onClick={() => setActive(!active)}
+									to={item.path}>
+									{item.text}
+								</Link>
+							</li>
+						);
+					})}
+				</ul>
+			</div>
+			{active && <div onClick={() => setActive(!active)} className={styles.blurMenu}></div>}
 
 			<div className={styles.burger}>
 				<svg
@@ -51,14 +59,11 @@ function Navbar() {
 			<div className={styles.nav}>
 				{links.map((item) => {
 					return (
-						<GlowOverlay>
-							<div
-								key={item.path}
-								className={`${styles.navItem} ${isActive === item.path ? styles.active : ''}`}
-								onClick={() => setIsActive(item.path)}>
-								<Link to={item.path}>{item.text}</Link>
-							</div>
-						</GlowOverlay>
+						<div
+							className={`${styles.navItem} ${isActive === item.path ? styles.active : ''}`}
+							onClick={() => setIsActive(item.path)}>
+							<Link to={item.path}>{item.text}</Link>
+						</div>
 					);
 				})}
 			</div>

@@ -6,6 +6,7 @@
 	margin-left: 20px;
 }
 .tabContent {
+	overflow-y: auto;
 	opacity: 0;
 	transform: translateY(10px);
 	transition:

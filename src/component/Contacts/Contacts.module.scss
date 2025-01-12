@@ -1,21 +1,21 @@
 .about {
-	color: white;
+	color: #cccccc;
 	display: grid;
 	grid-template-columns: 60px auto;
 	.navIcon {
-		border-right: 1px solid #1e2d3d;
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
 	}
 	.tabsAbout {
 		display: grid;
 		grid-template-rows: 40px auto;
 		.navTabs {
-			border-bottom: 1px solid #1e2d3d;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 			display: grid;
 			grid-template-columns: 240px 1fr 1fr;
 			.navTabName {
 				display: flex;
 				align-items: center;
-				border-right: 1px solid #1e2d3d;
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
 
 				.dropdownToggle {
 					background: none;
@@ -28,7 +28,7 @@
 				}
 			}
 			.navTabsRight {
-				border-left: 1px solid #1e2d3d;
+				border-left: 1px solid rgba(255, 255, 255, 0.3);
 			}
 		}
 		.aboutPart {
@@ -38,7 +38,7 @@
 				display: grid;
 				grid-template-columns: 40px auto;
 				position: relative;
-				border-right: 1px solid #1e2d3d;
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
 			}
 		}
 		.aboutMiddle {
@@ -56,39 +56,40 @@
 					flex-direction: column;
 					font-weight: 450;
 					font-size: 16px;
-					color: #607b96;
+					color: #cccccc;
 				}
 				.formInput {
 					margin-top: 10px;
-					border: 1px solid #1e2d3d;
+					border: 1px solid rgba(255, 255, 255, 0.3);
+
 					border-radius: 8px;
 					width: 372px;
 					height: 41px;
-					background: #011221;
+					background: rgba(28, 28, 28, 0.5);
 					font-weight: 450;
 					font-size: 16px;
-					color: #465e77;
+					color: #cccccc;
 					padding: 0 10px;
 					margin-bottom: 20px;
 					&::placeholder {
-						color: #354657;
+						color: #505050;
 					}
 				}
 				.formArea {
 					margin-top: 10px;
-					border: 1px solid #607b96;
+					border: 1px solid rgba(255, 255, 255, 0.3);
 					border-radius: 8px;
 					width: 372px;
 					height: 145px;
 					box-shadow: 0 0 0 2px rgba(96, 123, 150, 0.3);
-					background: #011221;
+					background: rgba(28, 28, 28, 0.5);
 					font-weight: 450;
 					font-size: 16px;
-					color: #465e77;
+					color: #cccccc;
 					padding: 10px;
 					margin-bottom: 15px;
 					&::placeholder {
-						color: #354657;
+						color: #505050;
 					}
 				}
 				.formBtn {
@@ -107,7 +108,7 @@
 		.aboutRight {
 			display: grid;
 			grid-template-columns: auto 30px;
-			border-left: 1px solid #1e2d3d;
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
 			.aboutRightPosts {
 				padding: 0 40px;
 				display: flex;
@@ -146,14 +147,14 @@
 			}
 		}
 		.blockScroll {
-			border-left: 1px solid #1e2d3d;
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
 			width: 30px;
 		}
 		.scroll {
 			margin: 5px auto;
 			width: 18px;
 			height: 7px;
-			background: #607b96;
+			background: rgba(255, 255, 255, 0.5);
 		}
 	}
 }

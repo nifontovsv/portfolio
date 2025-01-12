@@ -25,8 +25,6 @@
 .navItem {
 	display: flex;
 	align-items: center;
-	background: rgba(36, 36, 36, 0.5);
-	position: relative; /* Убедитесь, что здесь есть position: relative */
 	text-decoration: none;
 	overflow: hidden;
 	border: 1px solid transparent;
@@ -66,25 +64,14 @@
 		border-bottom: 2px solid #fea55f;
 	}
 	&:hover {
-		border-color: rgba(255, 255, 255, 0.3); /* Можно добавить подсветку границы */
+		border-color: rgba(255, 255, 255, 0.3);
+		background: linear-gradient(
+			90deg,
+			rgba(54, 157, 85, 0.4) 0%,
+			rgba(76, 255, 180, 0.6) 50%,
+			rgba(54, 157, 85, 0.4) 100%
+		);
 	}
-}
-.glow {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 100%;
-	height: 100%;
-	background: radial-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-	opacity: 1;
-	transition: all 0.3s ease; /* Плавное изменение прозрачности */
-	transform: translate(-50%, -50%) scale(0); /* Начальный масштаб 0 */
-	border-radius: 50%;
-	z-index: 10; /* Обеспечиваем, что .glow будет поверх других элементов */
-}
-.navItem:hover .glow {
-	opacity: 1; /* Делаем glow видимым при наведении */
-	transform: translate(-50%, -50%) scale(1); /* Увеличиваем scale до нормального */
 }
 
 .tab-panel {
@@ -97,17 +84,49 @@
 }
 
 .burgerMenu {
-	display: flex;
-	flex-direction: column;
-	margin: 0;
-	padding: 0;
 	position: absolute;
 	left: 0;
 	height: 90vh;
 	width: 250px;
-	list-style: none;
-	background-color: #1c2b3a;
-	opacity: 0.3;
+	background-color: rgba(36, 36, 36, 0.5);
+	z-index: 6;
+	border-radius: 5px 0 0 5px;
+	.burgerList {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		margin: 0;
+		padding: 10px;
+		list-style: none;
+		.burgerItem {
+			transition: all 1s ease;
+			.burgerLink {
+				position: relative;
+				display: block;
+				color: #fff;
+				overflow: hidden;
+				&::after {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: linear-gradient(
+						90deg,
+						rgba(54, 157, 85, 0.4) 0%,
+						rgba(76, 255, 180, 0.6) 50%,
+						rgba(54, 157, 85, 0.4) 100%
+					);
+					opacity: 0;
+					transition: opacity 0.3s ease;
+				}
+				&:hover::after {
+					opacity: 1;
+				}
+			}
+		}
+	}
 }
 
 .burger {
@@ -119,6 +138,18 @@
 		width: 40px;
 		justify-content: flex-end;
 	}
+}
+
+.blurMenu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(5px);
+	z-index: 5;
+	transition: opacity 0.3s ease;
 }
 
 .ham {

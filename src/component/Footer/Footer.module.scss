@@ -6,6 +6,9 @@
 	@media screen and (max-width: 1024px) {
 		justify-content: flex-end;
 	}
+	@media (max-width: 767px) {
+		display: none;
+	}
 }
 .footerItem {
 	padding: 13px 31px;
@@ -51,7 +54,13 @@
 		}
 	}
 	&:hover {
-		background: rgba(255, 255, 255, 0.1);
+		border-color: rgba(255, 255, 255, 0.3);
+		background: linear-gradient(
+			90deg,
+			rgba(54, 157, 85, 0.4) 0%,
+			rgba(76, 255, 180, 0.6) 50%,
+			rgba(54, 157, 85, 0.4) 100%
+		);
 		backdrop-filter: blur(5px); /* Размытие заднего фона */
 		-webkit-backdrop-filter: blur(5px); /* Поддержка для Safari */
 		transition: all 0.3s ease;

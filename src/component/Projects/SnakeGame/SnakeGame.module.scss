@@ -1,11 +1,11 @@
 .gameContainer {
 	width: 550px;
-	background: #062431;
+	background: rgba(36, 36, 36, 0.4);
 	padding: 20px;
 	border-radius: 20px;
 	text-align: center;
 	box-shadow: 0 0 20px #43d9ad;
-	border: 2px solid #00d9ff;
+	border: 2px solid #43d9ad;
 	display: flex;
 	position: relative;
 	z-index: 1;
@@ -14,8 +14,8 @@
 .gameCanvas {
 	display: block;
 	border-radius: 10px;
-	background: linear-gradient(154deg, rgba(23, 85, 83, 0.7) 0%, rgba(0, 255, 179, 0.3) 100%);
-	box-shadow: inset 1px 5px 11px 0 rgba(2, 18, 27, 0.71);
+	background-color: rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.5);
 	width: 300px;
 	height: 400px;
 }
@@ -71,16 +71,10 @@
 @keyframes glow {
 	0%,
 	100% {
-		box-shadow:
-			0 0 10px #43d9ad,
-			0 0 20px #43d9ad,
-			0 0 30px #43d9ad;
+		box-shadow: 0 0 10px #43d9ad;
 	}
 	50% {
-		box-shadow:
-			0 0 15px #43d9ad,
-			0 0 30px #43d9ad,
-			0 0 60px #43d9ad;
+		box-shadow: 0 0 15px #43d9ad;
 	}
 }
 
@@ -102,7 +96,7 @@
 
 .instructions {
 	border-radius: 8px;
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.5);
 	padding: 10px;
 	width: 100%;
 	margin-left: 20px;

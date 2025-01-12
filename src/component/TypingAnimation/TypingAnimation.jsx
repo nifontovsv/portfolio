@@ -21,7 +21,9 @@ const TypingAnimation = () => {
 				<h1 className='line'>Sergey Nifontov</h1>
 				<h3 className='line'>Front-end developer</h3>
 			</div>
-			<div className={styles.mainInfoTextTwo}>
+			<div
+				style={{ wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}
+				className={styles.mainInfoTextTwo}>
 				<p className='line'>// complete the game to continue</p>
 				<p className='line'>// you can also see it on my Github page</p>
 				<span className='line' style={{ color: '#4d5bce' }}>

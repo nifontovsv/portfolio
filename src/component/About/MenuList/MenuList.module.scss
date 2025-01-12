@@ -7,11 +7,18 @@
 	li {
 		font-weight: 400;
 		font-size: 16px;
-		color: #607b96;
+		color: #cccccc;
 		margin-bottom: 8px;
 		&:hover {
 			color: #fff;
 			cursor: pointer;
+			border-radius: 2px;
+			background: linear-gradient(
+				90deg,
+				rgba(54, 157, 85, 0.4) 0%,
+				rgba(76, 255, 180, 0.6) 50%,
+				rgba(54, 157, 85, 0.4) 100%
+			);
 		}
 	}
 }
