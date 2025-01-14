@@ -45,18 +45,6 @@ function Arrowdown({ title }) {
 						/>
 					</svg>
 				);
-			// case 'todolist':
-			// 	return (
-
-			// 	);
-			// case 'snake':
-			// 	return (
-
-			// 	);
-			// case 'calculator':
-			// 	return (
-
-			// 	);
 			case 'email':
 				return (
 					<svg

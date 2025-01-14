@@ -9,29 +9,6 @@ function About() {
 	const [openTabs, setOpenTabs] = useState([]);
 	const [activeTab, setActiveTab] = useState('');
 
-	const aboutArr = [
-		'/**',
-		'* About me',
-		'* I have 5 years of experience in web',
-		'* development lorem ipsum dolor sit amet,',
-		'* consectetur adipiscing elit, sed do eiusmod',
-		'* tempor incididunt ut labore et dolore',
-		'* magna aliqua. Ut enim ad minim veniam,',
-		'* quis nostrud exercitation ullamco laboris',
-		'* nisi ut aliquip ex ea commodo consequat.',
-		'* Duis aute irure dolor in reprehenderit in',
-		'* voluptate velit esse cillum dolore eu fugiat',
-		'* nulla pariatur. Excepteur sint occaecat',
-		'* officia deserunt mollit anim id est laborum.',
-		'*/',
-	];
-
-	const menuList = [
-		{ id: 'bio', label: 'Bio', title: 'orange' },
-		{ id: 'interests', label: 'Interests', title: 'green' },
-		{ id: 'education', label: 'Education', title: 'violet' },
-	];
-
 	const handleTabChange = (tab) => {
 		setOpenTabs((prev) => (prev.includes(tab) ? prev : [...prev, tab]));
 		setActiveTab(tab);
@@ -92,10 +69,10 @@ function About() {
 				</div>
 				<div className={styles.aboutPart}>
 					<div className={`${styles.aboutLeft} ${isOpen ? styles.open : ''}`}>
-						{isOpen && <MenuList menuList={menuList} handleTabChange={handleTabChange} />}
+						{isOpen && <MenuList handleTabChange={handleTabChange} />}
 					</div>
 					<div className={styles.aboutMiddle}>
-						<TabContent activeTab={activeTab} aboutArr={aboutArr} />
+						<TabContent activeTab={activeTab} />
 						<div className={styles.blockScroll}>
 							<div className={styles.scroll}></div>
 						</div>

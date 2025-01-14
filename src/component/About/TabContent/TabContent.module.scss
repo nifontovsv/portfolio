@@ -1,12 +1,29 @@
 .aboutInfo {
 	font-weight: 450;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 150%;
-	color: #607b96;
 	margin-left: 20px;
+	list-style: none;
+	padding: 5px;
+	color: #cccccc;
+	padding: 0;
+	overflow-y: scroll;
+	max-height: 500px;
+	@media (max-width: 767px) {
+		font-size: 14px;
+	}
+	.aboutInfoItem {
+		display: flex;
+		align-items: center; /* Выравниваем текст и числа по центру */
+		margin: 0;
+		.number {
+			min-width: 20px; /* Резервируем место для числа */
+			text-align: right; /* Выравниваем вправо */
+			margin-right: 30px; /* Отступ от текста */
+		}
+	}
 }
 .tabContent {
-	overflow-y: auto;
 	opacity: 0;
 	transform: translateY(10px);
 	transition:

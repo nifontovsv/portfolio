@@ -128,10 +128,10 @@
 					font-size: 18px; /* Размер шрифта */
 					line-height: 1.5; /* Высота строки */
 					.formMessageList {
-						padding: 5px; /* Необязательно, для читабельности */
-						color: #607b96;
-						list-style-type: none; /* Убираем стандартные маркеры */
-						padding: 0; /* Убираем отступы */
+						padding: 5px;
+						color: #cccccc;
+						list-style-type: none;
+						padding: 0;
 						.formMessageListItem {
 							display: flex;
 							align-items: center; /* Выравниваем текст и числа по центру */
