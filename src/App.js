@@ -11,10 +11,7 @@ import NeuralNoise from './component/NeuralNoise/NeuralNoise';
 
 function App() {
 	return (
-		<div
-			className='app'
-			// style={{ backgroundImage: `url(${mainImage})` }}
-		>
+		<div className='app'>
 			<NeuralNoise /> <Navbar />
 			<Routes>
 				<Route path='/' element={<Main />} />

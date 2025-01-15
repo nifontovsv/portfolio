@@ -67,34 +67,34 @@ function Projects() {
 			description: 'Duis 2222222222aute irure dolor ',
 			linkTitle: 'view-project',
 		},
-		{
-			title: 'Project 3',
-			span: '// _ethereum',
-			image: image3,
-			description: 'velit111111111 esse cillum dolore.',
-			linkTitle: 'view-project',
-		},
-		{
-			title: 'Project 3',
-			span: '// _ethereum',
-			image: image3,
-			description: 'velit111111111 esse cillum dolore.',
-			linkTitle: 'view-project',
-		},
-		{
-			title: 'Project 3',
-			span: '// _ethereum',
-			image: image3,
-			description: 'velit111111111 esse cillum dolore.',
-			linkTitle: 'view-project',
-		},
-		{
-			title: 'Project 3',
-			span: '// _ethereum',
-			image: image3,
-			description: 'velit111111111 esse cillum dolore.',
-			linkTitle: 'view-project',
-		},
+		// {
+		// 	title: 'Project 3',
+		// 	span: '// _ethereum',
+		// 	image: image3,
+		// 	description: 'velit111111111 esse cillum dolore.',
+		// 	linkTitle: 'view-project',
+		// },
+		// {
+		// 	title: 'Project 3',
+		// 	span: '// _ethereum',
+		// 	image: image3,
+		// 	description: 'velit111111111 esse cillum dolore.',
+		// 	linkTitle: 'view-project',
+		// },
+		// {
+		// 	title: 'Project 3',
+		// 	span: '// _ethereum',
+		// 	image: image3,
+		// 	description: 'velit111111111 esse cillum dolore.',
+		// 	linkTitle: 'view-project',
+		// },
+		// {
+		// 	title: 'Project 3',
+		// 	span: '// _ethereum',
+		// 	image: image3,
+		// 	description: 'velit111111111 esse cillum dolore.',
+		// 	linkTitle: 'view-project',
+		// },
 	];
 
 	const handleTabChange = (tab) => {

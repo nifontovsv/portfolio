@@ -1,8 +1,10 @@
 .footer {
 	display: flex;
 	align-items: center;
-
+	height: 5vh;
 	border-top: 1px solid rgba(255, 255, 255, 0.3);
+	font-size: 14px;
+	line-height: 1;
 	@media screen and (max-width: 1024px) {
 		justify-content: flex-end;
 	}
@@ -11,7 +13,11 @@
 	}
 }
 .footerItem {
-	padding: 13px 31px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100px;
 	transition: all 0.3s ease;
 	&:first-child {
 		font-weight: 450;
@@ -19,6 +25,7 @@
 		color: #cccccc;
 		padding: 15px;
 		p {
+			font-size: 14px;
 			margin: 0;
 		}
 		&:hover {

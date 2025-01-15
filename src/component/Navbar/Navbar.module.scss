@@ -1,9 +1,11 @@
 .header {
+	height: 5vh;
 	display: grid;
 	grid-template-columns: 300px auto;
 	// border-bottom: 1px solid #1e2d3d;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 	color: #cccccc;
+	font-size: 14px;
 	@media screen and (max-width: 1024px) {
 		display: flex;
 		justify-content: flex-end;
@@ -11,11 +13,18 @@
 }
 .logo,
 .nav {
+	padding: 0;
+	margin: 0;
 	position: relative;
 	display: flex;
 	align-items: center;
+	height: 100%;
 	@media screen and (max-width: 1024px) {
 		display: none;
+	}
+	a,
+	p {
+		line-height: 1;
 	}
 }
 .logo {
@@ -30,7 +39,7 @@
 	border: 1px solid transparent;
 	transition: all 0.3s ease;
 	width: 150px;
-	height: 55px;
+	height: 100%;
 	z-index: 1;
 
 	&:nth-child(2) {
