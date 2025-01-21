@@ -67,13 +67,16 @@
 			}
 		}
 		.aboutMiddle {
+			// display: flex;
+			// justify-content: center;
+			// align-items: center;
 			@media (max-width: 767px) {
 				height: 100%;
 			}
 			.projects {
 				height: 100%;
 				// padding: 40px;
-				margin: 40px;
+				// margin: 40px;
 				overflow-y: auto;
 				gap: 20px;
 				display: flex;

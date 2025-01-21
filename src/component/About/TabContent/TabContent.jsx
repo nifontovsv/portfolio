@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './TabContent.module.scss';
 import SnakeGame from '../../Projects/SnakeGame/SnakeGame';
+import ToDoList from '../../Projects/ToDoList/ToDoList';
 
 function TabContent({ activeTab }) {
 	const aboutArr = [
@@ -37,7 +38,7 @@ function TabContent({ activeTab }) {
 			case 'education':
 				return <p>Bachelor's degree in Computer Science.</p>;
 			case 'todolist':
-				return <p>todo</p>;
+				return <ToDoList />;
 			case 'snake':
 				return <SnakeGame />;
 			case 'calculator':

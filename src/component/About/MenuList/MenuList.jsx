@@ -3,19 +3,13 @@ import Arrowdown from '../Arrowdown/Arrowdown';
 import styles from './MenuList.module.scss';
 import useIsMobile from '../../../hooks/useIsMobile';
 
-function MenuList({ handleTabChange }) {
+function MenuList({ handleTabChange, menuList }) {
 	const [openIndex, setOpenIndex] = useState(null);
 	const isMobile = useIsMobile();
 
 	const toggleDropdown = (index) => {
 		setOpenIndex(openIndex === index ? null : index);
 	};
-
-	const menuList = [
-		{ id: 'bio', label: 'Bio', title: 'orange', content: 'Биография' },
-		{ id: 'interests', label: 'Interests', title: 'green', content: 'Хобби' },
-		{ id: 'education', label: 'Education', title: 'violet', content: 'Образование' },
-	];
 
 	// Общий контент, который будет использоваться в обоих случаях
 	const content = (

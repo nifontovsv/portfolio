@@ -9,6 +9,12 @@ function About() {
 	const [openTabs, setOpenTabs] = useState([]);
 	const [activeTab, setActiveTab] = useState('');
 
+	const menuList = [
+		{ id: 'bio', label: 'Bio', title: 'orange', content: 'Биография' },
+		{ id: 'interests', label: 'Interests', title: 'green', content: 'Хобби' },
+		{ id: 'education', label: 'Education', title: 'violet', content: 'Образование' },
+	];
+
 	const handleTabChange = (tab) => {
 		setOpenTabs((prev) => (prev.includes(tab) ? prev : [...prev, tab]));
 		setActiveTab(tab);
@@ -69,7 +75,7 @@ function About() {
 				</div>
 				<div className={styles.aboutPart}>
 					<div className={`${styles.aboutLeft} ${isOpen ? styles.open : ''}`}>
-						{isOpen && <MenuList handleTabChange={handleTabChange} />}
+						{isOpen && <MenuList menuList={menuList} handleTabChange={handleTabChange} />}
 					</div>
 					<div className={styles.aboutMiddle}>
 						<TabContent activeTab={activeTab} />
