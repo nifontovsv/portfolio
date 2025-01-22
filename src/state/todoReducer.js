@@ -8,7 +8,7 @@ const EDIT_TASK = 'EDIT_TASK';
 const ADD_TODOLIST = 'ADD_TODOLIST';
 const DELETE_TODOLIST = 'DELETE_TODOLIST';
 
-const initialState = {
+const defaultState = {
 	toDoLists: [
 		{
 			id: v1(),
@@ -18,6 +18,13 @@ const initialState = {
 		},
 	],
 };
+
+const loadState = () => {
+	const savedState = localStorage.getItem('todoState');
+	return savedState ? JSON.parse(savedState) : defaultState;
+};
+
+const initialState = loadState();
 
 export const todoReducer = (state = initialState, action) => {
 	console.log('Current State:', state);
@@ -29,9 +36,9 @@ export const todoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				toDoLists: state.toDoLists.map((toDoList) =>
-					toDoList.id === toDoListId
-						? { ...toDoList, tasks: [newTask, ...toDoList.tasks] }
-						: toDoList
+					toDoList.id === toDoListId ?
+						{ ...toDoList, tasks: [newTask, ...toDoList.tasks] }
+					:	toDoList
 				),
 			};
 		}
@@ -41,9 +48,9 @@ export const todoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				toDoLists: state.toDoLists.map((list) =>
-					list.id === toDoListId
-						? { ...list, tasks: list.tasks.filter((task) => task.id !== taskId) }
-						: list
+					list.id === toDoListId ?
+						{ ...list, tasks: list.tasks.filter((task) => task.id !== taskId) }
+					:	list
 				),
 			};
 		}
@@ -54,14 +61,14 @@ export const todoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				toDoLists: state.toDoLists.map((list) =>
-					list.id === toDoListId
-						? {
-								...list,
-								tasks: list.tasks.map((task) =>
-									task.id === taskId ? { ...task, isDone: !task.isDone } : task
-								),
-						  }
-						: list
+					list.id === toDoListId ?
+						{
+							...list,
+							tasks: list.tasks.map((task) =>
+								task.id === taskId ? { ...task, isDone: !task.isDone } : task
+							),
+						}
+					:	list
 				),
 			};
 		}
@@ -81,14 +88,14 @@ export const todoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				toDoLists: state.toDoLists.map((list) =>
-					list.id === toDoListId
-						? {
-								...list,
-								tasks: list.tasks.map((task) =>
-									task.id === taskId ? { ...task, title: newText } : task
-								),
-						  }
-						: list
+					list.id === toDoListId ?
+						{
+							...list,
+							tasks: list.tasks.map((task) =>
+								task.id === taskId ? { ...task, title: newText } : task
+							),
+						}
+					:	list
 				),
 			};
 		}
@@ -97,14 +104,14 @@ export const todoReducer = (state = initialState, action) => {
 			const newToDoList = {
 				id: v1(),
 				title: action.payload.title,
+				creationDate: new Date().toISOString(), // Дата в ISO формате
 				tasks: [],
 			};
 			// Проверяем, что toDoLists является массивом
 			return {
 				...state,
-				toDoLists: Array.isArray(state.toDoLists)
-					? [newToDoList, ...state.toDoLists]
-					: [newToDoList], // Если toDoLists не массив, создаём новый
+				toDoLists:
+					Array.isArray(state.toDoLists) ? [newToDoList, ...state.toDoLists] : [newToDoList], // Если toDoLists не массив, создаём новый
 			};
 		}
 

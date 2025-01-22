@@ -1,6 +1,6 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-import { todolistReducer } from './todolistsReducer';
-import { tasksReducer } from './tasksReducer';
+// import { todolistReducer } from './todolistsReducer';
+// import { tasksReducer } from './tasksReducer';
 import { todoReducer } from './todoReducer';
 
 //1. Создание Middleware
@@ -44,8 +44,8 @@ const persistedState = loadStateFromLocalStorage();
 // Такой подход сохраняет данные даже при обновлении страницы или закрытии браузера.
 
 const rootReducer = combineReducers({
-	todolists: todolistReducer,
-	tasks: tasksReducer,
+	// todolists: todolistReducer,
+	// tasks: tasksReducer,
 	todo: todoReducer,
 });
 
@@ -66,5 +66,4 @@ window.store = store;
 	б) В теле пишем switch case
 5. Создать корневой reducer
 6. Скомбинировать все reducers в корневой и положить в store
-
 */

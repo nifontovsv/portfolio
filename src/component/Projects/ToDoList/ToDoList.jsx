@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ToDo from './ToDo/ToDo';
 import { addToDoListAC } from '../../../state/todoReducer';
@@ -7,6 +7,10 @@ import styles from './ToDoList.module.scss';
 function ToDoList() {
 	const dispatch = useDispatch();
 	const todolists = useSelector((state) => state.todo.toDoLists || []);
+
+	useEffect(() => {
+		localStorage.setItem('todoState', JSON.stringify(todolists));
+	}, [todolists]);
 
 	const [newToDoListTitle, setNewToDoListTitle] = useState('');
 	const [error, setError] = useState(false);
@@ -39,7 +43,11 @@ function ToDoList() {
 
 	return (
 		<section className={styles.todolist}>
-			<button onClick={closeModal}>new todolist</button>
+			<div className={styles.headerTodolist}>
+				<button className={styles.btnNewTodolist} onClick={closeModal}>
+					New todolist
+				</button>
+			</div>
 			{isModal && (
 				<div className={styles.modalWindow}>
 					<div onClick={() => setIsModal(false)} className={styles.closeModal}>
@@ -65,10 +73,19 @@ function ToDoList() {
 					</div>
 				</div>
 			)}
-			<div>
-				{Array.isArray(todolists) && todolists.length > 0 ?
-					todolists.map((todolist) => <ToDo key={todolist.id} todolist={todolist} />)
-				:	<p>No ToDoLists available</p>}
+			<div className={styles.items}>
+				<div className={`${styles.allTodo} ${styles.item}`}>
+					<h3 className={styles.itemTitle}>To do</h3>{' '}
+					{Array.isArray(todolists) && todolists.length > 0 ?
+						todolists.map((todolist) => <ToDo key={todolist.id} todolist={todolist} />)
+					:	<p>No ToDoLists available</p>}
+				</div>
+				<div className={`${styles.inProgress} ${styles.item}`}>
+					<h3 className={styles.itemTitle}>In progress</h3>{' '}
+				</div>
+				<div className={`${styles.done} ${styles.item}`}>
+					<h3 className={styles.itemTitle}>Done</h3>{' '}
+				</div>
 			</div>
 		</section>
 	);
