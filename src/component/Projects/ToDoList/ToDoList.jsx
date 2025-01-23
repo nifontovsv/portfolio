@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ToDo from './ToDo/ToDo';
 import { addToDoListAC } from '../../../state/todoReducer';
 import styles from './ToDoList.module.scss';
+import Options from './Options/Options';
 
 function ToDoList() {
 	const dispatch = useDispatch();
@@ -81,7 +82,7 @@ function ToDoList() {
 					:	<p>No ToDoLists available</p>}
 				</div>
 				<div className={`${styles.inProgress} ${styles.item}`}>
-					<h3 className={styles.itemTitle}>In progress</h3>{' '}
+					<h3 className={styles.itemTitle}>In progress</h3>
 				</div>
 				<div className={`${styles.done} ${styles.item}`}>
 					<h3 className={styles.itemTitle}>Done</h3>{' '}

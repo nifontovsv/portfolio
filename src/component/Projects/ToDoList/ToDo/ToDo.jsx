@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
 	addTaskAC,
@@ -7,9 +7,14 @@ import {
 	editTaskAC,
 	filterTaskAC,
 	statusTaskAC,
+	updateTodolistTitleAC,
 } from '../../../../state/todoReducer';
 import styles from './ToDo.module.scss';
 import ProgressBar from './ProgressBar/ProgressBar';
+import Options from '../Options/Options';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import DoneIcon from '@mui/icons-material/Done';
 
 function ToDo({ todolist }) {
 	const dispatch = useDispatch();
@@ -17,9 +22,57 @@ function ToDo({ todolist }) {
 	const [error, setError] = useState(null);
 	const [editingTaskId, setEditingTaskId] = useState(null);
 	const [newText, setNewText] = useState('');
+	const [editingTodolistId, setEditingTodolistId] = useState(null);
+	const [newTextTodolist, setNewTextTodolist] = useState('');
 	const [progress, setProgress] = useState(0);
 	const [isVisible, setIsVisible] = useState(false);
 	const [isRendered, setIsRendered] = useState(false);
+
+	// Рефы для отслеживания кликов вне инпута и кнопки
+	const inputRef = useRef(null);
+	const saveButtonRef = useRef(null);
+
+	useEffect(() => {
+		const handleClickOutside = (e) => {
+			// Проверяем, был ли клик вне инпута или кнопки сохранения
+			if (
+				inputRef.current &&
+				!inputRef.current.contains(e.target) &&
+				saveButtonRef.current &&
+				!saveButtonRef.current.contains(e.target)
+			) {
+				setEditingTaskId(null); // Закрываем режим редактирования
+			}
+		};
+
+		document.addEventListener('click', handleClickOutside);
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
+		};
+	}, []);
+
+	// const inputRefTodolist = useRef(null);
+	// const saveButtonRefTodolist = useRef(null);
+
+	// useEffect(() => {
+	// 	const handleClickOutsideTodolist = (e) => {
+	// 		if (
+	// 			inputRefTodolist.current &&
+	// 			!inputRefTodolist.current.contains(e.target) &&
+	// 			saveButtonRefTodolist.current &&
+	// 			!saveButtonRefTodolist.current.contains(e.target)
+	// 		) {
+	// 			setEditingTodolistId(null);
+	// 		}
+	// 	};
+
+	// 	document.addEventListener('click', handleClickOutsideTodolist);
+
+	// 	// Очистка события при размонтировании компонента
+	// 	return () => {
+	// 		document.removeEventListener('click', handleClickOutsideTodolist);
+	// 	};
+	// }, []);
 
 	const handleEditClick = (task) => {
 		setEditingTaskId(task.id); // Устанавливаем ID редактируемой задачи
@@ -32,6 +85,15 @@ function ToDo({ todolist }) {
 			setEditingTaskId(null); // Выходим из режима редактирования
 		} else {
 			setError('Task title cannot be empty.');
+		}
+	};
+
+	const handleSaveTodolistTitle = () => {
+		if (newTextTodolist.trim() !== '') {
+			dispatch(updateTodolistTitleAC(todolist.id, newTextTodolist));
+			setEditingTodolistId(null); // Закрываем режим редактирования
+		} else {
+			setError('Title cannot be empty.');
 		}
 	};
 
@@ -95,6 +157,10 @@ function ToDo({ todolist }) {
 		if (error) {
 			setError(null);
 		}
+		setNewTextTodolist(e.target.value);
+		if (error) {
+			setError(null);
+		}
 	};
 
 	const deleteToDoList = () => {
@@ -124,16 +190,34 @@ function ToDo({ todolist }) {
 		year: 'numeric',
 	});
 
+	const handleEditTitleTodolist = () => {
+		setEditingTodolistId(todolist.id); // Устанавливаем ID редактируемой задачи
+		setNewTextTodolist(todolist.title.trim()); // Подставляем текст задачи
+	};
+
 	return (
 		<section className={`${styles.todo} ${isVisible ? styles.showTodo : ''}`}>
 			<div className={styles.headerTodo}>
-				<h2>{todolist.title}</h2>
-				<button
-					className={styles.deleteButton}
-					onClick={deleteToDoList}
-					style={{ color: 'red', fontSize: '0.9rem' }}>
-					Delete List
-				</button>
+				{editingTodolistId === todolist.id ?
+					<>
+						<input
+							// ref={inputRefTodolist}
+							type='text'
+							value={newTextTodolist}
+							onKeyDown={handleKeyDown}
+							onChange={onChangeEditInput}
+						/>
+						<button
+							// ref={saveButtonRefTodolist}
+							onClick={handleSaveTodolistTitle}>
+							Save
+						</button>
+					</>
+				:	<h2>{todolist.title}</h2>}
+				<Options
+					handleEditTitleTodolist={handleEditTitleTodolist}
+					deleteToDoList={deleteToDoList}
+				/>
 			</div>
 
 			<div className={styles.mainTodo}>
@@ -177,11 +261,10 @@ function ToDo({ todolist }) {
 							<button onClick={() => filterTasks('active')}>Active</button>
 							<button onClick={() => filterTasks('completed')}>Completed</button>
 						</div>
-						<ul>
+						<ul className={styles.menuTasks}>
 							{filteredTasks.map((task) => (
-								<>
+								<div className={styles.wrapperTasks}>
 									<li
-										// onClick={!editingTaskId ? () => statusTask(task.id) : undefined} альтернативный вариант
 										onClick={() => {
 											if (editingTaskId !== task.id) {
 												// Если задача становится выполненной
@@ -195,29 +278,38 @@ function ToDo({ todolist }) {
 												}
 											}
 										}}
-										className={task.isDone ? styles.checked : ''}
+										className={`${styles.menuTask} ${task.isDone ? styles.checked : ''}`}
 										key={task.id}>
 										{editingTaskId === task.id ?
-											<>
+											<div className={styles.blockEdit}>
 												<input
+													className={styles.blockEditInput}
 													type='text'
 													value={newText}
 													onKeyDown={handleKeyDown}
 													onChange={onChangeEditInput}
+													ref={inputRef} // Привязываем ref к инпуту
 												/>
-												<button onClick={handleSaveClick}>Save</button>
-											</>
+												<button
+													className={styles.blockEditBtn}
+													ref={saveButtonRef}
+													onClick={handleSaveClick}>
+													<DoneIcon />
+												</button>
+											</div>
 										:	<span>{task.title}</span>}
 										&nbsp;
 									</li>
-									<button
+									<EditIcon
+										className={styles.editTask}
 										onClick={(e) => {
 											e.stopPropagation();
 											handleEditClick(task);
 										}}>
 										Edit
-									</button>
-									<button
+									</EditIcon>
+									<DeleteIcon
+										className={styles.deleteTask}
 										onClick={(e) => {
 											e.stopPropagation();
 											deleteTask(task.id);
@@ -225,8 +317,8 @@ function ToDo({ todolist }) {
 										}}
 										style={{ color: 'red' }}>
 										Delete
-									</button>
-								</>
+									</DeleteIcon>
+								</div>
 							))}
 						</ul>
 					</div>

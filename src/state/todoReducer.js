@@ -7,6 +7,7 @@ const STATUS_TASK = 'STATUS_TASK';
 const EDIT_TASK = 'EDIT_TASK';
 const ADD_TODOLIST = 'ADD_TODOLIST';
 const DELETE_TODOLIST = 'DELETE_TODOLIST';
+const EDIT_TODOLIST = 'EDIT_TODOLIST';
 
 const defaultState = {
 	toDoLists: [
@@ -100,6 +101,16 @@ export const todoReducer = (state = initialState, action) => {
 			};
 		}
 
+		case EDIT_TODOLIST: {
+			const { toDoListId, newText } = action.payload;
+			return {
+				...state,
+				toDoLists: state.toDoLists.map((list) =>
+					list.id === toDoListId ? { ...list, title: newText } : list
+				),
+			};
+		}
+
 		case ADD_TODOLIST: {
 			const newToDoList = {
 				id: v1(),
@@ -150,6 +161,11 @@ export const filterTaskAC = (toDoListId, filter) => ({
 export const editTaskAC = (toDoListId, taskId, newText) => ({
 	type: EDIT_TASK,
 	payload: { toDoListId, taskId, newText },
+});
+
+export const updateTodolistTitleAC = (toDoListId, newText) => ({
+	type: EDIT_TODOLIST,
+	payload: { toDoListId, newText },
 });
 
 export const addToDoListAC = (title) => ({
