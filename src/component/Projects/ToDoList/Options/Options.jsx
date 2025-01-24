@@ -58,7 +58,7 @@ const StyledMoreHorizIcon = styled(MoreHorizIcon)(({ theme }) => ({
 	borderRadius: '50%', // Закругленные углы для эффекта круга
 	transition: 'color 0.3s, transform 0.3s, background-color 0.3s', // Плавность изменений
 	border: '1px solid rgba(255, 255, 255, 0.1)', // Полупрозрачный белый фон
-	backgroundColor: '#24262c', // Полупрозрачный белый фон
+	backgroundColor: '#24262c',
 	'&:hover': {
 		color: '#fff', // Меняем цвет иконки при наведении
 		transform: 'scale(1.1)', // Эффект увеличения

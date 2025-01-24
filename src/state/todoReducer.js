@@ -8,6 +8,8 @@ const EDIT_TASK = 'EDIT_TASK';
 const ADD_TODOLIST = 'ADD_TODOLIST';
 const DELETE_TODOLIST = 'DELETE_TODOLIST';
 const EDIT_TODOLIST = 'EDIT_TODOLIST';
+const ADD_ITEM_NEW_TODOLIST = 'ADD_ITEM_NEW_TODOLIST';
+const REMOVE_ITEM_NEW_TODOLIST = 'REMOVE_ITEM_NEW_TODOLIST';
 
 const defaultState = {
 	toDoLists: [
@@ -18,6 +20,8 @@ const defaultState = {
 			tasks: [{ id: Date.now(), title: 'input', isDone: false }],
 		},
 	],
+	toDoLists2: [],
+	toDoLists3: [],
 };
 
 const loadState = () => {
@@ -33,10 +37,19 @@ export const todoReducer = (state = initialState, action) => {
 		case ADD_TASK: {
 			const { toDoListId, input } = action.payload;
 			const newTask = { id: Date.now(), title: input, isDone: false };
-
 			return {
 				...state,
 				toDoLists: state.toDoLists.map((toDoList) =>
+					toDoList.id === toDoListId ?
+						{ ...toDoList, tasks: [newTask, ...toDoList.tasks] }
+					:	toDoList
+				),
+				toDoLists2: state.toDoLists2.map((toDoList) =>
+					toDoList.id === toDoListId ?
+						{ ...toDoList, tasks: [newTask, ...toDoList.tasks] }
+					:	toDoList
+				),
+				toDoLists3: state.toDoLists3.map((toDoList) =>
 					toDoList.id === toDoListId ?
 						{ ...toDoList, tasks: [newTask, ...toDoList.tasks] }
 					:	toDoList
@@ -49,6 +62,16 @@ export const todoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				toDoLists: state.toDoLists.map((list) =>
+					list.id === toDoListId ?
+						{ ...list, tasks: list.tasks.filter((task) => task.id !== taskId) }
+					:	list
+				),
+				toDoLists2: state.toDoLists2.map((list) =>
+					list.id === toDoListId ?
+						{ ...list, tasks: list.tasks.filter((task) => task.id !== taskId) }
+					:	list
+				),
+				toDoLists3: state.toDoLists3.map((list) =>
 					list.id === toDoListId ?
 						{ ...list, tasks: list.tasks.filter((task) => task.id !== taskId) }
 					:	list
@@ -71,6 +94,26 @@ export const todoReducer = (state = initialState, action) => {
 						}
 					:	list
 				),
+				toDoLists2: state.toDoLists2.map((list) =>
+					list.id === toDoListId ?
+						{
+							...list,
+							tasks: list.tasks.map((task) =>
+								task.id === taskId ? { ...task, isDone: !task.isDone } : task
+							),
+						}
+					:	list
+				),
+				toDoLists3: state.toDoLists3.map((list) =>
+					list.id === toDoListId ?
+						{
+							...list,
+							tasks: list.tasks.map((task) =>
+								task.id === taskId ? { ...task, isDone: !task.isDone } : task
+							),
+						}
+					:	list
+				),
 			};
 		}
 
@@ -79,6 +122,12 @@ export const todoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				toDoLists: state.toDoLists.map((list) =>
+					list.id === toDoListId ? { ...list, filter } : list
+				),
+				toDoLists2: state.toDoLists2.map((list) =>
+					list.id === toDoListId ? { ...list, filter } : list
+				),
+				toDoLists3: state.toDoLists3.map((list) =>
 					list.id === toDoListId ? { ...list, filter } : list
 				),
 			};
@@ -98,6 +147,26 @@ export const todoReducer = (state = initialState, action) => {
 						}
 					:	list
 				),
+				toDoLists2: state.toDoLists2.map((list) =>
+					list.id === toDoListId ?
+						{
+							...list,
+							tasks: list.tasks.map((task) =>
+								task.id === taskId ? { ...task, title: newText } : task
+							),
+						}
+					:	list
+				),
+				toDoLists3: state.toDoLists3.map((list) =>
+					list.id === toDoListId ?
+						{
+							...list,
+							tasks: list.tasks.map((task) =>
+								task.id === taskId ? { ...task, title: newText } : task
+							),
+						}
+					:	list
+				),
 			};
 		}
 
@@ -106,6 +175,12 @@ export const todoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				toDoLists: state.toDoLists.map((list) =>
+					list.id === toDoListId ? { ...list, title: newText } : list
+				),
+				toDoLists2: state.toDoLists2.map((list) =>
+					list.id === toDoListId ? { ...list, title: newText } : list
+				),
+				toDoLists3: state.toDoLists3.map((list) =>
 					list.id === toDoListId ? { ...list, title: newText } : list
 				),
 			};
@@ -128,12 +203,34 @@ export const todoReducer = (state = initialState, action) => {
 
 		case DELETE_TODOLIST: {
 			const { toDoListId } = action.payload;
-
 			return {
 				...state,
 				toDoLists: state.toDoLists.filter((list) => list.id !== toDoListId),
+				toDoLists2: state.toDoLists2.filter((list) => list.id !== toDoListId),
+				toDoLists3: state.toDoLists3.filter((list) => list.id !== toDoListId),
 			};
 		}
+
+		case ADD_ITEM_NEW_TODOLIST: {
+			const { listName, item } = action.payload;
+			return {
+				...state,
+				[listName]: [...(state[listName] || []), item], // Если список не существует, создаётся новый
+			};
+		}
+
+		case REMOVE_ITEM_NEW_TODOLIST: {
+			const { listName, item } = action.payload;
+			if (!state[listName]) {
+				console.error(`List "${listName}" does not exist in state.`);
+				return state;
+			}
+			return {
+				...state,
+				[listName]: state[listName].filter((i) => i.id !== item.id), // Удаляем только совпадающий элемент
+			};
+		}
+
 		default:
 			return state;
 	}
@@ -175,4 +272,12 @@ export const addToDoListAC = (title) => ({
 export const deleteToDoListAС = (toDoListId) => ({
 	type: DELETE_TODOLIST,
 	payload: { toDoListId },
+});
+export const addItemInNewToDoListAС = (listName, item) => ({
+	type: ADD_ITEM_NEW_TODOLIST,
+	payload: { listName, item },
+});
+export const removeItemInNewToDoListAС = (listName, item) => ({
+	type: REMOVE_ITEM_NEW_TODOLIST,
+	payload: { listName, item },
 });

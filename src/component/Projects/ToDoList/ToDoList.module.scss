@@ -56,6 +56,8 @@
 		width: 100%;
 		height: 100%;
 		background-color: rgba($color: #2a2b2f, $alpha: 0.6);
+		backdrop-filter: blur(5px);
+		z-index: 10;
 		.closeModal {
 			position: relative;
 			svg {
@@ -93,4 +95,17 @@
 			}
 		}
 	}
+}
+.dragging {
+	opacity: 0.5;
+	transform: scale(1.05); /* Увеличение */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень */
+	transition:
+		transform 0.2s,
+		box-shadow 0.2s;
+}
+
+.dragOver {
+	border: 2px dashed #007bff;
+	background-color: rgba(0, 123, 255, 0.1);
 }

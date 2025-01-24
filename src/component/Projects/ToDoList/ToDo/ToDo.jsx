@@ -15,9 +15,12 @@ import Options from '../Options/Options';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
+import { IconButton } from '@mui/material';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-function ToDo({ todolist }) {
+function ToDo({ todolist, onDragStart }) {
 	const dispatch = useDispatch();
+	//cостояния
 	const [input, setInput] = useState('');
 	const [error, setError] = useState(null);
 	const [editingTaskId, setEditingTaskId] = useState(null);
@@ -27,7 +30,6 @@ function ToDo({ todolist }) {
 	const [progress, setProgress] = useState(0);
 	const [isVisible, setIsVisible] = useState(false);
 	const [isRendered, setIsRendered] = useState(false);
-
 	// Рефы для отслеживания кликов вне инпута и кнопки
 	const inputRef = useRef(null);
 	const saveButtonRef = useRef(null);
@@ -50,29 +52,6 @@ function ToDo({ todolist }) {
 			document.removeEventListener('click', handleClickOutside);
 		};
 	}, []);
-
-	// const inputRefTodolist = useRef(null);
-	// const saveButtonRefTodolist = useRef(null);
-
-	// useEffect(() => {
-	// 	const handleClickOutsideTodolist = (e) => {
-	// 		if (
-	// 			inputRefTodolist.current &&
-	// 			!inputRefTodolist.current.contains(e.target) &&
-	// 			saveButtonRefTodolist.current &&
-	// 			!saveButtonRefTodolist.current.contains(e.target)
-	// 		) {
-	// 			setEditingTodolistId(null);
-	// 		}
-	// 	};
-
-	// 	document.addEventListener('click', handleClickOutsideTodolist);
-
-	// 	// Очистка события при размонтировании компонента
-	// 	return () => {
-	// 		document.removeEventListener('click', handleClickOutsideTodolist);
-	// 	};
-	// }, []);
 
 	const handleEditClick = (task) => {
 		setEditingTaskId(task.id); // Устанавливаем ID редактируемой задачи
@@ -196,7 +175,10 @@ function ToDo({ todolist }) {
 	};
 
 	return (
-		<section className={`${styles.todo} ${isVisible ? styles.showTodo : ''}`}>
+		<section
+			draggable
+			onDragStart={() => onDragStart(todolist)}
+			className={`${styles.todo} ${isVisible ? styles.showTodo : ''}`}>
 			<div className={styles.headerTodo}>
 				{editingTodolistId === todolist.id ?
 					<>
@@ -219,7 +201,6 @@ function ToDo({ todolist }) {
 					deleteToDoList={deleteToDoList}
 				/>
 			</div>
-
 			<div className={styles.mainTodo}>
 				<div className={styles.mainTodoHeader}>
 					<div onClick={handleShowProgress} className={styles.mainTodoHeaderIcon}>
@@ -255,7 +236,12 @@ function ToDo({ todolist }) {
 							/>
 							{error && <p style={{ color: 'red', fontSize: '12px' }}>{error}</p>}
 						</label>
-						<button onClick={addTask}>Add</button>
+						<div className={styles.blockAddCircleBtn}>
+							<IconButton className={styles.AddCircleBtn} onClick={addTask}>
+								<AddCircleIcon className={styles.AddCircleIcon} />
+							</IconButton>
+							<span onClick={addTask}>Add new task</span>
+						</div>
 						<div>
 							<button onClick={() => filterTasks('all')}>All</button>
 							<button onClick={() => filterTasks('active')}>Active</button>
@@ -300,24 +286,28 @@ function ToDo({ todolist }) {
 										:	<span>{task.title}</span>}
 										&nbsp;
 									</li>
-									<EditIcon
-										className={styles.editTask}
-										onClick={(e) => {
-											e.stopPropagation();
-											handleEditClick(task);
-										}}>
-										Edit
-									</EditIcon>
-									<DeleteIcon
-										className={styles.deleteTask}
-										onClick={(e) => {
-											e.stopPropagation();
-											deleteTask(task.id);
-											setProgress((prev) => Math.max(prev - 100 / filteredTasks.length, 0));
-										}}
-										style={{ color: 'red' }}>
-										Delete
-									</DeleteIcon>
+									<IconButton className={styles.editTask} aria-label='delete' size='small'>
+										<EditIcon
+											onClick={(e) => {
+												e.stopPropagation();
+												handleEditClick(task);
+											}}>
+											Edit
+										</EditIcon>
+									</IconButton>
+									<IconButton className={styles.deleteTask} aria-label='delete' size='small'>
+										<DeleteIcon
+											fontSize='small'
+											className={styles.deleteTask}
+											onClick={(e) => {
+												e.stopPropagation();
+												deleteTask(task.id);
+												setProgress((prev) => Math.max(prev - 100 / filteredTasks.length, 0));
+											}}
+											style={{ color: 'red' }}>
+											Delete
+										</DeleteIcon>
+									</IconButton>
 								</div>
 							))}
 						</ul>
