@@ -17,6 +17,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import { IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
 
 function ToDo({ todolist, onDragStart }) {
 	const dispatch = useDispatch();
@@ -30,6 +32,7 @@ function ToDo({ todolist, onDragStart }) {
 	const [progress, setProgress] = useState(0);
 	const [isVisible, setIsVisible] = useState(false);
 	const [isRendered, setIsRendered] = useState(false);
+	const [showAddTaskInput, setShowAddTaskInput] = useState(false);
 	// Рефы для отслеживания кликов вне инпута и кнопки
 	const inputRef = useRef(null);
 	const saveButtonRef = useRef(null);
@@ -174,6 +177,10 @@ function ToDo({ todolist, onDragStart }) {
 		setNewTextTodolist(todolist.title.trim()); // Подставляем текст задачи
 	};
 
+	const handleShowAddTaskInput = () => {
+		setShowAddTaskInput(!showAddTaskInput);
+	};
+
 	return (
 		<section
 			draggable
@@ -226,27 +233,43 @@ function ToDo({ todolist, onDragStart }) {
 				</div>
 				{isRendered && (
 					<div className={`${styles.allTasks} ${isVisible ? styles.show : ''}`}>
-						<label>
-							<input
-								value={input}
-								onKeyPress={onKeyPressHandler}
-								onChange={onChangeInputHandler}
-								type='text'
-								// onDoubleClick={onDoubleClickEditHandler}
-							/>
-							{error && <p style={{ color: 'red', fontSize: '12px' }}>{error}</p>}
-						</label>
-						<div className={styles.blockAddCircleBtn}>
-							<IconButton className={styles.AddCircleBtn} onClick={addTask}>
-								<AddCircleIcon className={styles.AddCircleIcon} />
-							</IconButton>
-							<span onClick={addTask}>Add new task</span>
-						</div>
-						<div>
+						{showAddTaskInput ?
+							<div onClick={handleShowAddTaskInput} className={styles.addNewTask}>
+								<CloseIcon style={{ fontSize: 'large' }} />
+							</div>
+						:	<div onClick={handleShowAddTaskInput} className={styles.addNewTask}>
+								<AddIcon style={{ fontSize: 'large' }} />
+								<p>Add new task</p>
+							</div>
+						}
+						{showAddTaskInput && (
+							<div className={styles.blockAddTask}>
+								{/* <div className={styles.blockAddTaskInputError}> */}
+								<label htmlFor=''>
+									<input
+										className={styles.blockAddTaskInput}
+										value={input}
+										onKeyPress={onKeyPressHandler}
+										onChange={onChangeInputHandler}
+										type='text'
+										// onDoubleClick={onDoubleClickEditHandler}
+									/>
+									{error && <span style={{ color: 'red', fontSize: '12px' }}>{error}</span>}
+								</label>
+
+								{/* </div> */}
+								{/* <div className={styles.AddCircle}> */}
+								<IconButton className={styles.AddCircleBtn} onClick={addTask}>
+									<AddCircleIcon className={styles.AddCircleIcon} />
+								</IconButton>
+								{/* </div> */}
+							</div>
+						)}
+						{/* <div>
 							<button onClick={() => filterTasks('all')}>All</button>
 							<button onClick={() => filterTasks('active')}>Active</button>
 							<button onClick={() => filterTasks('completed')}>Completed</button>
-						</div>
+						</div> */}
 						<ul className={styles.menuTasks}>
 							{filteredTasks.map((task) => (
 								<div className={styles.wrapperTasks}>

@@ -79,31 +79,80 @@
 				opacity 0.3s ease,
 				transform 0.3s ease; /* Плавный переход */
 			pointer-events: none;
+			display: flex;
+			flex-direction: column;
+			.addNewTask {
+				height: 30px;
+				display: flex;
+				align-items: center;
+				margin-left: auto;
+				// max-width: 100%;
+				padding: 5px 10px;
+				border-radius: 15px;
+				transition: background 0.3s ease;
+				&:hover {
+					background: rgba(255, 255, 255, 0.1);
+				}
+			}
+			.blockAddTask {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				input {
+					width: 100%;
+				}
+				.AddCircleBtn {
+					word-spacing: -4px;
+					font-weight: 600;
+					font-size: 12px;
+					line-height: 100%;
+					color: #fff;
+					cursor: pointer;
+					.AddCircleIcon {
+						width: 25px;
+						height: 25px;
+						box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
+						border-radius: 50%;
+						color: #404040;
+						opacity: 1;
+						background-color: #989caa;
+					}
+				}
+				span {
+					word-spacing: -4px;
+					font-weight: 600;
+					font-size: 12px;
+					line-height: 100%;
+					color: #fff;
+					cursor: pointer;
+				}
+			}
 			.menuTasks {
-				list-style: none;
+				list-style: decimal;
 				margin: 0;
 				padding: 0;
 				height: 200px;
 				overflow-y: auto;
 				.wrapperTasks {
+					display: flex;
+					justify-content: center;
+					align-items: center;
 					// position: relative;
 					width: 100%;
 					display: flex;
+					border-radius: 15px;
+					transition: background 0.3s ease;
+					&:hover {
+						background: rgba(255, 255, 255, 0.1);
+					}
 					.menuTask {
-						width: 70%;
+						margin-left: 40px;
+						width: 100%;
 						word-wrap: break-word;
 					}
 					.checked {
 						text-decoration: line-through;
 					}
-					// .editTask {
-					// 	position: absolute;
-					// 	right: 30px;
-					// }
-					// .deleteTask {
-					// 	position: absolute;
-					// 	right: 0;
-					// }
 					.blockEdit {
 						position: relative;
 						display: flex;
@@ -127,28 +176,17 @@
 							box-shadow: 0 0 4px 2px #000;
 						}
 					}
-				}
-			}
-			.blockAddCircleBtn {
-				.AddCircleBtn {
-					.AddCircleIcon {
-						width: 25px;
-						height: 25px;
-						box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
-						border-radius: 50%;
-						color: #404040;
-						opacity: 1;
-						background-color: #989caa;
+					.editTask {
+					}
+					.deleteTask {
+						width: 34px;
+						height: 34px;
+						svg {
+							width: 24px;
+							height: 24px;
+						}
 					}
 				}
-			}
-			span {
-				word-spacing: -4px;
-				font-weight: 600;
-				font-size: 12px;
-				line-height: 100%;
-				color: #fff;
-				cursor: pointer;
 			}
 		}
 		.allTasks.show {
