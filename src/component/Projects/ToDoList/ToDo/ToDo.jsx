@@ -91,7 +91,7 @@ function ToDo({ todolist, onDragStart }) {
 			setInput('');
 			setError(null); // Сбрасываем ошибку
 		} else {
-			setError('Task title cannot be empty.');
+			setError('Task title cannot be empty');
 		}
 	};
 
@@ -238,14 +238,13 @@ function ToDo({ todolist, onDragStart }) {
 								<CloseIcon style={{ fontSize: 'large' }} />
 							</div>
 						:	<div onClick={handleShowAddTaskInput} className={styles.addNewTask}>
-								<AddIcon style={{ fontSize: 'large' }} />
+								<AddIcon className={styles.addIcon} style={{ fontSize: 'large' }} />
 								<p>Add new task</p>
 							</div>
 						}
 						{showAddTaskInput && (
 							<div className={styles.blockAddTask}>
-								{/* <div className={styles.blockAddTaskInputError}> */}
-								<label htmlFor=''>
+								<label>
 									<input
 										className={styles.blockAddTaskInput}
 										value={input}
@@ -255,14 +254,10 @@ function ToDo({ todolist, onDragStart }) {
 										// onDoubleClick={onDoubleClickEditHandler}
 									/>
 									{error && <span style={{ color: 'red', fontSize: '12px' }}>{error}</span>}
+									<IconButton className={styles.AddCircleBtn} onClick={addTask}>
+										<AddCircleIcon className={styles.AddCircleIcon} />
+									</IconButton>
 								</label>
-
-								{/* </div> */}
-								{/* <div className={styles.AddCircle}> */}
-								<IconButton className={styles.AddCircleBtn} onClick={addTask}>
-									<AddCircleIcon className={styles.AddCircleIcon} />
-								</IconButton>
-								{/* </div> */}
 							</div>
 						)}
 						{/* <div>
@@ -291,20 +286,24 @@ function ToDo({ todolist, onDragStart }) {
 										key={task.id}>
 										{editingTaskId === task.id ?
 											<div className={styles.blockEdit}>
-												<input
-													className={styles.blockEditInput}
-													type='text'
-													value={newText}
-													onKeyDown={handleKeyDown}
-													onChange={onChangeEditInput}
-													ref={inputRef} // Привязываем ref к инпуту
-												/>
-												<button
-													className={styles.blockEditBtn}
-													ref={saveButtonRef}
-													onClick={handleSaveClick}>
-													<DoneIcon />
-												</button>
+												<label>
+													<input
+														className={styles.blockEditInput}
+														type='text'
+														value={newText}
+														onKeyDown={handleKeyDown}
+														onChange={onChangeEditInput}
+														ref={inputRef} // Привязываем ref к инпуту
+													/>
+													{/* {error && <span style={{ color: 'red', fontSize: '12px' }}>{error}</span>} */}
+													<IconButton className={styles.AddCircleBtn} onClick={addTask}>
+														<DoneIcon
+															className={styles.blockEditBtn}
+															ref={saveButtonRef}
+															onClick={handleSaveClick}
+														/>
+													</IconButton>
+												</label>
 											</div>
 										:	<span>{task.title}</span>}
 										&nbsp;
@@ -321,13 +320,11 @@ function ToDo({ todolist, onDragStart }) {
 									<IconButton className={styles.deleteTask} aria-label='delete' size='small'>
 										<DeleteIcon
 											fontSize='small'
-											className={styles.deleteTask}
 											onClick={(e) => {
 												e.stopPropagation();
 												deleteTask(task.id);
 												setProgress((prev) => Math.max(prev - 100 / filteredTasks.length, 0));
-											}}
-											style={{ color: 'red' }}>
+											}}>
 											Delete
 										</DeleteIcon>
 									</IconButton>

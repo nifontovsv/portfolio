@@ -7,15 +7,15 @@
 	padding: 20px;
 	overflow: hidden;
 	position: relative;
-	height: 170px; /* Изначальная высота контейнера */
+	height: 170px;
 	transition: height 0.5s ease;
 	&:hover {
 		box-shadow: 0 0 5px 1px #ffffff50;
-		// transform: scale(1.01);
 	}
 	.headerTodo {
 		display: flex;
 		justify-content: space-between;
+		margin-bottom: 20px;
 		h2 {
 			font-weight: 700;
 			font-size: 16px;
@@ -35,6 +35,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+		margin-bottom: 50px;
 
 		.mainTodoHeader {
 			display: flex;
@@ -73,11 +74,10 @@
 			gap: 10px;
 		}
 		.allTasks {
-			opacity: 0; /* Скрыт по умолчанию */
-			// transform: translateY(-10px); /* Немного поднят вверх */
+			opacity: 0;
 			transition:
 				opacity 0.3s ease,
-				transform 0.3s ease; /* Плавный переход */
+				transform 0.3s ease;
 			pointer-events: none;
 			display: flex;
 			flex-direction: column;
@@ -86,22 +86,42 @@
 				display: flex;
 				align-items: center;
 				margin-left: auto;
-				// max-width: 100%;
+				margin-top: 10px;
+				margin-bottom: 10px;
 				padding: 5px 10px;
 				border-radius: 15px;
 				transition: background 0.3s ease;
 				&:hover {
 					background: rgba(255, 255, 255, 0.1);
+					color: aquamarine;
 				}
 			}
 			.blockAddTask {
 				display: flex;
-				justify-content: space-between;
 				align-items: center;
-				input {
+				margin-bottom: 20px;
+				label {
+					position: relative;
 					width: 100%;
+					input {
+						box-sizing: border-box;
+						height: 40px;
+						border-radius: 20px;
+						border: none;
+						padding-left: 10px;
+						background-color: rgba(255, 255, 255, 0.1);
+						padding: 0 10px;
+						width: 100%;
+						color: #fff;
+						&:focus {
+							outline: none;
+						}
+					}
 				}
 				.AddCircleBtn {
+					position: absolute;
+					top: 0;
+					right: 5px;
 					word-spacing: -4px;
 					font-weight: 600;
 					font-size: 12px;
@@ -118,16 +138,11 @@
 						background-color: #989caa;
 					}
 				}
-				span {
-					word-spacing: -4px;
-					font-weight: 600;
-					font-size: 12px;
-					line-height: 100%;
-					color: #fff;
-					cursor: pointer;
-				}
 			}
 			.menuTasks {
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
 				list-style: decimal;
 				margin: 0;
 				padding: 0;
@@ -146,7 +161,9 @@
 						background: rgba(255, 255, 255, 0.1);
 					}
 					.menuTask {
-						margin-left: 40px;
+						display: flex;
+						align-items: center;
+						margin-left: 20px;
 						width: 100%;
 						word-wrap: break-word;
 					}
@@ -154,33 +171,53 @@
 						text-decoration: line-through;
 					}
 					.blockEdit {
-						position: relative;
-						display: flex;
-						align-items: center;
-						.blockEditInput {
-							width: 100%;
-							height: 30px;
-						}
-						.blockEditBtn {
+						width: 100%;
+						label {
+							position: relative;
 							display: flex;
 							align-items: center;
-							justify-content: center;
-							color: #fff;
-							background-color: green;
-							border: none;
-							border-radius: 5px;
-							width: 25px;
-							height: 25px;
-							position: absolute;
-							right: 5px;
-							box-shadow: 0 0 4px 2px #000;
+							width: 100%;
+							.blockEditInput {
+								box-sizing: border-box;
+								height: 25px;
+								border-radius: 20px;
+								border: none;
+								padding-left: 10px;
+								background-color: rgba($color: #1c1d22, $alpha: 0.5);
+								width: 100%;
+								color: #fff;
+								&:focus {
+									outline: none;
+								}
+							}
+							.AddCircleBtn {
+								position: absolute;
+								right: 0;
+								cursor: pointer;
+								.blockEditBtn {
+									width: 15px;
+									height: 15px;
+									box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
+									border-radius: 50%;
+									opacity: 1;
+									background-color: #72ff4f;
+								}
+							}
 						}
 					}
 					.editTask {
+						color: #fff;
+						&:hover {
+							color: orange;
+						}
 					}
 					.deleteTask {
+						color: #fff;
 						width: 34px;
 						height: 34px;
+						&:hover {
+							color: red;
+						}
 						svg {
 							width: 24px;
 							height: 24px;
@@ -200,23 +237,26 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: 20px;
 		border-radius: 25px;
 		padding: 8px 16px;
 		width: 110px;
 		height: 20px;
 		background: rgba(255, 255, 255, 0.06);
-		position: absolute;
-		bottom: 20px;
+		// position: absolute;
+		// bottom: 20px;
+		transition: transform 0.3s ease;
+		&:hover {
+			transform: scale(1.05);
+		}
 		.dateTodo {
 			font-weight: 600;
 			font-size: 14px;
 			line-height: 100%;
-			color: #989caa;
+			color: #fff;
 		}
 	}
 	&.showTodo {
-		height: 400px;
+		height: 450px;
 	}
 	&.draggedItem {
 		cursor: grab;

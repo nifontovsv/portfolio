@@ -41,17 +41,17 @@ export const todoReducer = (state = initialState, action) => {
 				...state,
 				toDoLists: state.toDoLists.map((toDoList) =>
 					toDoList.id === toDoListId ?
-						{ ...toDoList, tasks: [newTask, ...toDoList.tasks] }
+						{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
 					:	toDoList
 				),
 				toDoLists2: state.toDoLists2.map((toDoList) =>
 					toDoList.id === toDoListId ?
-						{ ...toDoList, tasks: [newTask, ...toDoList.tasks] }
+						{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
 					:	toDoList
 				),
 				toDoLists3: state.toDoLists3.map((toDoList) =>
 					toDoList.id === toDoListId ?
-						{ ...toDoList, tasks: [newTask, ...toDoList.tasks] }
+						{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
 					:	toDoList
 				),
 			};
