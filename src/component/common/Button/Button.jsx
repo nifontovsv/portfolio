@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './Button.module.scss';
 
-const Button = ({ title }) => {
+const Button = ({ title, href }) => {
 	const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 	const [hoverOpacity, setHoverOpacity] = useState(0);
 	const hoverButtonRef = useRef(null);
@@ -19,12 +19,13 @@ const Button = ({ title }) => {
 	const handleMouseEnter = () => setHoverOpacity(1);
 	const handleMouseLeave = () => setHoverOpacity(0);
 	return (
-		<div
+		<a
 			ref={hoverButtonRef}
 			onMouseMove={handleMouseMove}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			className={styles.btnWrapper}
+			href={href}
 		>
 			<div
 				className={styles.btnGradient}
@@ -34,7 +35,7 @@ const Button = ({ title }) => {
 				}}
 			/>
 			<p className={styles.btnTitle}>{title}</p>
-		</div>
+		</a>
 	);
 };
 

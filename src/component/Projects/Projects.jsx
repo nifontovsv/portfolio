@@ -3,9 +3,9 @@ import TabList from '../About/TabList/TabList';
 import TabContent from '../About/TabContent/TabContent';
 import MenuList from '../About/MenuList/MenuList';
 import styles from './Projects.module.scss';
-import image1 from '../../images/Rectangle 42.png';
-import image2 from '../../images/Rectangle 43.png';
-import image3 from '../../images/Rectangle 44.png';
+import shoppebook from '../../images/shoppebook.png';
+import { Grid2 } from '@mui/material';
+import Button from '../common/Button/Button';
 
 function Projects() {
 	const [isOpen, setIsOpen] = useState(true);
@@ -41,7 +41,8 @@ function Projects() {
 		width='24'
 		height='24'
 		fill='none'
-		viewBox='0 0 24 24'>
+		viewBox='0 0 24 24'
+	>
 		<path
 			stroke='currentColor'
 			stroke-linecap='round'
@@ -54,47 +55,54 @@ function Projects() {
 	const projects = [
 		{
 			title: 'Project 1',
-			span: '// _ui-animations',
-			image: image1,
-			description:
-				'	Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima molestias sapiente, ipsum sunt aut voluptatum delectus consectetur debitis, natus veritatis odit eos non cum quos soluta optio voluptate, numquam amet. Duis aute irure dolor in velit esse cillum dolore.',
+			span: '// _shoppebook',
+			image: shoppebook,
+			description: 'Интернет-магазин с книгами',
+			linkTitle: 'view-project',
+			href: 'https://github.com/nifontovsv/shoppebook',
+		},
+		{
+			title: 'Project 1',
+			span: '// _shoppebook',
+			image: shoppebook,
+			description: 'Интернет-магазин с книгами',
 			linkTitle: 'view-project',
 		},
 		{
-			title: 'Project 2',
-			span: '// _tetris-game',
-			image: image2,
-			description: 'Duis 2222222222aute irure dolor ',
+			title: 'Project 1',
+			span: '// _shoppebook',
+			image: shoppebook,
+			description: 'Интернет-магазин с книгами',
 			linkTitle: 'view-project',
 		},
-		// {
-		// 	title: 'Project 3',
-		// 	span: '// _ethereum',
-		// 	image: image3,
-		// 	description: 'velit111111111 esse cillum dolore.',
-		// 	linkTitle: 'view-project',
-		// },
-		// {
-		// 	title: 'Project 3',
-		// 	span: '// _ethereum',
-		// 	image: image3,
-		// 	description: 'velit111111111 esse cillum dolore.',
-		// 	linkTitle: 'view-project',
-		// },
-		// {
-		// 	title: 'Project 3',
-		// 	span: '// _ethereum',
-		// 	image: image3,
-		// 	description: 'velit111111111 esse cillum dolore.',
-		// 	linkTitle: 'view-project',
-		// },
-		// {
-		// 	title: 'Project 3',
-		// 	span: '// _ethereum',
-		// 	image: image3,
-		// 	description: 'velit111111111 esse cillum dolore.',
-		// 	linkTitle: 'view-project',
-		// },
+		{
+			title: 'Project 1',
+			span: '// _shoppebook',
+			image: shoppebook,
+			description: 'Интернет-магазин с книгами',
+			linkTitle: 'view-project',
+		},
+		{
+			title: 'Project 1',
+			span: '// _shoppebook',
+			image: shoppebook,
+			description: 'Интернет-магазин с книгами',
+			linkTitle: 'view-project',
+		},
+		{
+			title: 'Project 1',
+			span: '// _shoppebook',
+			image: shoppebook,
+			description: 'Интернет-магазин с книгами',
+			linkTitle: 'view-project',
+		},
+		{
+			title: 'Project 1',
+			span: '// _shoppebook',
+			image: shoppebook,
+			description: 'Интернет-магазин с книгами',
+			linkTitle: 'view-project',
+		},
 	];
 
 	const handleTabChange = (tab) => {
@@ -105,7 +113,9 @@ function Projects() {
 	const handleTabClose = (tab) => {
 		setOpenTabs((prev) => {
 			const updatedTabs = prev.filter((openTab) => openTab !== tab);
-			setActiveTab(updatedTabs.length ? updatedTabs[updatedTabs.length - 1] : '');
+			setActiveTab(
+				updatedTabs.length ? updatedTabs[updatedTabs.length - 1] : ''
+			);
 			return updatedTabs;
 		});
 	};
@@ -118,14 +128,18 @@ function Projects() {
 			<div className={styles.tabsAbout}>
 				<div className={styles.navTabs}>
 					<div className={styles.navTabName}>
-						<button onClick={() => setIsOpen(!isOpen)} className={styles.dropdownToggle}>
+						<button
+							onClick={() => setIsOpen(!isOpen)}
+							className={styles.dropdownToggle}
+						>
 							{isOpen ?
 								<svg
 									width='9'
 									height='7'
 									viewBox='0 0 9 7'
 									fill='none'
-									xmlns='http://www.w3.org/2000/svg'>
+									xmlns='http://www.w3.org/2000/svg'
+								>
 									<path
 										d='M4.74998 6.65186L0.499969 0.651856L9 0.651855L4.74998 6.65186Z'
 										fill='white'
@@ -136,7 +150,8 @@ function Projects() {
 									height='10'
 									viewBox='0 0 7 10'
 									fill='none'
-									xmlns='http://www.w3.org/2000/svg'>
+									xmlns='http://www.w3.org/2000/svg'
+								>
 									<path
 										d='M6.96045 4.80914L0.960449 9.05916L0.960449 0.559128L6.96045 4.80914Z'
 										fill='white'
@@ -144,7 +159,10 @@ function Projects() {
 								</svg>
 							}
 						</button>
-						<span className={styles.personalInfo} onClick={() => setIsOpen(!isOpen)}>
+						<span
+							className={styles.personalInfo}
+							onClick={() => setIsOpen(!isOpen)}
+						>
 							projects
 						</span>
 					</div>
@@ -157,28 +175,41 @@ function Projects() {
 				</div>
 				<div className={styles.aboutPart}>
 					<div className={`${styles.aboutLeft} ${isOpen ? styles.open : ''}`}>
-						{isOpen && <MenuList menuList={menuList} handleTabChange={handleTabChange} />}
+						{isOpen && (
+							<MenuList menuList={menuList} handleTabChange={handleTabChange} />
+						)}
 					</div>
 					<div className={styles.aboutMiddle}>
 						{activeTab ?
 							<TabContent activeTab={activeTab} aboutArr={aboutArr} />
-						:	<div className={styles.projects}>
-								{projects.map((item) => (
-									<div className={styles.projectsItems}>
-										<h2 className={styles.heading}>{item.title}</h2>
-										<span className={styles.subHeading}>{item.span}</span>
-										<div className={styles.projectItem}>
-											<img src={item.image} alt='image1' />
-											<p className={styles.description}>{item.description}</p>
-											<div className={styles.projectLink}>
-												<a className={styles.link} href='#'>
-													{item.linkTitle}
-												</a>
+						:	<Grid2
+								className={styles.projectsGrid}
+								container
+								spacing={3}
+								justifyContent='center'
+							>
+								{projects.map((item, index) => (
+									<Grid2 xs={12} sm={6} md={4} lg={3} key={item.index}>
+										<div className={styles.projectsItems}>
+											<h2 className={styles.heading}>{item.title}</h2>
+											<span className={styles.subHeading}>{item.span}</span>
+											<div className={styles.projectItem}>
+												<img
+													width={300}
+													height={150}
+													className={styles.projectItemImage}
+													src={item.image}
+													alt={item.image}
+												/>
+												<p className={styles.description}>{item.description}</p>
+												<div className={styles.projectLink}>
+													<Button title={item.linkTitle} href={item.href} />
+												</div>
 											</div>
 										</div>
-									</div>
+									</Grid2>
 								))}
-							</div>
+							</Grid2>
 						}
 					</div>
 					<div className={styles.blockScroll}>

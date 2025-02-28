@@ -141,39 +141,8 @@ const NeuralNoise = () => {
 		gl.viewport(0, 0, canvas.width, canvas.height);
 	};
 
-	//Взаимодействие пользователя с помощью мыши и тачпада
-	// const render = () => {
-	// 	const currentTime = performance.now();
-
-	// 	pointer.current.x += (pointer.current.tX - pointer.current.x) * 0.5;
-	// 	pointer.current.y += (pointer.current.tY - pointer.current.y) * 0.5;
-
-	// 	gl.uniform1f(uniforms.u_time, currentTime);
-	// 	gl.uniform2f(
-	// 		uniforms.u_pointer_position,
-	// 		pointer.current.x / window.innerWidth,
-	// 		1 - pointer.current.y / window.innerHeight
-	// 	);
-	// 	gl.uniform1f(uniforms.u_scroll_progress, window.pageYOffset / (2 * window.innerHeight));
-
-	// 	gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-	// 	requestAnimationFrame(render);
-	// };
-
-	// const render = () => {
-	// 	const currentTime = performance.now();
-
-	// 	// Используем фиксированные значения вместо перемещения указателя
-	// 	gl.uniform1f(uniforms.u_time, currentTime);
-	// 	gl.uniform2f(uniforms.u_pointer_position, 0.5, 0.5); // Центр экрана
-	// 	gl.uniform1f(uniforms.u_scroll_progress, 0); // Отключаем прокрутку
-
-	// 	gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-	// 	requestAnimationFrame(render);
-	// };
-
 	let lastTime = 0;
-	const fps = 60; // Ограничение FPS
+	const fps = 60;
 
 	const render = (currentTime) => {
 		const deltaTime = currentTime - lastTime;
@@ -193,30 +162,18 @@ const NeuralNoise = () => {
 			pointer.x / window.innerWidth,
 			1 - pointer.y / window.innerHeight
 		);
-		gl.uniform1f(uniforms.u_scroll_progress, window.pageYOffset / (2 * window.innerHeight));
+		gl.uniform1f(
+			uniforms.u_scroll_progress,
+			window.pageYOffset / (2 * window.innerHeight)
+		);
 
 		gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 		requestAnimationFrame(render);
 	};
 
-	// const setupEvents = () => {
-	// 	const updateMousePosition = (eX, eY) => {
-	// 		pointer.current.tX = eX;
-	// 		pointer.current.tY = eY;
-	// 	};
-
-	// 	window.addEventListener('pointermove', (e) => updateMousePosition(e.clientX, e.clientY));
-	// 	window.addEventListener('touchmove', (e) =>
-	// 		updateMousePosition(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
-	// 	);
-	// 	window.addEventListener('resize', resizeCanvas);
-	// };
-
 	useEffect(() => {
 		const canvas = canvasRef.current;
 		const glContext = initShader(canvas);
-		//Взаимодействие пользователя с помощью мыши и тачпада
-		// setupEvents();
 		resizeCanvas();
 		render();
 
@@ -228,7 +185,14 @@ const NeuralNoise = () => {
 	return (
 		<canvas
 			ref={canvasRef}
-			style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: '-100' }}
+			style={{
+				position: 'fixed',
+				top: 0,
+				left: 0,
+				width: '100%',
+				height: '100%',
+				zIndex: '-100',
+			}}
 		/>
 	);
 };

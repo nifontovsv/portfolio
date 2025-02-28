@@ -67,90 +67,72 @@
 			}
 		}
 		.aboutMiddle {
-			// display: flex;
-			// justify-content: center;
-			// align-items: center;
-			@media (max-width: 767px) {
-				height: 100%;
+			height: 75vh;
+			overflow-y: auto;
+			.projectsGrid {
+				padding: 4rem 0;
 			}
-			.projects {
-				height: 100%;
-				// padding: 40px;
-				// margin: 40px;
-				overflow-y: auto;
-				gap: 20px;
-				display: flex;
-				justify-content: center;
-				flex-wrap: wrap;
-				@media (max-width: 767px) {
-					height: 100%;
-				}
-				.projectsItems {
-					margin-bottom: 20px;
-					height: 200px;
-					width: 300px;
+			.projectsItems {
+				margin-bottom: 20px;
 
-					.heading {
-						display: inline;
-						font-weight: 700;
-						font-size: 16px;
-						color: #5565e8;
-						margin-right: 20px;
+				.heading {
+					display: inline;
+					font-weight: 700;
+					font-size: 16px;
+					color: #5565e8;
+					margin-right: 20px;
+				}
+				.subHeading {
+					font-weight: 450;
+					color: #607b96;
+				}
+				.projectItem {
+					border: 1px solid rgba(255, 255, 255, 0.3);
+					border-radius: 15px;
+					background: rgba(28, 28, 28, 0.5);
+					margin-top: 10px;
+					transition: all 0.6s ease;
+
+					.projectItemImage {
+						object-fit: cover;
 					}
-					.subHeading {
-						font-weight: 450;
-						color: #607b96;
+
+					&:hover {
+						transform: scale(1.01);
+						box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+						transition: all 0.3s ease;
 					}
-					.projectItem {
-						height: 100%;
+					.projectLink {
 						display: flex;
-						flex-direction: column;
-						justify-content: space-between;
-						border: 1px solid rgba(255, 255, 255, 0.3);
-						border-radius: 15px;
-						background: rgba(28, 28, 28, 0.5);
-						margin-top: 10px;
-						transition: all 0.6s ease;
+						justify-content: center;
+						align-items: center;
+						margin: 1em;
+						border-radius: 8px;
+						width: 129px;
+						height: 38px;
+						background: #1c2b3a;
 						&:hover {
-							transform: scale(1.02);
-							box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-							transition: all 0.3s ease;
+							background-color: #2b4b66;
 						}
-						.projectLink {
+						.link {
 							display: flex;
 							justify-content: center;
 							align-items: center;
-							margin: 1em;
-							border-radius: 8px;
-							// padding: 10px 14px;
-							width: 129px;
-							height: 38px;
-							background: #1c2b3a;
-							&:hover {
-								background-color: #2b4b66;
-							}
-							.link {
-								display: flex;
-								justify-content: center;
-								align-items: center;
-								text-decoration: none;
-								font-weight: 450;
-								font-size: 14px;
-								color: #fff;
-								width: 100%;
-								height: 100%;
-							}
-						}
-						.description {
-							overflow-y: auto;
-							margin: 0 1.5em;
-						}
-						img {
+							text-decoration: none;
+							font-weight: 450;
+							font-size: 14px;
+							color: #fff;
 							width: 100%;
+							height: 100%;
 						}
+					}
+					.description {
+						overflow-y: auto;
+						margin: 0 1.5em;
 					}
 				}
 			}
+			// }
 		}
 
 		.aboutRight {

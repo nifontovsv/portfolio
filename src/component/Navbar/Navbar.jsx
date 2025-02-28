@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Navbar.module.scss';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import Button from '../common/Button/Button';
 
 function Navbar() {
-	const [isActive, setIsActive] = useState('/');
+	const [isActive, setIsActive] = useState(null);
 	const [active, setActive] = useState(false);
+	const location = useLocation();
 
 	const links = [
 		{ path: '/', text: '_hello' },
@@ -13,6 +14,15 @@ function Navbar() {
 		{ path: '/projects', text: '_projects' },
 		{ path: '/contacts', text: '_contact-me' },
 	];
+
+	useEffect(() => {
+		const index = links.findIndex((item) => item.path === location.pathname);
+		setIsActive(index !== -1 ? index : null);
+	}, [location.pathname]);
+
+	const handleActiveClick = (index) => {
+		setIsActive(index);
+	};
 
 	return (
 		<header className={styles.header}>
@@ -69,11 +79,11 @@ function Navbar() {
 				</svg>
 			</div>
 			<div className={styles.nav}>
-				{links.map((item) => {
+				{links.map((item, index) => {
 					return (
 						<div
-							className={`${styles.navItem} ${styles.navHoverBtn}  ${isActive === item.path ? styles.active : ''}`}
-							onClick={() => setIsActive(item.path)}
+							className={`${styles.navItem} ${isActive === index ? styles.active : ''}`}
+							onClick={() => handleActiveClick(index)}
 						>
 							<Link to={item.path}>
 								<Button title={item.text} />
