@@ -41,7 +41,6 @@ function ToDoList() {
 			setSourceList(null);
 			return;
 		}
-
 		// Убедиться, что оба списка существуют
 		if (sourceList && targetList) {
 			dispatch(removeItemInNewToDoListAС(sourceList, draggedItem)); // Удаляем из исходного списка

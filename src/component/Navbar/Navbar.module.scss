@@ -63,6 +63,7 @@
 		height: 100%;
 		text-align: center;
 		transition: all 0.3s ease;
+
 		&:hover {
 			font-weight: 450;
 			font-size: 16px;
@@ -70,16 +71,17 @@
 		}
 	}
 	&.active {
-		border-bottom: 2px solid #fea55f;
+		border-bottom: 1px solid #6f00ff;
 	}
 	&:hover {
-		border-color: rgba(255, 255, 255, 0.3);
-		background: linear-gradient(
-			90deg,
-			rgba(54, 157, 85, 0.4) 0%,
-			rgba(76, 255, 180, 0.6) 50%,
-			rgba(54, 157, 85, 0.4) 100%
-		);
+		// border-color: rgba(255, 255, 255, 0.3);
+		// background: linear-gradient(
+		// 	90deg,
+		// 	rgba(54, 157, 85, 0.4) 0%,
+		// 	rgba(76, 255, 180, 0.6) 50%,
+		// 	rgba(54, 157, 85, 0.4) 100%
+		// );
+		box-shadow: 0px 0px 14px 1px rgba(161, 139, 255, 0.54);
 	}
 }
 
@@ -137,18 +139,6 @@
 		}
 	}
 }
-
-.burger {
-	display: none;
-	@media screen and (max-width: 1024px) {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		width: 40px;
-		justify-content: flex-end;
-	}
-}
-
 .blurMenu {
 	position: fixed;
 	top: 0;
@@ -159,6 +149,17 @@
 	backdrop-filter: blur(5px);
 	z-index: 5;
 	transition: opacity 0.3s ease;
+}
+
+.burger {
+	display: none;
+	@media screen and (max-width: 1024px) {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		width: 40px;
+		justify-content: flex-end;
+	}
 }
 
 .ham {
@@ -195,3 +196,34 @@
 .ham4.active .bottom {
 	stroke-dashoffset: -68px;
 }
+
+// .navHoverBtn {
+// 	position: relative;
+// 	margin-left: 2.5rem;
+// 	font-family: var(--font-general);
+// 	font-size: 0.75rem;
+// 	text-transform: uppercase;
+// 	color: #ebf8ff;
+// 	cursor: pointer;
+
+// 	&::after {
+// 		content: '';
+// 		position: absolute;
+// 		bottom: -2px;
+// 		left: 0;
+// 		height: 2px;
+// 		width: 0; // Начальное состояние
+// 		background-color: #262626;
+// 		transition: width 0.3s cubic-bezier(0.65, 0.05, 0.36, 1); // Изменяем только width
+// 	}
+
+// 	&:hover::after {
+// 		width: 100%; // Расширение линии
+// 	}
+
+// 	@media (prefers-color-scheme: dark) {
+// 		&::after {
+// 			background-color: white;
+// 		}
+// 	}
+// }

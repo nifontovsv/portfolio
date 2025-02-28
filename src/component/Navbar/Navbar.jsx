@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Navbar.module.scss';
 import { Link } from 'react-router';
+import Button from '../common/Button/Button';
 
 function Navbar() {
 	const [isActive, setIsActive] = useState('/');
@@ -25,11 +26,13 @@ function Navbar() {
 							<li
 								className={styles.burgerItem}
 								key={item.path}
-								onClick={() => setIsActive(item.path)}>
+								onClick={() => setIsActive(item.path)}
+							>
 								<Link
 									className={styles.burgerLink}
 									onClick={() => setActive(!active)}
-									to={item.path}>
+									to={item.path}
+								>
 									{item.text}
 								</Link>
 							</li>
@@ -37,19 +40,28 @@ function Navbar() {
 					})}
 				</ul>
 			</div>
-			{active && <div onClick={() => setActive(!active)} className={styles.blurMenu}></div>}
+			{active && (
+				<div
+					onClick={() => setActive(!active)}
+					className={styles.blurMenu}
+				></div>
+			)}
 
 			<div className={styles.burger}>
 				<svg
 					onClick={() => setActive(!active)}
 					className={`${styles.ham} ${styles.ham4} ${styles.hamRotate} ${active ? styles.active : ''} `}
 					viewBox='0 0 100 100'
-					width='40'>
+					width='40'
+				>
 					<path
 						className={`${styles.line} ${styles.top} ${active ? styles.active : ''}`}
 						d='m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20'
 					/>
-					<path className={`${styles.line} ${styles.middle}`} d='m 70,50 h -40' />
+					<path
+						className={`${styles.line} ${styles.middle}`}
+						d='m 70,50 h -40'
+					/>
 					<path
 						className={`${styles.line} ${styles.bottom} ${active ? styles.active : ''}`}
 						d='m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20'
@@ -60,9 +72,12 @@ function Navbar() {
 				{links.map((item) => {
 					return (
 						<div
-							className={`${styles.navItem} ${isActive === item.path ? styles.active : ''}`}
-							onClick={() => setIsActive(item.path)}>
-							<Link to={item.path}>{item.text}</Link>
+							className={`${styles.navItem} ${styles.navHoverBtn}  ${isActive === item.path ? styles.active : ''}`}
+							onClick={() => setIsActive(item.path)}
+						>
+							<Link to={item.path}>
+								<Button title={item.text} />
+							</Link>
 						</div>
 					);
 				})}

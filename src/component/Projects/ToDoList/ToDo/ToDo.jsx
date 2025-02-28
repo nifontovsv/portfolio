@@ -188,20 +188,22 @@ function ToDo({ todolist, onDragStart }) {
 			className={`${styles.todo} ${isVisible ? styles.showTodo : ''}`}>
 			<div className={styles.headerTodo}>
 				{editingTodolistId === todolist.id ?
-					<>
+					<div className={styles.editHeaderTodolist}>
 						<input
-							// ref={inputRefTodolist}
+							className={styles.editInputHeaderTodolist}
 							type='text'
 							value={newTextTodolist}
 							onKeyDown={handleKeyDown}
 							onChange={onChangeEditInput}
 						/>
-						<button
-							// ref={saveButtonRefTodolist}
-							onClick={handleSaveTodolistTitle}>
-							Save
-						</button>
-					</>
+						<IconButton className={styles.editIconHeaderTodolist} onClick={handleSaveTodolistTitle}>
+							<DoneIcon
+								className={styles.editBtnHeaderTodolist}
+								ref={saveButtonRef}
+								onClick={handleSaveClick}
+							/>
+						</IconButton>
+					</div>
 				:	<h2>{todolist.title}</h2>}
 				<Options
 					handleEditTitleTodolist={handleEditTitleTodolist}
@@ -234,32 +236,32 @@ function ToDo({ todolist, onDragStart }) {
 				{isRendered && (
 					<div className={`${styles.allTasks} ${isVisible ? styles.show : ''}`}>
 						{showAddTaskInput ?
-							<div onClick={handleShowAddTaskInput} className={styles.addNewTask}>
-								<CloseIcon style={{ fontSize: 'large' }} />
+							<div className={styles.blockAddTask}>
+								<div className={styles.blockAddTaskLabel}>
+									<label>
+										<input
+											className={styles.blockAddTaskInput}
+											value={input}
+											onKeyPress={onKeyPressHandler}
+											onChange={onChangeInputHandler}
+											type='text'
+											// onDoubleClick={onDoubleClickEditHandler}
+										/>
+										<IconButton className={styles.AddCircleBtn} onClick={addTask} disableRipple>
+											<AddCircleIcon className={styles.AddCircleIcon} />
+										</IconButton>
+									</label>
+									{error && <span style={{ color: 'red', fontSize: '12px' }}>{error}</span>}
+								</div>
+								<div onClick={handleShowAddTaskInput} className={styles.closeNewTask}>
+									<CloseIcon style={{ fontSize: 'large' }} />
+								</div>
 							</div>
 						:	<div onClick={handleShowAddTaskInput} className={styles.addNewTask}>
 								<AddIcon className={styles.addIcon} style={{ fontSize: 'large' }} />
 								<p>Add new task</p>
 							</div>
 						}
-						{showAddTaskInput && (
-							<div className={styles.blockAddTask}>
-								<label>
-									<input
-										className={styles.blockAddTaskInput}
-										value={input}
-										onKeyPress={onKeyPressHandler}
-										onChange={onChangeInputHandler}
-										type='text'
-										// onDoubleClick={onDoubleClickEditHandler}
-									/>
-									{error && <span style={{ color: 'red', fontSize: '12px' }}>{error}</span>}
-									<IconButton className={styles.AddCircleBtn} onClick={addTask}>
-										<AddCircleIcon className={styles.AddCircleIcon} />
-									</IconButton>
-								</label>
-							</div>
-						)}
 						{/* <div>
 							<button onClick={() => filterTasks('all')}>All</button>
 							<button onClick={() => filterTasks('active')}>Active</button>
@@ -296,7 +298,10 @@ function ToDo({ todolist, onDragStart }) {
 														ref={inputRef} // Привязываем ref к инпуту
 													/>
 													{/* {error && <span style={{ color: 'red', fontSize: '12px' }}>{error}</span>} */}
-													<IconButton className={styles.AddCircleBtn} onClick={addTask}>
+													<IconButton
+														className={styles.AddCircleBtn}
+														onClick={addTask}
+														disableRipple>
 														<DoneIcon
 															className={styles.blockEditBtn}
 															ref={saveButtonRef}
@@ -308,8 +313,13 @@ function ToDo({ todolist, onDragStart }) {
 										:	<span>{task.title}</span>}
 										&nbsp;
 									</li>
-									<IconButton className={styles.editTask} aria-label='delete' size='small'>
+									<IconButton
+										className={styles.editTask}
+										aria-label='delete'
+										size='small'
+										disableRipple>
 										<EditIcon
+											size='small'
 											onClick={(e) => {
 												e.stopPropagation();
 												handleEditClick(task);
@@ -317,9 +327,13 @@ function ToDo({ todolist, onDragStart }) {
 											Edit
 										</EditIcon>
 									</IconButton>
-									<IconButton className={styles.deleteTask} aria-label='delete' size='small'>
+									<IconButton
+										className={styles.deleteTask}
+										aria-label='delete'
+										size='small'
+										disableRipple>
 										<DeleteIcon
-											fontSize='small'
+											sx={{ fontSize: 10 }}
 											onClick={(e) => {
 												e.stopPropagation();
 												deleteTask(task.id);

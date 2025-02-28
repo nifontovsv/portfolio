@@ -1,0 +1,32 @@
+.btnWrapper {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	align-items: center;
+	gap: 0.25rem; // 1 (обычно 4px)
+	overflow: hidden;
+	background-color: black;
+	font-size: 0.75rem; // text-xs
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.4); // text-white/20
+	border: none;
+
+	&:hover {
+		color: white;
+	}
+
+	.btnGradient {
+		pointer-events: none;
+		position: absolute;
+		inset: -1px;
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+	.btnTitle {
+		position: relative;
+		z-index: 20;
+	}
+}
