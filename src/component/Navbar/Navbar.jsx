@@ -82,6 +82,7 @@ function Navbar() {
 				{links.map((item, index) => {
 					return (
 						<div
+							key={index}
 							className={`${styles.navItem} ${isActive === index ? styles.active : ''}`}
 							onClick={() => handleActiveClick(index)}
 						>
