@@ -26,6 +26,8 @@ const Button = ({ title, href }) => {
 			onMouseLeave={handleMouseLeave}
 			className={styles.btnWrapper}
 			href={href}
+			target='_blank'
+			rel='noopener noreferrer'
 		>
 			<div
 				className={styles.btnGradient}

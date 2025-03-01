@@ -34,26 +34,53 @@ const initialState = loadState();
 export const todoReducer = (state = initialState, action) => {
 	console.log('Current State:', state);
 	switch (action.type) {
+		// case ADD_TASK: {
+		// 	const { toDoListId, input } = action.payload;
+		// 	const newTask = { id: Date.now(), title: input, isDone: false };
+		// 	return {
+		// 		...state,
+		// 		toDoLists: state.toDoLists.map((toDoList) =>
+		// 			toDoList.id === toDoListId ?
+		// 				{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
+		// 			:	toDoList
+		// 		),
+		// 		toDoLists2: state.toDoLists2.map((toDoList) =>
+		// 			toDoList.id === toDoListId ?
+		// 				{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
+		// 			:	toDoList
+		// 		),
+		// 		toDoLists3: state.toDoLists3.map((toDoList) =>
+		// 			toDoList.id === toDoListId ?
+		// 				{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
+		// 			:	toDoList
+		// 		),
+		// 	};
+		// }
+
 		case ADD_TASK: {
 			const { toDoListId, input } = action.payload;
 			const newTask = { id: Date.now(), title: input, isDone: false };
+
 			return {
 				...state,
-				toDoLists: state.toDoLists.map((toDoList) =>
-					toDoList.id === toDoListId ?
-						{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
-					:	toDoList
-				),
-				toDoLists2: state.toDoLists2.map((toDoList) =>
-					toDoList.id === toDoListId ?
-						{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
-					:	toDoList
-				),
-				toDoLists3: state.toDoLists3.map((toDoList) =>
-					toDoList.id === toDoListId ?
-						{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
-					:	toDoList
-				),
+				toDoLists:
+					state.toDoLists?.map((toDoList) =>
+						toDoList.id === toDoListId ?
+							{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
+						:	toDoList
+					) || [], // Если state.toDoLists undefined, возвращаем пустой массив
+				toDoLists2:
+					state.toDoLists2?.map((toDoList) =>
+						toDoList.id === toDoListId ?
+							{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
+						:	toDoList
+					) || [], // То же для toDoLists2
+				toDoLists3:
+					state.toDoLists3?.map((toDoList) =>
+						toDoList.id === toDoListId ?
+							{ ...toDoList, tasks: [...toDoList.tasks, newTask] }
+						:	toDoList
+					) || [], // То же для toDoLists3
 			};
 		}
 
@@ -197,7 +224,9 @@ export const todoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				toDoLists:
-					Array.isArray(state.toDoLists) ? [newToDoList, ...state.toDoLists] : [newToDoList], // Если toDoLists не массив, создаём новый
+					Array.isArray(state.toDoLists) ?
+						[newToDoList, ...state.toDoLists]
+					:	[newToDoList], // Если toDoLists не массив, создаём новый
 			};
 		}
 

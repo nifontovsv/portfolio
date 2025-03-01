@@ -16,8 +16,8 @@ function Footer() {
 							xmlns='http://www.w3.org/2000/svg'
 							x='0px'
 							y='0px'
-							width='17'
-							height='17'
+							width='12'
+							height='12'
 							fill='#CCCCCC'
 							viewBox='0 0 50 50'
 						>
@@ -33,8 +33,8 @@ function Footer() {
 							xmlns='http://www.w3.org/2000/svg'
 							x='0px'
 							y='0px'
-							width='17'
-							height='17'
+							width='12'
+							height='12'
 							fill='#CCCCCC'
 							viewBox='0 0 50 50'
 						>

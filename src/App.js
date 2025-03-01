@@ -12,7 +12,8 @@ import NeuralNoise from './component/NeuralNoise/NeuralNoise';
 function App() {
 	return (
 		<div className='app'>
-			<NeuralNoise /> <Navbar />
+			<NeuralNoise />
+			<Navbar />
 			<Routes>
 				<Route path='/' element={<Main />} />
 				<Route path='/about' element={<About />} />

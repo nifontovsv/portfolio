@@ -1,16 +1,79 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import TabList from '../About/TabList/TabList';
 import TabContent from '../About/TabContent/TabContent';
 import MenuList from '../About/MenuList/MenuList';
 import styles from './Projects.module.scss';
-import shoppebook from '../../images/shoppebook.png';
 import { Grid2 } from '@mui/material';
 import Button from '../common/Button/Button';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import agency from '../../images/agency.mp4';
+import shoppebook from '../../images/shoppebook.mp4';
+import avion from '../../images/avion.mp4';
+import awward from '../../images/awward.mp4';
+import agencyimg from '../../images/DigitalAgency.jpg';
+import shoppebookimg from '../../images/shoppebook.png';
+import avionimg from '../../images/Avion.jpg';
+import awwardimg from '../../images/awwardimg.jpg';
 
 function Projects() {
 	const [isOpen, setIsOpen] = useState(true);
 	const [openTabs, setOpenTabs] = useState([]);
 	const [activeTab, setActiveTab] = useState('');
+	const [videoError, setVideoError] = useState({});
+
+	const handleVideoError = (index) => {
+		setVideoError((prev) => ({ ...prev, [index]: true }));
+	};
+
+	const projectsRef = useRef(null);
+
+	// Создаём массив ссылок для каждого видео
+	const videoRefs = useRef([]);
+
+	// Инициализация массива рефов
+	useEffect(() => {
+		videoRefs.current = videoRefs.current.slice(0, projects.length);
+	}, []);
+
+	useEffect(() => {
+		setTimeout(() => {
+			videoRefs.current.forEach((video) => {
+				if (video) {
+					video.currentTime = 0;
+				}
+			});
+		}, 100); // Даем время браузеру обработать загрузку
+	}, []);
+
+	const handleMouseEnter = useCallback((index) => {
+		const video = videoRefs.current[index];
+		if (video) {
+			video.currentTime = 0; // Сбросить на начало перед воспроизведением
+			video.playbackRate = 2; // Ускоренный старт
+			video.play().then(() => {
+				video.playbackRate = 1; // Вернуть нормальную скорость
+			});
+		}
+	}, []);
+
+	const handleMouseLeave = useCallback((index) => {
+		const video = videoRefs.current[index];
+		if (video) {
+			video.pause();
+			video.currentTime = 0; // Сбрасываем на начало
+		}
+	}, []);
+
+	const tl = gsap.timeline();
+
+	useGSAP(() => {
+		tl.fromTo(
+			projectsRef.current.children,
+			{ opacity: 0 },
+			{ opacity: 1, duration: 3, delay: 0.5, stagger: 0.3 }
+		);
+	});
 
 	const aboutArr = [
 		'/**',
@@ -34,74 +97,43 @@ function Projects() {
 		{ id: 'snake', label: 'Snake', title: 'snake' },
 		{ id: 'calculator', label: 'Calculator', title: 'calculator' },
 	];
-	<svg
-		class='w-6 h-6 text-gray-800 dark:text-white'
-		aria-hidden='true'
-		xmlns='http://www.w3.org/2000/svg'
-		width='24'
-		height='24'
-		fill='none'
-		viewBox='0 0 24 24'
-	>
-		<path
-			stroke='currentColor'
-			stroke-linecap='round'
-			stroke-linejoin='round'
-			strokeWidth='2'
-			d='M9 5v14m8-7h-2m0 0h-2m2 0v2m0-2v-2M3 11h6m-6 4h6m11 4H4c-.55228 0-1-.4477-1-1V6c0-.55228.44772-1 1-1h16c.5523 0 1 .44772 1 1v12c0 .5523-.4477 1-1 1Z'
-		/>
-	</svg>;
 
 	const projects = [
 		{
 			title: 'Project 1',
 			span: '// _shoppebook',
-			image: shoppebook,
-			description: 'Интернет-магазин с книгами',
+			video: shoppebook,
+			image: shoppebookimg,
+			description: 'e-commerce shop books',
 			linkTitle: 'view-project',
 			href: 'https://github.com/nifontovsv/shoppebook',
 		},
 		{
-			title: 'Project 1',
-			span: '// _shoppebook',
-			image: shoppebook,
-			description: 'Интернет-магазин с книгами',
+			title: 'Project 2',
+			span: '// _awward',
+			video: awward,
+			image: awwardimg,
+			description: 'lending jointly gsap ts tailwind',
 			linkTitle: 'view-project',
+			href: 'https://github.com/nifontovsv/awward',
 		},
 		{
-			title: 'Project 1',
-			span: '// _shoppebook',
-			image: shoppebook,
-			description: 'Интернет-магазин с книгами',
+			title: 'Project 3',
+			span: '// _avion',
+			video: avion,
+			image: avionimg,
+			description: 'multi-pages website',
 			linkTitle: 'view-project',
+			href: 'https://github.com/nifontovsv/avion',
 		},
 		{
-			title: 'Project 1',
-			span: '// _shoppebook',
-			image: shoppebook,
-			description: 'Интернет-магазин с книгами',
+			title: 'Project 4',
+			span: '// _agency',
+			video: agency,
+			image: agencyimg,
+			description: 'simple lending',
 			linkTitle: 'view-project',
-		},
-		{
-			title: 'Project 1',
-			span: '// _shoppebook',
-			image: shoppebook,
-			description: 'Интернет-магазин с книгами',
-			linkTitle: 'view-project',
-		},
-		{
-			title: 'Project 1',
-			span: '// _shoppebook',
-			image: shoppebook,
-			description: 'Интернет-магазин с книгами',
-			linkTitle: 'view-project',
-		},
-		{
-			title: 'Project 1',
-			span: '// _shoppebook',
-			image: shoppebook,
-			description: 'Интернет-магазин с книгами',
-			linkTitle: 'view-project',
+			href: 'https://github.com/nifontovsv/agency',
 		},
 	];
 
@@ -183,25 +215,45 @@ function Projects() {
 						{activeTab ?
 							<TabContent activeTab={activeTab} aboutArr={aboutArr} />
 						:	<Grid2
+								ref={projectsRef}
 								className={styles.projectsGrid}
 								container
 								spacing={3}
 								justifyContent='center'
 							>
 								{projects.map((item, index) => (
-									<Grid2 xs={12} sm={6} md={4} lg={3} key={item.index}>
+									<Grid2 xs={12} sm={6} md={4} lg={3} key={index}>
 										<div className={styles.projectsItems}>
 											<h2 className={styles.heading}>{item.title}</h2>
 											<span className={styles.subHeading}>{item.span}</span>
-											<div className={styles.projectItem}>
-												<img
-													width={300}
-													height={150}
-													className={styles.projectItemImage}
-													src={item.image}
-													alt={item.image}
-												/>
-												<p className={styles.description}>{item.description}</p>
+											<div
+												onMouseEnter={() => handleMouseEnter(index)}
+												onMouseLeave={() => handleMouseLeave(index)}
+												className={styles.projectItem}
+											>
+												{videoError[index] ?
+													<img
+														src={item.image}
+														alt={item.span}
+														className={styles.projectItemImage}
+													/>
+												:	<video
+														ref={(el) => (videoRefs.current[index] = el)}
+														muted
+														playsInline
+														preload='metadata'
+														className={styles.projectItemImage}
+														onError={() => handleVideoError(index)} // Отлавливаем ошибку
+														onLoadedMetadata={(e) => {
+															e.target.currentTime = 0.1; // Перематываем немного вперед, чтобы убрать черный экран
+														}}
+													>
+														<source src={item.video} type='video/mp4' />
+													</video>
+												}
+												<div className={styles.description}>
+													<p>{item.description}</p>
+												</div>
 												<div className={styles.projectLink}>
 													<Button title={item.linkTitle} href={item.href} />
 												</div>

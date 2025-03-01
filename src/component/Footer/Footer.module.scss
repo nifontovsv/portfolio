@@ -4,6 +4,9 @@
 	border-top: 1px solid rgba(255, 255, 255, 0.3);
 	font-size: 14px;
 	line-height: 1;
+	height: 5vh;
+	box-sizing: border-box;
+
 	@media screen and (max-width: 1024px) {
 		justify-content: flex-end;
 	}
@@ -15,8 +18,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100%;
 	width: 100px;
+	height: 100%;
 	transition: all 0.3s ease;
 
 	&:first-child {
@@ -55,24 +58,9 @@
 		transition: all 0.3s ease;
 		cursor: pointer;
 		&:hover {
-			font-weight: 450;
-			font-size: 16px;
 			color: #fff;
 			transition: all 0.3s ease;
 			box-shadow: 0px 0px 14px 1px rgba(161, 139, 255, 0.54);
 		}
-	}
-	&:hover {
-		// border-color: rgba(255, 255, 255, 0.3);
-		// background: linear-gradient(
-		// 	90deg,
-		// 	rgba(54, 157, 85, 0.4) 0%,
-		// 	rgba(76, 255, 180, 0.6) 50%,
-		// 	rgba(54, 157, 85, 0.4) 100%
-		// );
-		// backdrop-filter: blur(5px); /* Размытие заднего фона */
-		// -webkit-backdrop-filter: blur(5px); /* Поддержка для Safari */
-		// transition: all 0.3s ease;
-		box-shadow: 0px 0px 14px 1px rgba(161, 139, 255, 0.54);
 	}
 }

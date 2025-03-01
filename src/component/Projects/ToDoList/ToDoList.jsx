@@ -93,7 +93,12 @@ function ToDoList() {
 			{isModal && (
 				<div className={styles.modalWindow}>
 					<div onClick={() => setIsModal(false)} className={styles.closeModal}>
-						<svg width={30} height={30} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'>
+						<svg
+							width={30}
+							height={30}
+							xmlns='http://www.w3.org/2000/svg'
+							viewBox='0 0 384 512'
+						>
 							<path d='M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z' />
 						</svg>
 					</div>
@@ -110,7 +115,10 @@ function ToDoList() {
 							{error}
 						</label>
 
-						<button className={styles.btnAddTodolist} onClick={handlerAddToDoList}>
+						<button
+							className={styles.btnAddTodolist}
+							onClick={handlerAddToDoList}
+						>
 							Add To Do List
 						</button>
 					</div>
@@ -120,7 +128,8 @@ function ToDoList() {
 				<div
 					onDrop={() => handleDrop('toDoLists')}
 					onDragOver={(e) => e.preventDefault()}
-					className={`${styles.allTodo} ${styles.item}`}>
+					className={`${styles.allTodo} ${styles.item}`}
+				>
 					<h3 className={styles.itemTitle}>To do</h3>{' '}
 					{Array.isArray(todolists) && todolists.length > 0 ?
 						todolists.map((todolist) => (
@@ -136,7 +145,8 @@ function ToDoList() {
 				<div
 					onDrop={() => handleDrop('toDoLists2')}
 					onDragOver={(e) => e.preventDefault()}
-					className={`${styles.inProgress} ${styles.item}`}>
+					className={`${styles.inProgress} ${styles.item}`}
+				>
 					<h3 className={styles.itemTitle}>In progress</h3>
 					{Array.isArray(listTwo) && listTwo.length > 0 ?
 						listTwo.map((todolist) => (
@@ -152,7 +162,8 @@ function ToDoList() {
 				<div
 					onDrop={() => handleDrop('toDoLists3')}
 					onDragOver={(e) => e.preventDefault()}
-					className={`${styles.done} ${styles.item}`}>
+					className={`${styles.done} ${styles.item}`}
+				>
 					<h3 className={styles.itemTitle}>Done</h3>{' '}
 					{Array.isArray(listThree) && listThree.length > 0 ?
 						listThree.map((todolist) => (
