@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.66b0d0d4.css",
+    "main.js": "/portfolio/static/js/main.fbd2e913.js",
+    "static/js/488.9561f9b8.chunk.js": "/portfolio/static/js/488.9561f9b8.chunk.js",
+    "static/media/awward.mp4": "/portfolio/static/media/awward.4aefe715097e3ba72fbe.mp4",
+    "static/media/awwardimg.jpg": "/portfolio/static/media/awwardimg.d8e403a516dc79f13d60.jpg",
+    "static/media/agency.mp4": "/portfolio/static/media/agency.b4aa47204c14c67d5ab4.mp4",
+    "static/media/pravovik.mp4": "/portfolio/static/media/pravovik.b9f291d9a77e20a6a146.mp4",
+    "static/media/avion.mp4": "/portfolio/static/media/avion.2671ba3ce6cfda112fa3.mp4",
+    "static/media/shoppebook.mp4": "/portfolio/static/media/shoppebook.46de03e2261f1487e686.mp4",
+    "static/media/exampleportfolio.mp4": "/portfolio/static/media/exampleportfolio.7819eba787663aa83e99.mp4",
+    "static/media/shoppebook.png": "/portfolio/static/media/shoppebook.e5ce96228963401fcf90.png",
+    "static/media/Avion.jpg": "/portfolio/static/media/Avion.70066939db9ff4aabfef.jpg",
+    "static/media/DigitalAgency.jpg": "/portfolio/static/media/DigitalAgency.36bc6a875d2dc915b1e2.jpg",
+    "index.html": "/portfolio/index.html",
+    "main.66b0d0d4.css.map": "/portfolio/static/css/main.66b0d0d4.css.map",
+    "main.fbd2e913.js.map": "/portfolio/static/js/main.fbd2e913.js.map",
+    "488.9561f9b8.chunk.js.map": "/portfolio/static/js/488.9561f9b8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.66b0d0d4.css",
+    "static/js/main.fbd2e913.js"
+  ]
+}
