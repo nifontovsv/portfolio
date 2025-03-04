@@ -60,9 +60,11 @@
 				display: block;
 			}
 			.aboutLeft {
-				display: grid;
-				grid-template-columns: 40px auto;
-				position: relative;
+				// display: grid;
+				// grid-template-columns: 40px auto;
+				// position: relative;
+				padding: 0 5px;
+				padding-top: 20px;
 				border-right: 1px solid rgba(255, 255, 255, 0.3);
 				@media (max-width: 767px) {
 					display: block;

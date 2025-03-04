@@ -4,6 +4,20 @@ import TabList from '../About/TabList/TabList';
 import MenuList from '../About/MenuList/MenuList';
 import CodeBlock from '../CodeBlock/CodeBlock';
 
+// Взаимодействие файлов
+// Клиент → Сервер:
+// Клиент (Contacts.js) отправляет POST-запрос на http://localhost:4000/send-email с данными формы и токеном reCAPTCHA.
+// Сервер принимает запрос, проверяет токен через Google API, и, если всё в порядке, отправляет email.
+// Сервер → Клиент:
+// Сервер возвращает JSON-ответ (успех или ошибка), который клиент обрабатывает для отображения статуса.
+
+// Потенциальные проблемы
+// reCAPTCHA v3 vs v2: Клиент использует v3, но нет видимой капчи. Если нужен v2 (галочка), нужно переписать код.
+// SMTP: Если SMTP-сервер (например, Gmail) настроен с 2FA, нужен App Password.
+// Если у вас есть конкретные вопросы или нужно что-то доработать, дайте знать!
+// подробности про express-validator
+// альтернативы nodemailer
+
 function Contacts() {
 	const [isOpen, setIsOpen] = useState(true);
 	const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +34,11 @@ function Contacts() {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
+	// useEffect: Выполняет побочный эффект при монтировании компонента.
+	// Создает <script> для загрузки reCAPTCHA v3 с публичным ключом 6LdekeYqAAAAALwWKOawvlP5xMBDLCTAGT7PZNUu.
+	// async: true: Асинхронная загрузка скрипта.
+	// Логирует успех или ошибку загрузки.
+	// return: Очищает скрипт при размонтировании компонента.
 	useEffect(() => {
 		console.log('useEffect: Загрузка reCAPTCHA начата');
 		const script = document.createElement('script');
@@ -39,6 +58,16 @@ function Contacts() {
 		};
 	}, []);
 
+	// e.preventDefault(): Предотвращает перезагрузку страницы при отправке формы.
+	// Проверяет заполненность полей формы.
+	// Проверяет наличие grecaptcha (загружен ли скрипт reCAPTCHA).
+	// grecaptcha.ready: Ждет готовности reCAPTCHA с таймаутом 5 секунд.
+	// grecaptcha.execute: Генерирует токен reCAPTCHA v3.
+	// fetch: Отправляет POST-запрос на сервер с данными формы и токеном.
+	// Обрабатывает ответ сервера:
+	// Успех (response.ok): Очищает форму и показывает сообщение.
+	// Ошибка: Показывает ошибку.
+	// finally: Сбрасывает состояние загрузки.
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log('handleSubmit: Начало отправки формы');

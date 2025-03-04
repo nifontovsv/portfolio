@@ -32,7 +32,7 @@ const loadState = () => {
 const initialState = loadState();
 
 export const todoReducer = (state = initialState, action) => {
-	console.log('Current State:', state);
+	// console.log('Current State:', state);
 	switch (action.type) {
 		// case ADD_TASK: {
 		// 	const { toDoListId, input } = action.payload;

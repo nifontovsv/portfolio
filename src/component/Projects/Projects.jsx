@@ -3,7 +3,7 @@ import TabList from '../About/TabList/TabList';
 import TabContent from '../About/TabContent/TabContent';
 import MenuList from '../About/MenuList/MenuList';
 import styles from './Projects.module.scss';
-import { Grid2 } from '@mui/material';
+import { Grid2, Skeleton } from '@mui/material';
 import Button from '../common/Button/Button';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -11,69 +11,69 @@ import agency from '../../images/agency.mp4';
 import shoppebook from '../../images/shoppebook.mp4';
 import avion from '../../images/avion.mp4';
 import awward from '../../images/awward.mp4';
+import exampleportfolio from '../../images/exampleportfolio.mp4';
+import pravovik from '../../images/pravovik.mp4';
 import agencyimg from '../../images/DigitalAgency.jpg';
 import shoppebookimg from '../../images/shoppebook.png';
 import avionimg from '../../images/Avion.jpg';
 import awwardimg from '../../images/awwardimg.jpg';
+import { FaGooglePlay } from 'react-icons/fa6';
+import { FaPause } from 'react-icons/fa';
 
 function Projects() {
 	const [isOpen, setIsOpen] = useState(true);
 	const [openTabs, setOpenTabs] = useState([]);
 	const [activeTab, setActiveTab] = useState('');
 	const [videoError, setVideoError] = useState({});
+	const [loading, setLoading] = useState(true);
+	const [playingVideos, setPlayingVideos] = useState({});
+	const [hoveredVideo, setHoveredVideo] = useState(null);
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setLoading(false);
+		}, 5000);
+
+		return () => clearTimeout(timer);
+	}, []);
 
 	const handleVideoError = (index) => {
 		setVideoError((prev) => ({ ...prev, [index]: true }));
 	};
 
-	const projectsRef = useRef(null);
-
 	// Создаём массив ссылок для каждого видео
 	const videoRefs = useRef([]);
+
+	const togglePlay = useCallback((index) => {
+		const video = videoRefs.current[index];
+		if (!video) return;
+
+		setPlayingVideos((prev) => ({
+			...prev,
+			[index]: !prev[index], // Переключаем состояние конкретного видео
+		}));
+
+		if (video.paused) {
+			video.play();
+		} else {
+			video.pause();
+		}
+	}, []);
 
 	// Инициализация массива рефов
 	useEffect(() => {
 		videoRefs.current = videoRefs.current.slice(0, projects.length);
 	}, []);
 
-	useEffect(() => {
-		setTimeout(() => {
-			videoRefs.current.forEach((video) => {
-				if (video) {
-					video.currentTime = 0;
-				}
-			});
-		}, 100); // Даем время браузеру обработать загрузку
-	}, []);
-
-	const handleMouseEnter = useCallback((index) => {
-		const video = videoRefs.current[index];
-		if (video) {
-			video.currentTime = 0; // Сбросить на начало перед воспроизведением
-			video.playbackRate = 2; // Ускоренный старт
-			video.play().then(() => {
-				video.playbackRate = 1; // Вернуть нормальную скорость
-			});
-		}
-	}, []);
-
-	const handleMouseLeave = useCallback((index) => {
-		const video = videoRefs.current[index];
-		if (video) {
-			video.pause();
-			video.currentTime = 0; // Сбрасываем на начало
-		}
-	}, []);
-
+	const projectsRef = useRef(null);
 	const tl = gsap.timeline();
-
 	useGSAP(() => {
 		tl.fromTo(
 			projectsRef.current.children,
 			{ opacity: 0 },
 			{ opacity: 1, duration: 3, delay: 0.5, stagger: 0.3 }
 		);
-	});
+	}, [loading]);
 
 	const aboutArr = [
 		'/**',
@@ -134,6 +134,24 @@ function Projects() {
 			description: 'simple lending',
 			linkTitle: 'view-project',
 			href: 'https://github.com/nifontovsv/agency',
+		},
+		{
+			title: 'Project 5',
+			span: '// _example_portfolio',
+			video: exampleportfolio,
+			// image: agencyimg,
+			description: 'simple lending',
+			linkTitle: 'view-project',
+			href: 'https://github.com/nifontovsv/exampleportfolio',
+		},
+		{
+			title: 'Project 6',
+			span: '// _pravovik',
+			video: pravovik,
+			// image: agencyimg,
+			description: 'simple lending',
+			linkTitle: 'view-project',
+			href: 'https://github.com/nifontovsv/pravovik',
 		},
 	];
 
@@ -223,42 +241,89 @@ function Projects() {
 							>
 								{projects.map((item, index) => (
 									<Grid2 xs={12} sm={6} md={4} lg={3} key={index}>
-										<div className={styles.projectsItems}>
-											<h2 className={styles.heading}>{item.title}</h2>
-											<span className={styles.subHeading}>{item.span}</span>
-											<div
-												onMouseEnter={() => handleMouseEnter(index)}
-												onMouseLeave={() => handleMouseLeave(index)}
-												className={styles.projectItem}
-											>
-												{videoError[index] ?
-													<img
-														src={item.image}
-														alt={item.span}
-														className={styles.projectItemImage}
-													/>
-												:	<video
-														ref={(el) => (videoRefs.current[index] = el)}
-														muted
-														playsInline
-														preload='metadata'
-														className={styles.projectItemImage}
-														onError={() => handleVideoError(index)} // Отлавливаем ошибку
-														onLoadedMetadata={(e) => {
-															e.target.currentTime = 0.1; // Перематываем немного вперед, чтобы убрать черный экран
-														}}
-													>
-														<source src={item.video} type='video/mp4' />
-													</video>
-												}
-												<div className={styles.description}>
-													<p>{item.description}</p>
-												</div>
-												<div className={styles.projectLink}>
-													<Button title={item.linkTitle} href={item.href} />
+										{loading ?
+											<div>
+												<Skeleton
+													// animation='wave'
+													variant='rectangular'
+													width={380}
+													height={250}
+													sx={{
+														bgcolor: 'rgba(255, 255, 255, 0.2)',
+													}}
+												/>
+												<Skeleton
+													// animation='wave'
+													sx={{ bgcolor: 'rgba(255, 255, 255, 0.2)' }}
+												/>
+												<Skeleton
+													width='60%'
+													// animation='wave'
+													sx={{ bgcolor: 'rgba(255, 255, 255, 0.2)' }}
+												/>
+												<Skeleton
+													width={129}
+													height={39}
+													// animation='wave'
+													sx={{ bgcolor: 'rgba(255, 255, 255, 0.2)' }}
+												/>
+											</div>
+										:	<div className={styles.projectsItems}>
+												<h2 className={styles.heading}>{item.title}</h2>
+												<span className={styles.subHeading}>{item.span}</span>
+												<div
+													onMouseEnter={() => setHoveredVideo(index)}
+													onMouseLeave={() => setHoveredVideo(null)}
+													className={styles.projectItem}
+												>
+													{/* {videoError[index] || preview ?
+														<img
+															src={item.image}
+															alt={item.span}
+															className={styles.projectItemImage}
+														/>: */}
+													<div style={{ position: 'relative' }}>
+														<video
+															ref={(el) => (videoRefs.current[index] = el)}
+															muted
+															playsInline
+															preload='metadata'
+															className={styles.projectItemImage}
+															onError={() => handleVideoError(index)} // Отлавливаем ошибку
+															onLoadedMetadata={(e) => {
+																e.target.currentTime = 0.1; // Перематываем немного вперед, чтобы убрать черный экран
+															}}
+															onEnded={() => {
+																setPlayingVideos((prev) => ({
+																	...prev,
+																	[index]: false, // После завершения видео меняем кнопку на Play
+																}));
+															}}
+														>
+															<source src={item.video} type='video/mp4' />
+														</video>
+														{hoveredVideo === index && (
+															<button
+																onClick={() => togglePlay(index)}
+																className={styles.playBtn}
+															>
+																{playingVideos[index] ?
+																	<FaPause className={styles.playIcon} />
+																:	<FaGooglePlay className={styles.playIcon} />}
+															</button>
+														)}
+													</div>
+
+													{/* // } */}
+													<div className={styles.description}>
+														<p>{item.description}</p>
+													</div>
+													<div className={styles.projectLink}>
+														<Button title={item.linkTitle} href={item.href} />
+													</div>
 												</div>
 											</div>
-										</div>
+										}
 									</Grid2>
 								))}
 							</Grid2>

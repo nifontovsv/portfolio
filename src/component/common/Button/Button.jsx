@@ -19,15 +19,12 @@ const Button = ({ title, href }) => {
 	const handleMouseEnter = () => setHoverOpacity(1);
 	const handleMouseLeave = () => setHoverOpacity(0);
 	return (
-		<a
+		<div
 			ref={hoverButtonRef}
 			onMouseMove={handleMouseMove}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			className={styles.btnWrapper}
-			href={href}
-			target='_blank'
-			rel='noopener noreferrer'
 		>
 			<div
 				className={styles.btnGradient}
@@ -36,8 +33,15 @@ const Button = ({ title, href }) => {
 					background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
 				}}
 			/>
-			<p className={styles.btnTitle}>{title}</p>
-		</a>
+			<a
+				href={href}
+				target='_blank'
+				rel='noopener noreferrer'
+				className={styles.btnTitle}
+			>
+				{title}
+			</a>
+		</div>
 	);
 };
 

@@ -23,7 +23,8 @@ const TypingAnimation = () => {
 			</div>
 			<div
 				style={{ wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}
-				className={styles.mainInfoTextTwo}>
+				className={styles.mainInfoTextTwo}
+			>
 				<p className='line'>// complete the game to continue</p>
 				<p className='line'>// you can also see it on my Github page</p>
 				<span className='line' style={{ color: '#4d5bce' }}>
@@ -32,7 +33,12 @@ const TypingAnimation = () => {
 				<span className='line' style={{ color: '#43d9ad' }}>
 					githubLink ={' '}
 				</span>
-				<a className='line' href='https://github.com/nifontovsv'>
+				<a
+					className='line'
+					target='_blank'
+					rel='noopener noreferrer'
+					href='https://github.com/nifontovsv'
+				>
 					“https://github.com/nifontovsv”
 				</a>
 			</div>

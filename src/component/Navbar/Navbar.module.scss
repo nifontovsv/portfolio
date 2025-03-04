@@ -116,7 +116,7 @@
 	height: 90vh;
 	width: 250px;
 	background-color: rgba(36, 36, 36, 0.5);
-	z-index: 6;
+	z-index: 999;
 	border-radius: 5px 0 0 5px;
 	.burgerList {
 		display: flex;
@@ -163,7 +163,7 @@
 	bottom: 0;
 	background-color: rgba(0, 0, 0, 0.5);
 	backdrop-filter: blur(5px);
-	z-index: 5;
+	z-index: 998;
 	transition: opacity 0.3s ease;
 }
 

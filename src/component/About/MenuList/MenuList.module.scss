@@ -1,9 +1,13 @@
 .menuList {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 	list-style: none;
-	padding: 0;
-	margin-left: 20px;
-	position: absolute;
+	// position: absolute;
+	min-width: 100%;
 	z-index: 1;
+	margin: 0;
+	padding: 0;
 	@media (max-width: 767px) {
 		display: flex;
 		flex-direction: column;
@@ -40,7 +44,6 @@
 		font-weight: 400;
 		font-size: 16px;
 		color: #cccccc;
-		margin-bottom: 8px;
 		&:hover {
 			color: #fff;
 			cursor: pointer;
