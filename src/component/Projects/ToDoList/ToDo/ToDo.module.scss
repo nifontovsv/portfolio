@@ -1,0 +1,349 @@
+.todo {
+	display: flex;
+	flex-direction: column;
+	background-color: #292b31;
+	margin: 10px;
+	border-radius: 10px;
+	padding: 20px;
+	overflow: hidden;
+	position: relative;
+	height: 170px;
+	transition: height 0.5s ease;
+	&:hover {
+		box-shadow: 0 0 5px 1px #ffffff50;
+	}
+	.headerTodo {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 20px;
+		h2 {
+			font-weight: 700;
+			font-size: 16px;
+			line-height: 100%;
+			color: #fff;
+			margin-bottom: 1rem;
+			text-align: start;
+			.subTitle {
+				font-weight: 500;
+				font-size: 14px;
+				line-height: 100%;
+				color: rgba(255, 255, 255, 0.5);
+			}
+		}
+		.editHeaderTodolist {
+			position: relative;
+			display: flex;
+			align-items: center;
+			width: 100%;
+			.editInputHeaderTodolist {
+				box-sizing: border-box;
+				height: 30px;
+				border-radius: 20px;
+				border: none;
+				padding-left: 10px;
+				background-color: rgba($color: #1c1d22, $alpha: 0.5);
+				width: 100%;
+				color: #fff;
+				&:focus {
+					outline: none;
+				}
+			}
+			.editIconHeaderTodolist {
+				position: absolute;
+				right: 0;
+				cursor: pointer;
+				.editBtnHeaderTodolist {
+					width: 15px;
+					height: 15px;
+					box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
+					border-radius: 50%;
+					opacity: 1;
+					background-color: #72ff4f;
+				}
+			}
+		}
+	}
+	.mainTodo {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin-bottom: 50px;
+
+		.mainTodoHeader {
+			display: flex;
+			justify-content: space-between;
+
+			.mainTodoHeaderIcon {
+				width: 100px;
+				display: flex;
+				align-items: center;
+				gap: 5px;
+				cursor: pointer;
+				p {
+					margin: 0;
+					font-weight: 600;
+					font-size: 14px;
+					line-height: 100%;
+					color: rgba(255, 255, 255, 0.5);
+					transition: all 0.3s ease;
+					&:hover {
+						color: #fff;
+					}
+				}
+				.totalTasks {
+					font-weight: 600;
+					font-size: 14px;
+					line-height: 100%;
+					text-align: right;
+					color: #fff;
+				}
+			}
+		}
+		.ProgressBar {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			gap: 10px;
+		}
+		.allTasks {
+			opacity: 0;
+			transition:
+				opacity 0.3s ease,
+				transform 0.3s ease;
+			pointer-events: none;
+			display: flex;
+			flex-direction: column;
+			.addNewTask {
+				height: 30px;
+				display: flex;
+				align-items: center;
+				margin-left: auto;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				padding: 5px 10px;
+				border-radius: 25px;
+				transition: background 0.3s ease;
+				&:hover {
+					background: rgba(255, 255, 255, 0.1);
+					color: aquamarine;
+				}
+			}
+
+			.blockAddTask {
+				position: relative;
+				display: flex;
+				justify-content: space-between;
+				.blockAddTaskLabel {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					margin: 10px 0;
+					width: 88%;
+					label {
+						display: flex;
+						align-items: center;
+						position: relative;
+						width: 100%;
+						box-sizing: border-box;
+						height: 40px;
+						border-radius: 20px;
+						border: none;
+						padding-left: 10px;
+						padding: 0 10px;
+						width: 100%;
+						color: #fff;
+						background-color: rgba(255, 255, 255, 0.1);
+						border-radius: 20px;
+						input {
+							box-sizing: border-box;
+							height: 30px;
+							background-color: rgba(0, 0, 0, 0.308);
+							border-radius: 20px;
+							border: 1px solid #3b3b3b;
+							padding-left: 10px;
+							padding: 0 10px;
+							color: #fff;
+							width: 88%;
+							&:focus {
+								outline: none;
+							}
+						}
+					}
+					.AddCircleBtn {
+						color: rgb(0, 255, 170);
+						transition: transform 0.3s ease;
+						.AddCircleIcon {
+							width: 22px;
+							height: 22px;
+							box-shadow: 0 0 5px 2px rgba($color: aquamarine, $alpha: 0.5);
+							border-radius: 50%;
+							&:hover {
+								transform: scale(1.1);
+							}
+						}
+					}
+				}
+				.closeNewTask {
+					position: absolute;
+					top: 13px;
+					right: 0;
+					display: flex;
+					align-items: center;
+					padding: 7px;
+					margin-left: 10px;
+					border-radius: 50%;
+					transition: background 0.3s ease;
+					&:hover {
+						background: rgba(255, 255, 255, 0.1);
+						color: #ff7979;
+					}
+				}
+			}
+			.menuTasks {
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+				list-style: decimal;
+				margin: 0;
+				padding: 0;
+				height: 200px;
+				overflow-y: auto;
+				.wrapperTasks {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					// position: relative;
+					width: 100%;
+					display: flex;
+					border-radius: 25px;
+					transition: background 0.3s ease;
+					&:hover {
+						background: rgba(255, 255, 255, 0.1);
+					}
+					.menuTask {
+						display: flex;
+						align-items: center;
+						margin-left: 20px;
+						width: 100%;
+						word-wrap: break-word;
+						word-break: break-word;
+						height: 40px;
+					}
+					.checked {
+						text-decoration: line-through;
+					}
+					.blockEdit {
+						width: 100%;
+						label {
+							position: relative;
+							display: flex;
+							align-items: center;
+							width: 100%;
+							.blockEditInput {
+								box-sizing: border-box;
+								height: 30px;
+								border-radius: 20px;
+								border: none;
+								padding-left: 10px;
+								background-color: rgba($color: #1c1d22, $alpha: 0.5);
+								width: 100%;
+								color: #fff;
+								&:focus {
+									outline: none;
+								}
+							}
+							.AddCircleBtn {
+								position: absolute;
+								right: 0;
+								cursor: pointer;
+
+								.blockEditBtn {
+									width: 15px;
+									height: 15px;
+									box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.5);
+									border-radius: 50%;
+									opacity: 1;
+									background-color: #72ff4f;
+								}
+							}
+						}
+					}
+					.editTask {
+						color: #fff;
+						width: 32px;
+						height: 32px;
+						&:hover {
+							color: orange;
+							background: rgba(255, 255, 255, 0.1);
+							border-radius: 50%;
+							transform: scale(1.04);
+						}
+					}
+					.deleteTask {
+						color: #fff;
+						width: 32px;
+						height: 32px;
+						margin-right: 10px;
+						&:hover {
+							color: red;
+							background: rgba(255, 255, 255, 0.1);
+							border-radius: 50%;
+							transform: scale(1.04);
+						}
+						svg {
+							width: 24px;
+							height: 24px;
+						}
+					}
+				}
+			}
+		}
+		.allTasks.show {
+			opacity: 1; /* Видим */
+			// transform: translateY(0); /* На своём месте */
+			pointer-events: all;
+		}
+	}
+
+	.footerTodo {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 25px;
+		padding: 8px 16px;
+		width: 110px;
+		height: 20px;
+		background: rgba(255, 255, 255, 0.06);
+		position: absolute;
+		bottom: 20px;
+		transition: transform 0.3s ease;
+		&:hover {
+			transform: scale(1.05);
+		}
+		.dateTodo {
+			font-weight: 600;
+			font-size: 14px;
+			line-height: 100%;
+			color: #fff;
+		}
+	}
+	&.showTodo {
+		height: 450px;
+	}
+	&.draggedItem {
+		cursor: grab;
+	}
+}
+
+[draggable='true'] {
+	cursor: grab; /* Курсор руки */
+}
+
+[draggable='true']:active {
+	cursor: grabbing; /* Курсор захвата */
+}
+
+.MuiButton-root:active {
+	transform: translateY(0); /* Уберите сдвиг */
+}

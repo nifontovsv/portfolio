@@ -1,0 +1,114 @@
+.about {
+	color: white;
+	display: grid;
+	grid-template-columns: 60px auto;
+	height: 80vh;
+	@media (max-width: 767px) {
+		display: block;
+	}
+	.navIcon {
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
+		@media (max-width: 767px) {
+			display: none;
+		}
+	}
+	.tabsAbout {
+		display: grid;
+		grid-template-rows: 40px auto;
+		@media (max-width: 767px) {
+			display: block;
+			height: 100%;
+		}
+		.navTabs {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+			display: grid;
+			grid-template-columns: 240px 1fr;
+			@media (max-width: 767px) {
+				display: block;
+			}
+			.navTabName {
+				display: flex;
+				align-items: center;
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
+				@media (max-width: 767px) {
+					justify-content: center;
+					height: 100%;
+					border: none;
+				}
+
+				.dropdownToggle {
+					background: none;
+					border: none;
+					cursor: pointer;
+					font-size: 16px;
+				}
+				.personalInfo {
+					cursor: pointer;
+				}
+			}
+			.navTabsRight {
+				border-left: 1px solid rgba(255, 255, 255, 0.3);
+			}
+		}
+		.aboutPart {
+			display: grid;
+			grid-template-columns: 240px 1fr 1fr;
+			@media (max-width: 1024px) {
+				grid-template-columns: 240px 1fr;
+			}
+			@media (max-width: 767px) {
+				display: block;
+			}
+			.aboutLeft {
+				// display: grid;
+				// grid-template-columns: 40px auto;
+				// position: relative;
+				padding: 0 5px;
+				padding-top: 20px;
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
+				@media (max-width: 767px) {
+					display: block;
+					border: none;
+				}
+			}
+		}
+		.aboutMiddle {
+			display: grid;
+			grid-template-columns: auto 30px;
+			@media (max-width: 767px) {
+				display: none;
+			}
+		}
+
+		.aboutRight {
+			display: grid;
+			grid-template-columns: auto 30px;
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
+			@media (max-width: 1024px) {
+				display: none;
+			}
+			.aboutRightPosts {
+				padding: 0 40px;
+				p {
+					margin-top: 18px;
+					font-weight: 450;
+					font-size: 18px;
+					color: #607b96;
+				}
+			}
+		}
+		.blockScroll {
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
+			width: 30px;
+			@media (max-width: 1024px) {
+				display: none;
+			}
+		}
+		.scroll {
+			margin: 5px auto;
+			width: 18px;
+			height: 7px;
+			background: rgba(255, 255, 255, 0.5);
+		}
+	}
+}

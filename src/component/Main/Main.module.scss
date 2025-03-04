@@ -1,0 +1,229 @@
+.main {
+	display: flex;
+	align-items: center;
+	height: 80vh;
+	@media (max-width: 767px) {
+		height: 100%;
+	}
+}
+
+.mainInfo {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2px;
+	@media (768px <= width < 1199px) {
+		grid-template-columns: 1fr minmax(390px, 450px);
+	}
+	@media (max-width: 767px) {
+		display: block;
+	}
+}
+.mainInfo_1 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin: 0 30px;
+	@media (max-width: 767px) {
+	}
+}
+.mainLeft,
+.mainRight {
+	display: grid;
+}
+.mainLeft {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	@media (max-width: 767px) {
+		width: 100%;
+		height: 100%;
+	}
+}
+.mainRight {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@media (max-width: 767px) {
+		display: none;
+	}
+
+	.snakeGame {
+		margin: 0 auto;
+		@media screen and (max-width: 1600px) {
+			margin-right: 30px;
+		}
+		@media (max-width: 1200px) {
+			display: none;
+		}
+	}
+	.mySwiper {
+		display: none;
+		@media (768px <= width < 1199px) {
+			display: block;
+			max-width: 100%;
+			height: 70vh;
+			margin-right: 60px;
+			overflow: hidden;
+		}
+		.sliderList {
+			padding: 0;
+		}
+		/* Глобальные стили Swiper */
+		:global {
+			.swiper-wrapper {
+				transform: none;
+			}
+			/* Едва видимые остальные слайды */
+			.swiper-slide {
+				padding: 15px;
+				opacity: 0.1;
+				background-color: #00000092;
+				border-radius: 10px;
+				transition: border-radius 0.3s ease;
+				width: 100%;
+				height: 20%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-weight: bold;
+				font-size: 8px;
+				transform: scale(0.75);
+				transition:
+					transform 0.3s ease,
+					opacity 0.3s ease,
+					box-shadow 0.6s ease;
+				&:hover {
+					box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+					transition: box-shadow 0.3s ease;
+				}
+			}
+			/* Увеличение центрального слайда */
+			.swiper-slide.swiper-slide-active {
+				transform: scale(0.8);
+				opacity: 0.5;
+			}
+			/* Затемнение соседних слайдов */
+			.swiper-slide-prev,
+			.swiper-slide-next {
+				opacity: 0.3;
+				transform: scale(0.75);
+			}
+		}
+	}
+}
+
+.mainInfoTextOne {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.mainInfoTextOne p {
+	margin: 0;
+	font-weight: 450;
+	font-size: 18px;
+	color: #e5e9f0;
+	@media (319px <= width < 767px) {
+		font-size: 14px;
+	}
+}
+.mainInfoTextOne h1 {
+	margin: 0;
+	font-weight: 400;
+	font-size: 48px;
+	color: #e5e9f0;
+	@media (319px <= width < 1199px) {
+		font-size: 32px;
+	}
+}
+.mainInfoTextOne h3 {
+	margin: 0;
+	font-weight: 450;
+	font-size: 32px;
+	color: #4d5bce;
+	margin-bottom: 80px;
+	@media (768px <= width < 1199px) {
+		font-size: 20px;
+		margin-bottom: 40px;
+	}
+	@media (319px <= width <= 767px) {
+		font-size: 16px;
+	}
+}
+
+.mainInfoTextTwo p {
+	font-weight: 450;
+	font-size: 16px;
+	color: #607b96;
+	@media (768px <= width < 1199px) {
+		font-size: 14px;
+	}
+	@media (319px <= width < 767px) {
+		font-size: 14px;
+	}
+}
+.mainInfoTextTwo .textConst {
+	font-weight: 500;
+	font-size: 16px;
+	color: #4d5bce;
+	@media (768px <= width < 1199px) {
+		font-size: 14px;
+	}
+	@media (319px <= width < 767px) {
+		font-size: 14px;
+	}
+}
+.mainInfoTextTwo .textGithubLink {
+	font-weight: 500;
+	font-size: 16px;
+	color: #43d9ad;
+	@media (768px <= width < 1199px) {
+		font-size: 14px;
+	}
+	@media (319px <= width < 767px) {
+		font-size: 14px;
+	}
+}
+.mainInfoTextTwo a {
+	text-decoration: underline;
+	text-decoration-skip-ink: none;
+	color: #e99287;
+}
+
+.svgOne {
+	position: absolute;
+	right: 15%;
+	z-index: -2;
+}
+
+.svgTwo {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	z-index: -2;
+}
+
+.tabs {
+	display: flex;
+	border: 1px solid #1e2d3d;
+}
+
+.firstTab {
+	border-left: 1px solid #1e2d3d;
+}
+
+.twoTab {
+	border-left: 1px solid #1e2d3d;
+	border-right: 1px solid #1e2d3d;
+}
+.threeTab {
+	border-right: 1px solid #1e2d3d;
+}
+
+.lastTab {
+	margin-left: auto;
+	border-left: 1px solid #1e2d3d;
+}

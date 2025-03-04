@@ -1,0 +1,225 @@
+.about {
+	color: #cccccc;
+	display: grid;
+	grid-template-columns: 60px auto;
+	height: 80vh;
+	@media (max-width: 992px) {
+		display: block;
+	}
+	.navIcon {
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
+		@media (max-width: 992px) {
+			display: none;
+		}
+	}
+	.tabsAbout {
+		display: grid;
+		grid-template-rows: 40px auto;
+		height: 100%;
+		.navTabs {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+			display: grid;
+			grid-template-columns: 240px 1fr 1fr;
+			@media (max-width: 992px) {
+				display: block;
+			}
+			.navTabName {
+				display: flex;
+				align-items: center;
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
+				@media (max-width: 992px) {
+					justify-content: center;
+					height: 100%;
+					border: none;
+				}
+				.dropdownToggle {
+					background: none;
+					border: none;
+					cursor: pointer;
+					font-size: 16px;
+				}
+				.personalInfo {
+					cursor: pointer;
+				}
+			}
+			.navTabsRight {
+				border-left: 1px solid rgba(255, 255, 255, 0.3);
+			}
+		}
+		.aboutPart {
+			display: grid;
+			grid-template-columns: 240px 1fr 1.5fr;
+			@media (max-width: 992px) {
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+				padding: 20px;
+			}
+			.aboutLeft {
+				display: grid;
+				grid-template-columns: 40px auto;
+				position: relative;
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
+				@media (max-width: 992px) {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+		.aboutMiddle {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			.form {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				margin: 0 20px;
+				label {
+					min-width: 100%;
+					display: flex;
+					flex-direction: column;
+					font-weight: 450;
+					font-size: 16px;
+					color: #cccccc;
+				}
+				.formInput {
+					margin-top: 10px;
+					border: 1px solid rgba(255, 255, 255, 0.3);
+					border-radius: 8px;
+					width: 90%;
+					height: 41px;
+					background: rgba(28, 28, 28, 0.5);
+					font-weight: 450;
+					font-size: 16px;
+					color: #cccccc;
+					padding: 0 10px;
+					margin-bottom: 20px;
+					&::placeholder {
+						color: #505050;
+					}
+				}
+				.formArea {
+					margin-top: 10px;
+					border: 1px solid rgba(255, 255, 255, 0.3);
+					border-radius: 8px;
+					width: 90%;
+					height: 145px;
+					box-shadow: 0 0 0 2px rgba(96, 123, 150, 0.3);
+					background: rgba(28, 28, 28, 0.5);
+					font-weight: 450;
+					font-size: 16px;
+					color: #cccccc;
+					padding: 10px;
+					margin-bottom: 15px;
+					&::placeholder {
+						color: #505050;
+					}
+				}
+				.formBtn {
+					border-radius: 8px;
+					padding: 10px 14px;
+					width: 146px;
+					height: 38px;
+					background: #1c2b3a;
+					font-weight: 450;
+					font-size: 14px;
+					color: #fff;
+				}
+			}
+		}
+
+		.aboutRight {
+			display: grid;
+			grid-template-columns: auto 30px;
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
+			@media (max-width: 992px) {
+				display: none;
+			}
+
+			.aboutRightPosts {
+				padding: 0 10px;
+				display: flex;
+				justify-content: center;
+				margin-top: 100px;
+				p {
+					margin-top: 18px;
+					font-weight: 450;
+					font-size: 18px;
+					color: #607b96;
+				}
+				.formMessage {
+					color: #ffffff; /* Цвет текста */
+					padding: 10px; /* Внутренний отступ */
+					border-radius: 5px; /* Округление углов */
+					font-weight: 450; /* Толщина шрифта */
+					font-size: 18px; /* Размер шрифта */
+					line-height: 1.5; /* Высота строки */
+					@media (max-width: 1400px) {
+						font-size: 16px;
+					}
+					@media (max-width: 1350px) {
+						font-size: 14px;
+					}
+					@media (max-width: 1200px) {
+						font-size: 12px;
+					}
+
+					.formMessageList {
+						padding: 5px;
+						color: #cccccc;
+						list-style-type: none;
+						padding: 0;
+						.formMessageListItem {
+							display: flex;
+							align-items: center; /* Выравниваем текст и числа по центру */
+							margin: 0;
+							.number {
+								min-width: 20px; /* Резервируем место для числа */
+								text-align: right; /* Выравниваем вправо */
+								margin-right: 30px; /* Отступ от текста */
+							}
+						}
+					}
+				}
+			}
+		}
+		.blockScroll {
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
+			width: 30px;
+		}
+		.scroll {
+			margin: 5px auto;
+			width: 18px;
+			height: 7px;
+			background: rgba(255, 255, 255, 0.5);
+		}
+	}
+}
+
+.loading {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	justify-content: center;
+	align-items: center;
+	.spinner {
+		border: 4px solid rgba(255, 255, 255, 0.3);
+		border-top: 4px solid #fff;
+		border-radius: 50%;
+		width: 24px;
+		height: 24px;
+		animation: spin 1s linear infinite;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}

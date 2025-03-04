@@ -1,0 +1,209 @@
+.about {
+	color: white;
+	display: grid;
+	grid-template-columns: 60px auto;
+	height: 80vh;
+	@media (max-width: 767px) {
+		display: block;
+		height: 85vh;
+	}
+	.navIcon {
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
+		@media (max-width: 767px) {
+			display: none;
+		}
+	}
+	.tabsAbout {
+		display: grid;
+		grid-template-rows: 40px auto;
+		@media (max-width: 767px) {
+			height: 100%;
+		}
+		.navTabs {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+			display: grid;
+			grid-template-columns: 240px 1fr 1fr;
+			@media (max-width: 767px) {
+				display: block;
+			}
+			.navTabName {
+				display: flex;
+				align-items: center;
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
+				@media (max-width: 767px) {
+					justify-content: center;
+					height: 100%;
+					border: none;
+				}
+
+				.dropdownToggle {
+					background: none;
+					border: none;
+					cursor: pointer;
+					font-size: 16px;
+				}
+				.personalInfo {
+					cursor: pointer;
+				}
+			}
+			.navTabsRight {
+				border-left: 1px solid rgba(255, 255, 255, 0.3);
+			}
+		}
+		.aboutPart {
+			display: grid;
+			grid-template-columns: 240px auto 30px;
+			@media (max-width: 767px) {
+				display: block;
+			}
+			.aboutLeft {
+				// display: grid;
+				// grid-template-columns: 40px auto;
+				// position: relative;
+				border-right: 1px solid rgba(255, 255, 255, 0.3);
+				padding: 0 5px;
+				padding-top: 20px;
+				@media (max-width: 767px) {
+					display: none;
+				}
+			}
+		}
+		.aboutMiddle {
+			height: 75vh;
+			overflow-y: auto;
+			.projectsGrid {
+				padding: 2rem 1rem;
+			}
+			.projectsItems {
+				position: relative;
+				margin-bottom: 20px;
+				width: 380px;
+
+				.heading {
+					display: inline;
+					font-weight: 700;
+					font-size: 16px;
+					color: #5565e8;
+					margin-right: 20px;
+				}
+				.subHeading {
+					font-weight: 450;
+					color: #607b96;
+					position: absolute;
+					right: 0;
+				}
+				.projectItem {
+					border: 1px solid rgba(255, 255, 255, 0.3);
+					border-radius: 15px;
+					background: rgba(28, 28, 28, 0.5);
+					margin-top: 10px;
+					transition: all 0.3s ease;
+					width: 100%;
+					height: auto;
+					max-width: 380px;
+					position: relative;
+
+					.playBtn {
+						width: 60px;
+						height: 60px;
+						border-radius: 50%;
+						background: rgba(0, 0, 0, 0.2);
+						backdrop-filter: blur(3px);
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						z-index: 2;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						cursor: pointer;
+						transition:
+							opacity 0.3s ease-in-out,
+							transform 0.3s ease-in-out;
+						opacity: 0;
+
+						.playIcon {
+							color: #ffffff;
+							width: 30px;
+							height: 30px;
+							padding-left: 2px;
+							transition: all 0.3s ease-in-out;
+
+							&:hover {
+								transform: scale(1.1);
+							}
+						}
+					}
+
+					.projectItemImage {
+						width: 100%;
+						height: 250px;
+						border-radius: 15px 15px 0 0;
+						object-fit: cover;
+						position: relative;
+					}
+
+					.projectLink {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						margin: 1em;
+						border-radius: 8px;
+						height: 40px;
+						border-radius: 8px;
+						overflow: hidden;
+						transition: border 0.1s ease-in-out;
+						border: none;
+
+						&:hover {
+							border: 0.1px solid rgb(255, 255, 255);
+						}
+					}
+					.description {
+						max-height: 100px;
+						overflow-y: auto;
+						margin: 0 1.5em;
+					}
+					&:hover {
+						transform: scale(1.01);
+						box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+					}
+					&:hover .playBtn {
+						opacity: 1;
+					}
+				}
+			}
+			// }
+		}
+
+		.aboutRight {
+			display: grid;
+			grid-template-columns: auto 30px;
+			border-left: 1px solid #1e2d3d;
+			.aboutRightPosts {
+				padding: 0 40px;
+				p {
+					margin-top: 18px;
+					font-weight: 450;
+					font-size: 18px;
+					color: #607b96;
+				}
+			}
+		}
+		.blockScroll {
+			display: grid;
+			border-left: 1px solid rgba(255, 255, 255, 0.3);
+			width: 30px;
+			@media (max-width: 1024px) {
+				display: none;
+			}
+		}
+		.scroll {
+			margin: 5px auto;
+			width: 18px;
+			height: 7px;
+			background: rgba(255, 255, 255, 0.5);
+		}
+	}
+}

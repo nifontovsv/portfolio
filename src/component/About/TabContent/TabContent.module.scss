@@ -1,0 +1,42 @@
+.aboutInfo {
+	font-weight: 450;
+	font-size: 16px;
+	line-height: 150%;
+	margin-left: 20px;
+	list-style: none;
+	padding: 5px;
+	color: #cccccc;
+	padding: 0;
+	overflow-y: scroll;
+	max-height: 500px;
+	@media (max-width: 767px) {
+		font-size: 14px;
+	}
+	.aboutInfoItem {
+		display: flex;
+		align-items: center; /* Выравниваем текст и числа по центру */
+		margin: 0;
+		.number {
+			min-width: 20px; /* Резервируем место для числа */
+			text-align: right; /* Выравниваем вправо */
+			margin-right: 30px; /* Отступ от текста */
+		}
+	}
+}
+.tabContent {
+	opacity: 0;
+	transform: translateY(10px);
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+}
+
+.tabContent.visible {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	opacity: 1;
+	transform: translateY(0);
+}
