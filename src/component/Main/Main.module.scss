@@ -2,9 +2,6 @@
 	display: flex;
 	align-items: center;
 	height: 80vh;
-	@media (max-width: 767px) {
-		height: 100%;
-	}
 }
 
 .mainInfo {
@@ -25,8 +22,6 @@
 	flex-direction: column;
 	align-items: flex-start;
 	margin: 0 30px;
-	@media (max-width: 767px) {
-	}
 }
 .mainLeft,
 .mainRight {
@@ -126,7 +121,7 @@
 	font-weight: 450;
 	font-size: 18px;
 	color: #e5e9f0;
-	@media (319px <= width < 767px) {
+	@media (max-width: 767px) {
 		font-size: 14px;
 	}
 }
@@ -135,8 +130,8 @@
 	font-weight: 400;
 	font-size: 48px;
 	color: #e5e9f0;
-	@media (319px <= width < 1199px) {
-		font-size: 32px;
+	@media (max-width: 767px) {
+		font-size: 24px;
 	}
 }
 .mainInfoTextOne h3 {
@@ -144,7 +139,7 @@
 	font-weight: 450;
 	font-size: 32px;
 	color: #4d5bce;
-	margin-bottom: 80px;
+	margin-bottom: 60px;
 	@media (768px <= width < 1199px) {
 		font-size: 20px;
 		margin-bottom: 40px;
@@ -162,10 +157,10 @@
 		font-size: 14px;
 	}
 	@media (319px <= width < 767px) {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
-.mainInfoTextTwo .textConst {
+.mainInfoTextTwo span {
 	font-weight: 500;
 	font-size: 16px;
 	color: #4d5bce;
@@ -173,24 +168,20 @@
 		font-size: 14px;
 	}
 	@media (319px <= width < 767px) {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
-.mainInfoTextTwo .textGithubLink {
-	font-weight: 500;
-	font-size: 16px;
-	color: #43d9ad;
-	@media (768px <= width < 1199px) {
-		font-size: 14px;
-	}
-	@media (319px <= width < 767px) {
-		font-size: 14px;
-	}
-}
+
 .mainInfoTextTwo a {
 	text-decoration: underline;
 	text-decoration-skip-ink: none;
 	color: #e99287;
+	@media (768px <= width < 1199px) {
+		font-size: 14px;
+	}
+	@media (319px <= width < 767px) {
+		font-size: 12px;
+	}
 }
 
 .svgOne {

@@ -3,26 +3,10 @@ import styles from './TabContent.module.scss';
 import SnakeGame from '../../Projects/SnakeGame/SnakeGame';
 import ToDoList from '../../Projects/ToDoList/ToDoList';
 
-function TabContent({ activeTab }) {
-	const aboutArr = [
-		'/**',
-		'* About me',
-		'* I have 5 years of experience in web',
-		'* development lorem ipsum dolor sit amet,',
-		'* consectetur adipiscing elit, sed do eiusmod',
-		'* tempor incididunt ut labore et dolore',
-		'* magna aliqua. Ut enim ad minim veniam,',
-		'* quis nostrud exercitation ullamco laboris',
-		'* nisi ut aliquip ex ea commodo consequat.',
-		'* Duis aute irure dolor in reprehenderit in',
-		'* voluptate velit esse cillum dolore eu fugiat',
-		'* nulla pariatur. Excepteur sint occaecat',
-		'* officia deserunt mollit anim id est laborum.',
-		'*/',
-	];
+function TabContent({ activeTab, aboutArr, interests }) {
 	const renderContent = () => {
 		switch (activeTab) {
-			case 'bio':
+			case 'Bio':
 				return (
 					<ul className={styles.aboutInfo}>
 						{aboutArr.map((line, index) => (
@@ -33,9 +17,18 @@ function TabContent({ activeTab }) {
 						))}
 					</ul>
 				);
-			case 'interests':
-				return <p>I love gaming, programming, and exploring new technologies.</p>;
-			case 'education':
+			case 'Interests':
+				return (
+					<ul className={styles.aboutInfo}>
+						{interests.map((line, index) => (
+							<li className={styles.aboutInfoItem} key={index}>
+								<span className={styles.number}>{index + 1}</span>
+								<span>{line}</span>
+							</li>
+						))}
+					</ul>
+				);
+			case 'Education':
 				return <p>Bachelor's degree in Computer Science.</p>;
 			case 'todolist':
 				return <ToDoList />;

@@ -3,57 +3,86 @@
 	flex-direction: column;
 	gap: 8px;
 	list-style: none;
-	// position: absolute;
 	min-width: 100%;
 	z-index: 1;
 	margin: 0;
 	padding: 0;
+
 	@media (max-width: 767px) {
 		display: flex;
 		flex-direction: column;
 		max-width: 100%;
 		position: static;
-		padding: 20px;
 		margin: 0;
 	}
-	.menuListWrapper {
-		display: flex;
-		align-items: center;
-	}
-	.dropdownContent {
-		display: none;
-		@media (max-width: 767px) {
-			display: flex;
-			justify-content: center;
-			background-color: transparent;
-		}
-	}
-	.dropdownToggle {
-		display: none;
-		background: none;
-		border: none;
-		cursor: pointer;
-		font-size: 16px;
-		margin: 0;
-		@media (max-width: 768px) {
-			display: block;
-		}
-	}
-	li {
-		width: 100%;
-		font-weight: 400;
-		font-size: 16px;
-		color: #cccccc;
-		&:hover {
-			color: #fff;
+
+	.menuListWrappers {
+		.menuListItem {
+			width: 100%;
+			font-weight: 400;
+			font-size: 16px;
+			color: #cccccc;
 			cursor: pointer;
-			border-radius: 2px;
-			background: linear-gradient(
-				90deg,
-				rgba(54, 157, 85, 0.4) 0%,
-				rgba(76, 255, 180, 0.6) 50%,
-				rgba(54, 157, 85, 0.4) 100%
-			);
+
+			.menuListWrapper {
+				display: flex;
+				align-items: center;
+				padding: 0 20px;
+
+				&:hover {
+					cursor: pointer;
+					border-radius: 2px;
+					background: linear-gradient(
+						90deg,
+						rgba(54, 157, 85, 0.4) 0%,
+						rgba(76, 255, 180, 0.6) 50%,
+						rgba(54, 157, 85, 0.4) 100%
+					);
+				}
+
+				.dropdownToggle {
+					display: none;
+					background: none;
+					border: none;
+					cursor: pointer;
+					font-size: 16px;
+					margin: 0;
+					@media (max-width: 768px) {
+						display: block;
+					}
+				}
+			}
+		}
+
+		.dropdownContent {
+			@media (max-width: 767px) {
+				display: flex;
+				font-weight: 450;
+				font-size: 14px;
+				line-height: 150%;
+				list-style: none;
+				padding: 0;
+				overflow: hidden;
+				max-height: 0;
+				opacity: 0;
+				background-color: transparent;
+				transition:
+					max-height 0.3s ease-in-out,
+					opacity 0.3s ease-in-out;
+			}
+
+			.dropdownContentDescription {
+				width: 100%;
+				color: #ffffff;
+				background-color: rgba($color: #717171, $alpha: 0.6);
+				border-radius: 8px;
+				padding: 10px 30px;
+			}
+		}
+
+		.dropdownContentActive {
+			max-height: 500px; // Достаточно большое значение, чтобы вместить контент
+			opacity: 1;
 		}
 	}
 }

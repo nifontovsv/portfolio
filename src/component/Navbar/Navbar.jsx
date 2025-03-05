@@ -9,7 +9,7 @@ function Navbar() {
 	const location = useLocation();
 
 	const links = [
-		{ path: '/', text: '_hello' },
+		{ path: '/portfolio', text: '_hello' },
 		{ path: '/about', text: '_about-me' },
 		{ path: '/projects', text: '_projects' },
 		{ path: '/contacts', text: '_contact-me' },

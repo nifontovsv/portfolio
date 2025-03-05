@@ -5,7 +5,6 @@ import Projects from './component/Projects/Projects';
 import About from './component/About/About';
 import Contacts from './component/Contacts/Contacts';
 import Navbar from './component/Navbar/Navbar';
-import mainImage from '../src/images/mainImage.png';
 import Footer from './component/Footer/Footer';
 import NeuralNoise from './component/NeuralNoise/NeuralNoise';
 
@@ -15,7 +14,7 @@ function App() {
 			<NeuralNoise />
 			<Navbar />
 			<Routes>
-				<Route path='/' element={<Main />} />
+				<Route path='/portfolio' element={<Main />} />
 				<Route path='/about' element={<About />} />
 				<Route path='/projects' element={<Projects />} />
 				<Route path='/contacts' element={<Contacts />} />

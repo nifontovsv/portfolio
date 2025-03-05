@@ -50,13 +50,14 @@ function Footer() {
 			>
 				<div className={styles.footerItem}>
 					<Button
+						href='https://t.me/nifontovsv'
 						title={
 							<RiTelegram2Line style={{ width: '20px', height: '20px' }} />
 						}
 					/>
 
 					<Snackbar
-						style={{ position: 'absolute', top: -80, left: '100px' }}
+						style={{ position: 'absolute', top: -135, left: '20px' }}
 						open={openSnackbar}
 						autoHideDuration={1000} // Время отображения Snackbar
 						onClose={handleCloseSnackbar}

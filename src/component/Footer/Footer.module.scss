@@ -6,10 +6,6 @@
 	box-sizing: border-box;
 	border-top: 1px solid rgba(255, 255, 255, 0.3);
 
-	@media (max-width: 767px) {
-		display: none;
-	}
-
 	.footerTitle {
 		display: flex;
 		align-items: center;
@@ -43,6 +39,9 @@
 			margin-left: auto;
 			z-index: 3;
 			border-left: 1px solid rgba(255, 255, 255, 0.3);
+			@media (max-width: 439px) {
+				border: none;
+			}
 		}
 
 		&:hover {

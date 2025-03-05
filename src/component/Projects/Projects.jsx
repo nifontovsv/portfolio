@@ -66,8 +66,10 @@ function Projects() {
 	}, []);
 
 	const projectsRef = useRef(null);
+
 	const tl = gsap.timeline();
 	useGSAP(() => {
+		if (!projectsRef.current || loading) return; // Если `null`, то выходим
 		tl.fromTo(
 			projectsRef.current.children,
 			{ opacity: 0 },
@@ -113,7 +115,7 @@ function Projects() {
 			span: '// _awward',
 			video: awward,
 			image: awwardimg,
-			description: 'lending jointly gsap ts tailwind',
+			description: 'Animation lending ',
 			linkTitle: 'view-project',
 			href: 'https://github.com/nifontovsv/awward',
 		},
@@ -131,7 +133,7 @@ function Projects() {
 			span: '// _agency',
 			video: agency,
 			image: agencyimg,
-			description: 'simple lending',
+			description: 'Simple lending',
 			linkTitle: 'view-project',
 			href: 'https://github.com/nifontovsv/agency',
 		},
@@ -140,7 +142,7 @@ function Projects() {
 			span: '// _example_portfolio',
 			video: exampleportfolio,
 			// image: agencyimg,
-			description: 'simple lending',
+			description: 'Simple lending',
 			linkTitle: 'view-project',
 			href: 'https://github.com/nifontovsv/exampleportfolio',
 		},
@@ -149,7 +151,7 @@ function Projects() {
 			span: '// _pravovik',
 			video: pravovik,
 			// image: agencyimg,
-			description: 'simple lending',
+			description: 'Simple lending',
 			linkTitle: 'view-project',
 			href: 'https://github.com/nifontovsv/pravovik',
 		},
@@ -172,9 +174,6 @@ function Projects() {
 
 	return (
 		<div className={styles.about}>
-			<div className={styles.navIcon}>
-				<div>i</div>
-			</div>
 			<div className={styles.tabsAbout}>
 				<div className={styles.navTabs}>
 					<div className={styles.navTabName}>
@@ -238,33 +237,30 @@ function Projects() {
 								container
 								spacing={3}
 								justifyContent='center'
+								alignContent='center'
 							>
 								{projects.map((item, index) => (
 									<Grid2 xs={12} sm={6} md={4} lg={3} key={index}>
 										{loading ?
-											<div>
+											<div style={{ marginTop: '50px' }}>
 												<Skeleton
-													// animation='wave'
 													variant='rectangular'
-													width={380}
-													height={250}
+													width={280}
+													height={180}
 													sx={{
 														bgcolor: 'rgba(255, 255, 255, 0.2)',
 													}}
 												/>
 												<Skeleton
-													// animation='wave'
 													sx={{ bgcolor: 'rgba(255, 255, 255, 0.2)' }}
 												/>
 												<Skeleton
 													width='60%'
-													// animation='wave'
 													sx={{ bgcolor: 'rgba(255, 255, 255, 0.2)' }}
 												/>
 												<Skeleton
 													width={129}
 													height={39}
-													// animation='wave'
 													sx={{ bgcolor: 'rgba(255, 255, 255, 0.2)' }}
 												/>
 											</div>

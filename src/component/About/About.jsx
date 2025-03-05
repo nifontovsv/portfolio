@@ -9,10 +9,46 @@ function About() {
 	const [openTabs, setOpenTabs] = useState([]);
 	const [activeTab, setActiveTab] = useState('');
 
+	const aboutArr = [
+		'/**',
+		'* Frontend-разработчик с опытом',
+		'* создания пет-проектов на React.',
+		'* Активно изучаю новые технологии',
+		'* стремлюсь к развитию в fullstack-разработке.',
+		'* Коммуникабельный, целеустремленный',
+		'*/',
+	];
+	const aboutArr2 = [
+		`Frontend-разработчик с опытом,
+		создания пет-проектов на React.
+		Активно изучаю новые технологии
+		стремлюсь к развитию в fullstack-разработке.
+		Коммуникабельный, целеустремленный.`,
+	];
+	const interests = [
+		'/**',
+		'* I love gaming',
+		'* programming',
+		'* and exploring new technologies',
+		'*/',
+	];
+	const interests2 = [
+		`I love gaming, programming, and exploring new technologies`,
+	];
+
 	const menuList = [
-		{ id: 'bio', label: 'Bio', title: 'orange', content: 'Биография' },
-		{ id: 'interests', label: 'Interests', title: 'green', content: 'Хобби' },
-		{ id: 'education', label: 'Education', title: 'violet', content: 'Образование' },
+		{ id: 'Bio', label: 'Bio', title: 'orange', content: `${aboutArr2}` },
+		{
+			id: 'Interests',
+			label: 'Interests',
+			title: 'green',
+			content: `${interests2}`,
+		},
+		{
+			id: 'Education',
+			label: 'Education',
+			title: 'violet',
+		},
 	];
 
 	const handleTabChange = (tab) => {
@@ -23,27 +59,30 @@ function About() {
 	const handleTabClose = (tab) => {
 		setOpenTabs((prev) => {
 			const updatedTabs = prev.filter((openTab) => openTab !== tab);
-			setActiveTab(updatedTabs.length ? updatedTabs[updatedTabs.length - 1] : '');
+			setActiveTab(
+				updatedTabs.length ? updatedTabs[updatedTabs.length - 1] : ''
+			);
 			return updatedTabs;
 		});
 	};
 
 	return (
 		<div className={styles.about}>
-			<div className={styles.navIcon}>
-				<div>i</div>
-			</div>
 			<div className={styles.tabsAbout}>
 				<div className={styles.navTabs}>
 					<div className={styles.navTabName}>
-						<button onClick={() => setIsOpen(!isOpen)} className={styles.dropdownToggle}>
+						<button
+							onClick={() => setIsOpen(!isOpen)}
+							className={styles.dropdownToggle}
+						>
 							{isOpen ?
 								<svg
 									width='9'
 									height='7'
 									viewBox='0 0 9 7'
 									fill='none'
-									xmlns='http://www.w3.org/2000/svg'>
+									xmlns='http://www.w3.org/2000/svg'
+								>
 									<path
 										d='M4.74998 6.65186L0.499969 0.651856L9 0.651855L4.74998 6.65186Z'
 										fill='white'
@@ -54,7 +93,8 @@ function About() {
 									height='10'
 									viewBox='0 0 7 10'
 									fill='none'
-									xmlns='http://www.w3.org/2000/svg'>
+									xmlns='http://www.w3.org/2000/svg'
+								>
 									<path
 										d='M6.96045 4.80914L0.960449 9.05916L0.960449 0.559128L6.96045 4.80914Z'
 										fill='white'
@@ -62,7 +102,10 @@ function About() {
 								</svg>
 							}
 						</button>
-						<span className={styles.personalInfo} onClick={() => setIsOpen(!isOpen)}>
+						<span
+							className={styles.personalInfo}
+							onClick={() => setIsOpen(!isOpen)}
+						>
 							personal-info
 						</span>
 					</div>
@@ -75,10 +118,21 @@ function About() {
 				</div>
 				<div className={styles.aboutPart}>
 					<div className={`${styles.aboutLeft} ${isOpen ? styles.open : ''}`}>
-						{isOpen && <MenuList menuList={menuList} handleTabChange={handleTabChange} />}
+						{isOpen && (
+							<MenuList
+								interests={interests}
+								aboutArr={aboutArr}
+								menuList={menuList}
+								handleTabChange={handleTabChange}
+							/>
+						)}
 					</div>
 					<div className={styles.aboutMiddle}>
-						<TabContent activeTab={activeTab} />
+						<TabContent
+							interests={interests}
+							aboutArr={aboutArr}
+							activeTab={activeTab}
+						/>
 						<div className={styles.blockScroll}>
 							<div className={styles.scroll}></div>
 						</div>

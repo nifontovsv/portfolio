@@ -1,15 +1,14 @@
 .about {
 	color: white;
 	display: grid;
-	grid-template-columns: 60px auto;
+	grid-template-columns: auto;
 	height: 80vh;
-	@media (max-width: 767px) {
+	@media (max-width: 1024px) {
 		display: block;
-		height: 85vh;
 	}
 	.navIcon {
 		border-right: 1px solid rgba(255, 255, 255, 0.3);
-		@media (max-width: 767px) {
+		@media (max-width: 1024px) {
 			display: none;
 		}
 	}
@@ -23,14 +22,14 @@
 			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 			display: grid;
 			grid-template-columns: 240px 1fr 1fr;
-			@media (max-width: 767px) {
+			@media (max-width: 1024px) {
 				display: block;
 			}
 			.navTabName {
 				display: flex;
 				align-items: center;
 				border-right: 1px solid rgba(255, 255, 255, 0.3);
-				@media (max-width: 767px) {
+				@media (max-width: 1024px) {
 					justify-content: center;
 					height: 100%;
 					border: none;
@@ -53,7 +52,7 @@
 		.aboutPart {
 			display: grid;
 			grid-template-columns: 240px auto 30px;
-			@media (max-width: 767px) {
+			@media (max-width: 1024px) {
 				display: block;
 			}
 			.aboutLeft {
@@ -63,7 +62,7 @@
 				border-right: 1px solid rgba(255, 255, 255, 0.3);
 				padding: 0 5px;
 				padding-top: 20px;
-				@media (max-width: 767px) {
+				@media (max-width: 1024px) {
 					display: none;
 				}
 			}
@@ -72,12 +71,16 @@
 			height: 75vh;
 			overflow-y: auto;
 			.projectsGrid {
-				padding: 2rem 1rem;
+				margin: 20px;
+				@media (max-width: 1024px) {
+					margin: 5px;
+				}
 			}
 			.projectsItems {
 				position: relative;
-				margin-bottom: 20px;
-				width: 380px;
+				// margin-bottom: 20px;
+				min-width: 280px;
+				max-width: 340px;
 
 				.heading {
 					display: inline;
@@ -88,7 +91,8 @@
 				}
 				.subHeading {
 					font-weight: 450;
-					color: #607b96;
+					font-size: 14px;
+					color: #04ff00;
 					position: absolute;
 					right: 0;
 				}
@@ -138,7 +142,7 @@
 
 					.projectItemImage {
 						width: 100%;
-						height: 250px;
+						height: 200px;
 						border-radius: 15px 15px 0 0;
 						object-fit: cover;
 						position: relative;
@@ -161,7 +165,6 @@
 						}
 					}
 					.description {
-						max-height: 100px;
 						overflow-y: auto;
 						margin: 0 1.5em;
 					}

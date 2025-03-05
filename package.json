@@ -1,4 +1,5 @@
 {
+	"homepage": "https://nifontovsv.github.io/portfolio",
 	"name": "portfolio",
 	"version": "0.1.0",
 	"private": true,
@@ -12,6 +13,7 @@
 		"@toolpad/core": "^0.11.0",
 		"animejs": "^3.2.2",
 		"classnames": "^2.5.1",
+		"clsx": "^2.1.1",
 		"cra-template": "1.2.0",
 		"framer-motion": "^11.15.0",
 		"gsap": "^3.12.7",
@@ -32,14 +34,12 @@
 		"uuid": "^11.0.3",
 		"web-vitals": "^4.2.4"
 	},
-	"homepage": "https://nifontovsv.github.io/portfolio",
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build"
+		"deploy": "npm run build && gh-pages -d build"
 	},
 	"eslintConfig": {
 		"extends": [

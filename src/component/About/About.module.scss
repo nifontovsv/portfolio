@@ -1,7 +1,7 @@
 .about {
 	color: white;
 	display: grid;
-	grid-template-columns: 60px auto;
+	grid-template-columns: auto;
 	height: 80vh;
 	@media (max-width: 767px) {
 		display: block;

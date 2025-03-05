@@ -181,9 +181,6 @@ function Contacts() {
 
 	return (
 		<div className={styles.about}>
-			<div className={styles.navIcon}>
-				<div>i</div>
-			</div>
 			<div className={styles.tabsAbout}>
 				<div className={styles.navTabs}>
 					<div className={styles.navTabName}>
