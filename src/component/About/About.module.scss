@@ -30,6 +30,7 @@
 				display: flex;
 				align-items: center;
 				border-right: 1px solid rgba(255, 255, 255, 0.3);
+				padding: 10px 0;
 				@media (max-width: 767px) {
 					justify-content: center;
 					height: 100%;
@@ -88,12 +89,55 @@
 				display: none;
 			}
 			.aboutRightPosts {
-				padding: 0 40px;
-				p {
-					margin-top: 18px;
-					font-weight: 450;
-					font-size: 18px;
-					color: #607b96;
+				.mySwiper {
+					max-width: 100%;
+					height: 70vh;
+					overflow: hidden;
+
+					.sliderList {
+						padding: 0;
+					}
+					/* Глобальные стили Swiper */
+					:global {
+						.swiper-wrapper {
+							transform: none;
+						}
+						/* Едва видимые остальные слайды */
+						.swiper-slide {
+							padding: 15px;
+							opacity: 0.1;
+							background-color: #00000092;
+							border-radius: 10px;
+							transition: border-radius 0.3s ease;
+							width: 100%;
+							height: 20%;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							font-weight: bold;
+							font-size: 8px;
+							transform: scale(0.75);
+							transition:
+								transform 0.3s ease,
+								opacity 0.3s ease,
+								box-shadow 0.6s ease;
+							&:hover {
+								box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+								transition: box-shadow 0.3s ease;
+							}
+						}
+						/* Увеличение центрального слайда */
+						.swiper-slide.swiper-slide-active {
+							transform: scale(0.8);
+							opacity: 0.5;
+						}
+						/* Затемнение соседних слайдов */
+						.swiper-slide-prev,
+						.swiper-slide-next {
+							opacity: 0.3;
+							transform: scale(0.75);
+						}
+					}
 				}
 			}
 		}

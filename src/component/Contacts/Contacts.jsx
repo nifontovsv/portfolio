@@ -3,6 +3,9 @@ import styles from './Contacts.module.scss';
 import TabList from '../About/TabList/TabList';
 import MenuList from '../About/MenuList/MenuList';
 import CodeBlock from '../CodeBlock/CodeBlock';
+import Arrowdown from '../About/Arrowdown/Arrowdown';
+import clsx from 'clsx';
+import Button from '../common/Button/Button';
 
 // Взаимодействие файлов
 // Клиент → Сервер:
@@ -19,7 +22,7 @@ import CodeBlock from '../CodeBlock/CodeBlock';
 // альтернативы nodemailer
 
 function Contacts() {
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [openTabs, setOpenTabs] = useState([]);
 	const [activeTab, setActiveTab] = useState('');
@@ -29,6 +32,7 @@ function Contacts() {
 		message: '',
 	});
 	const [status, setStatus] = useState('');
+	const [openIndex, setOpenIndex] = useState(null);
 
 	const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -142,8 +146,18 @@ function Contacts() {
 	};
 
 	const menuList = [
-		{ id: 'email', label: 'nifontovxv@mail.ru', title: 'email' },
-		{ id: 'phone', label: '+7(911)-**-**', title: 'phone' },
+		{
+			id: 'email',
+			label: 'email',
+			title: 'email',
+			content: 'nifontovxv@mail.ru',
+		},
+		{
+			id: 'phone',
+			label: 'phone',
+			title: 'phone',
+			content: '+7(911)-**-**',
+		},
 	];
 
 	const handleTabChange = (tab) => {
@@ -159,6 +173,10 @@ function Contacts() {
 			);
 			return updatedTabs;
 		});
+	};
+
+	const toggleDropdown = (index) => {
+		setOpenIndex(openIndex === index ? null : index);
 	};
 
 	const date = new Date();
@@ -222,17 +240,78 @@ function Contacts() {
 							contacts
 						</span>
 					</div>
-					<TabList
+					{/* <TabList
 						openTabs={openTabs}
 						activeTab={activeTab}
 						setActiveTab={setActiveTab}
 						handleTabClose={handleTabClose}
-					/>
+					/> */}
 				</div>
 				<div className={styles.aboutPart}>
 					<div className={`${styles.aboutLeft} ${isOpen ? styles.open : ''}`}>
 						{isOpen && (
-							<MenuList menuList={menuList} handleTabChange={handleTabChange} />
+							<ul className={styles.menuList}>
+								{menuList.map((item, index) => (
+									<div className={styles.menuListWrappers}>
+										<li
+											className={styles.menuListItem}
+											key={item.id}
+											onClick={() => handleTabChange(item.id)}
+										>
+											<div
+												onClick={(e) => {
+													e.stopPropagation(); // Останавливает всплытие события, чтобы избежать лишнего срабатывания
+													toggleDropdown(index);
+												}}
+												className={styles.menuListWrapper}
+											>
+												<span className={styles.dropdownToggle}>
+													{openIndex === index ?
+														<svg
+															width='9'
+															height='7'
+															viewBox='0 0 9 7'
+															fill='none'
+															xmlns='http://www.w3.org/2000/svg'
+														>
+															<path
+																d='M4.74998 6.65186L0.499969 0.651856L9 0.651855L4.74998 6.65186Z'
+																fill='white'
+															/>
+														</svg>
+													:	<svg
+															width='7'
+															height='10'
+															viewBox='0 0 7 10'
+															fill='none'
+															xmlns='http://www.w3.org/2000/svg'
+														>
+															<path
+																d='M6.96045 4.80914L0.960449 9.05916L0.960449 0.559128L6.96045 4.80914Z'
+																fill='white'
+															/>
+														</svg>
+													}
+												</span>
+												&nbsp;
+												<Arrowdown title={item.title} /> &nbsp;
+												{item.label}
+											</div>
+										</li>
+										{openIndex === index && (
+											<div
+												className={clsx(styles.dropdownContent, {
+													[styles.dropdownContentActive]: openIndex === index,
+												})}
+											>
+												<p className={styles.dropdownContentDescription}>
+													{item.content}
+												</p>
+											</div>
+										)}
+									</div>
+								))}
+							</ul>
 						)}
 					</div>
 					<div className={styles.aboutMiddle}>
@@ -245,7 +324,7 @@ function Contacts() {
 								<label>
 									_name:
 									<input
-										placeholder='enter your name'
+										placeholder='Your name'
 										value={formData.name}
 										onChange={handleChange}
 										className={styles.formInput}
@@ -259,7 +338,7 @@ function Contacts() {
 										className={styles.formInput}
 										type='email'
 										name='email'
-										placeholder='Ваш email'
+										placeholder='Your email'
 										value={formData.email}
 										onChange={handleChange}
 										required
@@ -268,7 +347,7 @@ function Contacts() {
 								<label>
 									_message:
 									<textarea
-										placeholder='enter your message'
+										placeholder='Enter your message'
 										maxLength='200'
 										className={styles.formArea}
 										name='message'
@@ -279,19 +358,19 @@ function Contacts() {
 										rows='10'
 									></textarea>
 								</label>
-								<button
-									className={styles.formBtn}
-									type='submit'
-									disabled={
-										isLoading ||
-										!formData.name ||
-										!formData.email ||
-										!formData.message
-									}
-									aria-label='Submit your message'
-								>
-									submit-message
-								</button>
+								<div className={styles.formBtn}>
+									<Button
+										title='submit-message'
+										type='submit'
+										disabled={
+											isLoading ||
+											!formData.name ||
+											!formData.email ||
+											!formData.message
+										}
+										aria-label='Submit your message'
+									/>
+								</div>
 								{status && <p className={styles.status}>{status}</p>}
 							</form>
 						}

@@ -19,6 +19,7 @@ import avionimg from '../../images/Avion.jpg';
 import awwardimg from '../../images/awwardimg.jpg';
 import { FaGooglePlay } from 'react-icons/fa6';
 import { FaPause } from 'react-icons/fa';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 function Projects() {
 	const [isOpen, setIsOpen] = useState(true);
@@ -28,6 +29,8 @@ function Projects() {
 	const [loading, setLoading] = useState(true);
 	const [playingVideos, setPlayingVideos] = useState({});
 	const [hoveredVideo, setHoveredVideo] = useState(null);
+
+	const isMobile = useMediaQuery('(max-width:768px)');
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -97,7 +100,6 @@ function Projects() {
 	const menuList = [
 		{ id: 'todolist', label: 'To Do List', title: 'todolist' },
 		{ id: 'snake', label: 'Snake', title: 'snake' },
-		{ id: 'calculator', label: 'Calculator', title: 'calculator' },
 	];
 
 	const projects = [
@@ -245,9 +247,10 @@ function Projects() {
 											<div style={{ marginTop: '50px' }}>
 												<Skeleton
 													variant='rectangular'
-													width={280}
+													width={300}
 													height={180}
 													sx={{
+														maxWidth: '340px',
 														bgcolor: 'rgba(255, 255, 255, 0.2)',
 													}}
 												/>
@@ -299,6 +302,16 @@ function Projects() {
 															<source src={item.video} type='video/mp4' />
 														</video>
 														{hoveredVideo === index && (
+															<button
+																onClick={() => togglePlay(index)}
+																className={styles.playBtn}
+															>
+																{playingVideos[index] ?
+																	<FaPause className={styles.playIcon} />
+																:	<FaGooglePlay className={styles.playIcon} />}
+															</button>
+														)}
+														{isMobile && (
 															<button
 																onClick={() => togglePlay(index)}
 																className={styles.playBtn}

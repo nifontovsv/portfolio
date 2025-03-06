@@ -34,8 +34,6 @@ function TabContent({ activeTab, aboutArr, interests }) {
 				return <ToDoList />;
 			case 'snake':
 				return <SnakeGame />;
-			case 'calculator':
-				return <p>Calculator</p>;
 			default:
 				return <p>Select a tab to view its content.</p>;
 		}

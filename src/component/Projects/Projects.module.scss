@@ -68,7 +68,7 @@
 			}
 		}
 		.aboutMiddle {
-			height: 75vh;
+			height: 72vh;
 			overflow-y: auto;
 			.projectsGrid {
 				margin: 20px;
@@ -125,7 +125,7 @@
 						transition:
 							opacity 0.3s ease-in-out,
 							transform 0.3s ease-in-out;
-						opacity: 0;
+						// opacity: 0;
 
 						.playIcon {
 							color: #ffffff;
@@ -172,9 +172,9 @@
 						transform: scale(1.01);
 						box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 					}
-					&:hover .playBtn {
-						opacity: 1;
-					}
+					// &:hover .playBtn {
+					// 	opacity: 1;
+					// }
 				}
 			}
 			// }
