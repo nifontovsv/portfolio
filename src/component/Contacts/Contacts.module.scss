@@ -59,7 +59,6 @@
 			}
 			.aboutLeft {
 				padding: 0 5px;
-				padding-top: 20px;
 				border-right: 1px solid rgba(255, 255, 255, 0.3);
 
 				@media (max-width: 767px) {
@@ -68,14 +67,14 @@
 				}
 
 				.menuList {
+					padding-top: 10px;
+					padding-left: 0;
 					display: flex;
 					flex-direction: column;
-					gap: 8px;
 					list-style: none;
 					min-width: 100%;
 					z-index: 1;
 					margin: 0;
-					padding: 0;
 
 					@media (max-width: 767px) {
 						display: flex;
@@ -96,17 +95,29 @@
 							.menuListWrapper {
 								display: flex;
 								align-items: center;
-								padding: 0 20px;
+								padding: 10px 20px;
+								border-radius: 2px 2px 0px 0px;
+								cursor: pointer;
+								position: relative;
 
-								&:hover {
-									cursor: pointer;
-									border-radius: 2px;
+								&::after {
+									content: '';
+									position: absolute;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
 									background: linear-gradient(
 										90deg,
 										rgba(54, 157, 85, 0.4) 0%,
 										rgba(76, 255, 180, 0.6) 50%,
 										rgba(54, 157, 85, 0.4) 100%
 									);
+									opacity: 0;
+									transition: opacity 0.3s ease;
+								}
+								&:hover::after {
+									opacity: 1;
 								}
 
 								.dropdownToggle {
@@ -138,7 +149,8 @@
 							.dropdownContentDescription {
 								width: 100%;
 								color: #ffffff;
-								background-color: rgba($color: #717171, $alpha: 0.6);
+								background-color: rgba($color: #ffffff, $alpha: 0.2);
+								backdrop-filter: blur(5px);
 								border-radius: 0 0 8px 8px;
 								padding: 10px 30px;
 								margin: 0;

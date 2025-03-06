@@ -179,7 +179,7 @@ function Projects() {
 			<div className={styles.tabsAbout}>
 				<div className={styles.navTabs}>
 					<div className={styles.navTabName}>
-						<button
+						{/* <button
 							onClick={() => setIsOpen(!isOpen)}
 							className={styles.dropdownToggle}
 						>
@@ -209,10 +209,10 @@ function Projects() {
 									/>
 								</svg>
 							}
-						</button>
+						</button> */}
 						<span
 							className={styles.personalInfo}
-							onClick={() => setIsOpen(!isOpen)}
+							// onClick={() => setIsOpen(!isOpen)}
 						>
 							projects
 						</span>
@@ -244,13 +244,14 @@ function Projects() {
 								{projects.map((item, index) => (
 									<Grid2 xs={12} sm={6} md={4} lg={3} key={index}>
 										{loading ?
-											<div style={{ marginTop: '50px' }}>
+											<div
+												className={styles.skeletonWrapper}
+												style={{ marginTop: '50px' }}
+											>
 												<Skeleton
 													variant='rectangular'
-													width={300}
 													height={180}
 													sx={{
-														maxWidth: '340px',
 														bgcolor: 'rgba(255, 255, 255, 0.2)',
 													}}
 												/>
