@@ -31,12 +31,18 @@ function Footer() {
 				<p>find me in:</p>
 			</div>
 			<div className={styles.footerItem}>
-				<Button
+				<a
 					href='https://vk.com/id698321460'
-					title={
-						<SlSocialVkontakte style={{ width: '20px', height: '20px' }} />
-					}
-				/>
+					target='_blank'
+					rel='noopener noreferrer'
+					className={styles.btnTitle}
+				>
+					<Button
+						title={
+							<SlSocialVkontakte style={{ width: '20px', height: '20px' }} />
+						}
+					/>
+				</a>
 			</div>
 			<Tooltip
 				title={
@@ -49,12 +55,18 @@ function Footer() {
 				placement='top'
 			>
 				<div className={styles.footerItem}>
-					<Button
+					<a
 						href='https://t.me/nifontovsv'
-						title={
-							<RiTelegram2Line style={{ width: '20px', height: '20px' }} />
-						}
-					/>
+						target='_blank'
+						rel='noopener noreferrer'
+						className={styles.btnTitle}
+					>
+						<Button
+							title={
+								<RiTelegram2Line style={{ width: '20px', height: '20px' }} />
+							}
+						/>
+					</a>
 
 					<Snackbar
 						style={{ position: 'absolute', top: -135, left: '20px' }}
@@ -74,10 +86,16 @@ function Footer() {
 				</div>
 			</Tooltip>
 			<div className={styles.footerItem}>
-				<Button
+				<a
 					href='https://github.com/nifontovsv'
-					title={<FaGithub style={{ width: '20px', height: '20px' }} />}
-				/>
+					target='_blank'
+					rel='noopener noreferrer'
+					className={styles.btnTitle}
+				>
+					<Button
+						title={<FaGithub style={{ width: '20px', height: '20px' }} />}
+					/>
+				</a>
 			</div>
 		</footer>
 	);

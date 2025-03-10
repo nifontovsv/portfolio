@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 Демо-версия: https://nifontovsv.github.io/portfolio/
 
-## Available Scripts
+### 📌 Описание проекта:
 
-In the project directory, you can run:
+> _Портфолио представляет собой проект, разработанный на React c применением различных технологий. С полным списком можно ознакомиться ниже ↓_
+>
+> _На главной странице имеется анимация с помощью технологии **canvas** на заднем фоне._
+>
+> _Текст анимирован с помощью библиотеки **animejs**._
+>
+> _В правой части расположен мини-проект **Snake**, разработанный с применеием **canvas**._
+>
+> \*На средних экранах вместо мини-проекта добавлен слайдер с использование библиотеки **Swiper\***
+>
+> _В разделе проекты, представлены все имеющиеся на данный момент проекты с ссылками на соответсвуюющие репозитории._
+>
+> _В разделе проекты в навигации представлен мини-проект **Список дел**. Он написан с использование **Redux**, и имеет следующий функционал: добавление, удаление, редактирование списков и задач, перетаскивание списков, отслеживание выполненных задач_
+>
+> _Раздел контакты имееют форму. для отправки сообщения на почту был написан сервер на **Node.js, Express.js**._
+>
+> _Подцветка текста была сделана с использование библиотеки **prismjs**._
 
-### `npm start`
+### 🛠 Технологии:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| **Category**   | **Technologies**                                                                                                                                                                                                                                                                                                                                               |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Frontend**   | [![React](https://img.shields.io/static/v1?label=&message=React&color=61DAFB&logo=react&logoColor=FFFFFF)](https://react.dev/) [![Redux](https://img.shields.io/badge/redux-%23764ABC?logo=redux)](https://redux.js.org/) [![GSAP](https://img.shields.io/static/v1?label=&message=GSAP&color=88CE02&logo=greensock&logoColor=FFFFFF)](https://greensock.com/) |
+| **Styling**    | [![SASS](https://img.shields.io/static/v1?label=&message=SASS&color=CC6699&logo=sass&logoColor=FFFFFF)](https://sass-lang.com/) [![Material UI](https://img.shields.io/static/v1?label=&message=MUI&color=007FFF&logo=mui&logoColor=FFFFFF)](https://mui.com/)                                                                                                 |
+| **Backend**    | [![Node.js](https://img.shields.io/static/v1?label=&message=Node.js&color=339933&logo=nodedotjs&logoColor=FFFFFF)](https://nodejs.org/) [![Express.js](https://img.shields.io/static/v1?label=&message=Express.js&color=000000&logo=express&logoColor=FFFFFF)](https://expressjs.com/)                                                                         |
+| **AI & Tools** | [![ChatGPT](https://img.shields.io/static/v1?label=&message=ChatGPT&color=00A67E&logo=openai&logoColor=FFFFFF)](https://openai.com/) [![Figma](https://img.shields.io/static/v1?label=&message=Figma&color=F24E1E&logo=figma&logoColor=FFFFFF)](https://www.figma.com/)                                                                                        |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📂 Установка и запуск
 
-### `npm test`
+1. Клонируй репозиторий
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/username/project-name.git
+```
 
-### `npm run build`
+2. Перейди в папку с проектом
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+cd project-name
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Подгрузи зависимости
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+4. Запусти проект
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm start
+```

@@ -31,15 +31,15 @@ const TypingAnimation = () => {
 					const{' '}
 				</span>
 				<span className='line' style={{ color: '#43d9ad' }}>
-					githubLink ={' '}
+					portfolioLink ={' '}
 				</span>
 				<a
 					className='line'
 					target='_blank'
 					rel='noopener noreferrer'
-					href='https://github.com/nifontovsv'
+					href='https://github.com/nifontovsv/portfolio'
 				>
-					“https://github.com/nifontovsv”
+					“https://github.com/nifontovsv/portfolio”
 				</a>
 			</div>
 		</div>

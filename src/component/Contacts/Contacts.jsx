@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Contacts.module.scss';
-import TabList from '../About/TabList/TabList';
-import MenuList from '../About/MenuList/MenuList';
 import CodeBlock from '../CodeBlock/CodeBlock';
 import Arrowdown from '../About/Arrowdown/Arrowdown';
 import clsx from 'clsx';

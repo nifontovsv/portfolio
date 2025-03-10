@@ -33,14 +33,7 @@ const Button = ({ title, href }) => {
 					background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
 				}}
 			/>
-			<a
-				href={href}
-				target='_blank'
-				rel='noopener noreferrer'
-				className={styles.btnTitle}
-			>
-				{title}
-			</a>
+			<div className={styles.btnTitle}>{title}</div>
 		</div>
 	);
 };

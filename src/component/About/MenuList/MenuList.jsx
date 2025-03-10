@@ -16,10 +16,9 @@ function MenuList({ handleTabChange, menuList }) {
 	const content = (
 		<ul className={styles.menuList}>
 			{menuList.map((item, index) => (
-				<div className={styles.menuListWrappers}>
+				<div key={item.id} className={styles.menuListWrappers}>
 					<li
 						className={styles.menuListItem}
-						key={item.id}
 						onClick={() => handleTabChange(item.id)}
 					>
 						<div className={styles.menuListWrapper}>
@@ -40,10 +39,9 @@ function MenuList({ handleTabChange, menuList }) {
 	return isMobile ?
 			<ul className={styles.menuList}>
 				{menuList.map((item, index) => (
-					<div className={styles.menuListWrappers}>
+					<div key={item.id} className={styles.menuListWrappers}>
 						<li
 							className={styles.menuListItem}
-							key={item.id}
 							onClick={() => handleTabChange(item.id)}
 						>
 							<div

@@ -3,6 +3,7 @@
 	display: grid;
 	grid-template-columns: auto;
 	height: 80vh;
+	overflow-x: hidden;
 	@media (max-width: 1024px) {
 		display: block;
 	}
