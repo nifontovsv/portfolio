@@ -11,6 +11,7 @@ import agency from '../../images/agency.mp4';
 import shoppebook from '../../images/shoppebook.mp4';
 import avion from '../../images/avion.mp4';
 import awward from '../../images/awward.mp4';
+import creative_scroll from '../../images/creative_scroll.mp4';
 import exampleportfolio from '../../images/exampleportfolio.mp4';
 import pravovik from '../../images/pravovik.mp4';
 import agencyimg from '../../images/DigitalAgency.jpg';
@@ -123,6 +124,15 @@ function Projects() {
 		},
 		{
 			title: 'Project 3',
+			span: '// _creative_scroll',
+			video: creative_scroll,
+			image: '',
+			description: 'Animation lending ',
+			linkTitle: 'view-project',
+			href: 'https://github.com/nifontovsv/creative_scroll',
+		},
+		{
+			title: 'Project 4',
 			span: '// _avion',
 			video: avion,
 			image: avionimg,
@@ -131,7 +141,7 @@ function Projects() {
 			href: 'https://github.com/nifontovsv/avion',
 		},
 		{
-			title: 'Project 4',
+			title: 'Project 5',
 			span: '// _agency',
 			video: agency,
 			image: agencyimg,
@@ -140,7 +150,7 @@ function Projects() {
 			href: 'https://github.com/nifontovsv/agency',
 		},
 		{
-			title: 'Project 5',
+			title: 'Project 6',
 			span: '// _example_portfolio',
 			video: exampleportfolio,
 			// image: agencyimg,
@@ -149,7 +159,7 @@ function Projects() {
 			href: 'https://github.com/nifontovsv/exampleportfolio',
 		},
 		{
-			title: 'Project 6',
+			title: 'Project 7',
 			span: '// _pravovik',
 			video: pravovik,
 			// image: agencyimg,
