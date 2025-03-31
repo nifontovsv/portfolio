@@ -6,7 +6,7 @@ import styles from './About.module.scss';
 import SwiperSlider from '../common/Swiper/SwiperSlider';
 
 function About() {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(true);
 	const [openTabs, setOpenTabs] = useState([]);
 	const [activeTab, setActiveTab] = useState('');
 
